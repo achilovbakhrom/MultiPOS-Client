@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View"/>
+
+        <variable
+            name="viewModel"
+            type="com.jim.multipos.ui.adminsignup.AdminSignUpViewModel"/>
+    </data>
+    <LinearLayout
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/fifteen_dp">
+
+        <com.jim.multipos.custom.MpEditText
+            android:id="@+id/etFirstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/ten_dp"
+            android:hint="@string/first_name" />
+
+        <com.jim.multipos.custom.MpEditText
+            android:id="@+id/etLastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/ten_dp"
+            android:hint="@string/last_name" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/ten_dp"
+            android:layout_marginTop="@dimen/ten_dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/twelve_dp"
+                android:text="@string/sex" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/ten_dp">
+
+                <com.jim.multipos.custom.MpCheckbox
+                    android:id="@+id/maleCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:checked="true"
+                    app:text="@string/male"/>
+
+
+                <com.jim.multipos.custom.MpCheckbox
+                    android:id="@+id/femaleCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/fifteen_dp"
+                    app:checked="false"
+                    app:text="@string/female"/>
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/five_dp"
+                    android:layout_marginStart="@dimen/twelve_dp"
+                    android:text="@string/date_of_birth" />
+
+                <com.jim.multipos.custom.MpEditText
+                    android:id="@+id/etDatePicker"
+                    android:layout_width="164dp"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:hint="MM DD YYYY" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/five_dp"
+                    android:layout_marginStart="@dimen/twelve_dp"
+                    android:layout_marginTop="@dimen/ten_dp"
+                    android:text="@string/country" />
+
+                <com.jim.multipos.custom.MpSpinner
+                    android:id="@+id/spinnerCountry"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/logoSection"
+                    android:layout_width="@dimen/sixty_dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true">
+
+                    <com.jim.multipos.custom.MpRoundedImageView
+                        android:id="@+id/ivAvatar"
+                        android:layout_width="@dimen/seventy_dp"
+                        android:layout_height="@dimen/seventy_dp"
+                        android:layout_marginBottom="@dimen/ten_dp"
+                        android:src="@drawable/add_admin_photo" />
+
+                    <ImageView
+                        android:layout_width="@dimen/fifteen_dp"
+                        android:layout_height="@dimen/fifteen_dp"
+                        android:layout_alignBottom="@+id/ivAvatar"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="@dimen/six_dp"
+                        android:src="@drawable/add_admin_photo_plus" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/logoSection"
+                    android:gravity="center_horizontal"
+                    android:text="@string/add_photo" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <com.jim.multipos.custom.MpEditText
+            android:id="@+id/etPrimary_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fifteen_dp"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress" />
+
+        <com.jim.multipos.custom.MpEditText
+            android:id="@+id/etPrimary_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fifteen_dp"
+            android:hint="@string/phone"
+            android:inputType="phone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/backBtn"
+                android:layout_width="153dp"
+                android:layout_height="35dp"
+                android:background="@drawable/admin_reg_button_back"
+                android:layout_marginStart="@dimen/ten_dp"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="@dimen/ten_dp"
+                android:text="@string/back"
+                android:textColor="@color/colorWhite" />
+
+            <Button
+                android:id="@+id/nextBtn"
+                android:layout_width="153dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="@dimen/ten_dp"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="@dimen/ten_dp"
+                android:background="@drawable/admin_reg_next_button"
+                android:text="@string/next"
+                android:textColor="@color/colorWhite" />
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

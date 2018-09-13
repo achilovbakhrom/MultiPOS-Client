@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MpCheckbox">
+        <attr name="text" format="string" />
+        <attr name="checked" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="MpToolbar">
+        <attr name="mode" format="enum">
+            <enum name="SIGN_IN" value="1"/>
+            <enum name="ADMIN" value="2"/>
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="MpCircleWithText">
+        <attr name="circle_text" format="string" />
+        <attr name="textSize" format="float" />
+        <attr name="circleBackColor" format="color" />
+        <attr name="circleFrontColor" format="color" />
+        <attr name="textColor" format="color" />
+    </declare-styleable>
+</resources>

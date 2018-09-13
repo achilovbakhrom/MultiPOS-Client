@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.adminsignin.AdminSignInActivity">
+
+    <data>
+        <import type="android.view.View"/>
+
+        <variable
+            name="viewModel"
+            type="com.jim.multipos.ui.adminmainpage.fragments.productclass.ProductClassViewModel"/>
+
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.66"
+            android:orientation="vertical"
+            android:background="@color/colorDarkBlue">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/seven_dp"
+                android:background="@color/colorWhite">
+
+                <TextView
+                    android:id="@+id/tvProductClassName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@{viewModel.productClassName}"
+                    android:layout_marginStart="@dimen/ten_dp"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/add_admin_photo_plus"
+                        android:layout_marginEnd="@dimen/fifteen_dp"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/add_admin_photo_plus"
+                        android:layout_marginEnd="@dimen/fifteen_dp"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/add_admin_photo_plus"
+                        android:layout_marginEnd="@dimen/fifteen_dp"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <android.support.design.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rvProductClass"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/ten_dp" />
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@drawable/fab_add_icon"
+                    android:scaleType="center"
+                    android:layout_gravity="bottom|end"
+                    android:layout_margin="@dimen/sixteen_dp"
+                    app:backgroundTint="@color/colorNavy" />
+
+            </android.support.design.widget.CoordinatorLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.33"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorLightGray">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/layout"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/ten_dp"
+                            android:text="@string/add_product_class"
+                            android:textColor="@color/colorTitle" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/five_dp"
+                            android:layout_marginStart="@dimen/fourty_dp"
+                            android:layout_marginTop="@dimen/twenty_dp"
+                            android:text="@string/name" />
+
+                        <com.jim.multipos.custom.MpEditText
+                            android:id="@+id/etIPCode"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{viewModel.productClassName}"
+                            android:enabled="@{viewModel.isEditable}"
+                            android:layout_marginEnd="@dimen/thirty_dp"
+                            android:layout_marginStart="@dimen/twenty_five_dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/thirty_dp"
+                            android:layout_marginStart="@dimen/fourty_dp"
+                            android:layout_marginTop="@dimen/fifteen_dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:text="@string/is_active" />
+
+                            <Switch
+                                android:id="@+id/isActive"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:enabled="@{viewModel.isEditable}"
+                                android:layout_gravity="end" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/fifteen_dp"
+                            android:layout_marginStart="@dimen/fourty_dp"
+                            android:layout_marginTop="@dimen/fifteen_dp"
+                            android:text="@string/description" />
+
+                        <EditText
+                            android:id="@+id/etDescription"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/seventy_dp"
+                            android:layout_marginBottom="@dimen/ten_dp"
+                            android:layout_marginEnd="@dimen/thirty_dp"
+                            android:layout_marginStart="@dimen/twenty_five_dp"
+                            android:enabled="@{viewModel.isEditable}"
+                            android:background="@drawable/edit_text_bg"
+                            android:padding="@dimen/ten_dp" />
+
+                    </LinearLayout>
+                </ScrollView>
+
+                <LinearLayout
+                    android:id="@+id/layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="@dimen/fifteen_dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnDelete"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/five_dp"
+                        android:layout_marginEnd="@dimen/one_dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/circular_button_red"
+                        android:text="@{viewModel.isEditable? @string/cancel : @string/delete}"
+                        android:textColor="@color/colorWhite" />
+
+                    <Button
+                        android:id="@+id/btnEdit"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/five_dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/circular_button_green"
+                        android:text="@{viewModel.isEditable? @string/save : @string/edit}"
+                        android:textColor="@color/colorWhite" />
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

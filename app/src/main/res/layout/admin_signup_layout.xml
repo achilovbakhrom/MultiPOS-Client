@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.adminsignup.AdminSignUpActivity">
+
+    <data>
+        <import type="android.view.View"/>
+
+        <variable
+            name="viewModel"
+            type="com.jim.multipos.ui.adminsignup.AdminSignUpViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorNavy">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/twenty_dp"
+                android:layout_marginStart="@dimen/thirty_dp"
+                android:layout_marginTop="@dimen/twenty_dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Multi"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="25sp"
+                    android:textStyle="bold|italic" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="pos"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="25sp"
+                    android:textStyle="" />
+            </LinearLayout>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/dataCard"
+                android:layout_width="369dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/twenty_dp"
+                android:layout_marginStart="@dimen/twenty_dp"
+                android:layout_marginTop="@dimen/eighty_five_dp"
+                app:cardCornerRadius="@dimen/eighteen_dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/fifteen_dp"
+                        android:text="@string/sign_up"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingBottom="@dimen/ten_dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/ten_dp"
+                            android:layout_marginEnd="@dimen/thirty_dp"
+                            android:layout_marginStart="@dimen/thirty_dp">
+
+                            <View
+                                android:id="@+id/generalCircle"
+                                android:layout_width="@dimen/twenty_dp"
+                                android:layout_height="@dimen/twenty_dp"
+                                android:background="@drawable/reg_current_circle" />
+
+                            <View
+                                android:id="@+id/gen2infoLine"
+                                android:layout_width="125dp"
+                                android:layout_height="1dp"
+                                android:layout_centerVertical="true"
+                                android:layout_toEndOf="@+id/generalCircle"
+                                android:background="@color/colorGray" />
+
+                            <View
+                                android:id="@+id/infoCircle"
+                                android:layout_width="@dimen/twenty_dp"
+                                android:layout_height="@dimen/twenty_dp"
+                                android:layout_toEndOf="@+id/gen2infoLine"
+                                android:background="@drawable/reg_not_completed_circle" />
+
+                            <View
+                                android:id="@+id/info2completeLine"
+                                android:layout_width="125dp"
+                                android:layout_height="1dp"
+                                android:layout_centerVertical="true"
+                                android:layout_toEndOf="@+id/infoCircle"
+                                android:background="@color/colorGray" />
+
+                            <View
+                                android:id="@+id/completeCircle"
+                                android:layout_width="@dimen/twenty_dp"
+                                android:layout_height="@dimen/twenty_dp"
+                                android:layout_toEndOf="@+id/info2completeLine"
+                                android:background="@drawable/reg_not_completed_circle" />
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/twelve_dp"
+                            android:layout_marginStart="@dimen/twelve_dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tvGeneral"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/general"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/tvInfo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/ninety_five_dp"
+                                android:text="@string/information"
+                                android:textColor="@color/colorGray"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/tvConfirm"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="end"
+                                android:text="@string/confirm"
+                                android:textColor="@color/colorGray"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                    <FrameLayout
+                        android:id="@+id/container"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/thirty_dp"
+                android:layout_toEndOf="@+id/dataCard"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:layout_width="240dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/forty_dp"
+                        android:src="@drawable/admin_signup_background1" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="@dimen/sixty_dp"
+                        android:layout_marginStart="@dimen/forty_dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/secure_data_exchange"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="28sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/uncompromising"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="20sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="@dimen/forty_dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/data_encryption"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="28sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tough_and_secure"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="20sp" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="240dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/forty_dp"
+                        android:src="@drawable/admin_signup_background2" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:layout_width="240dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/forty_dp"
+                        android:src="@drawable/admin_signup_background3" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="@dimen/forty_dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/user_authorisation"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="28sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/login_to_access_data"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="20sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</layout>
