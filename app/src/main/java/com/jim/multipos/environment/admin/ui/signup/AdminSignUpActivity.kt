@@ -8,10 +8,10 @@ import android.support.v4.app.Fragment
 import com.jim.multipos.BR
 import com.jim.multipos.R
 import com.jim.multipos.databinding.AdminSignupLayoutBinding
-import com.jim.multipos.ui.adminsignup.fragment.confirmation.ConfirmationFragment
-import com.jim.multipos.ui.adminsignup.fragment.general.GeneralFragment
-import com.jim.multipos.ui.adminsignup.fragment.info.InfoFragment
 import com.jim.multipos.core.BaseActivity
+import com.jim.multipos.environment.admin.ui.signup.fragment.confirmation.ConfirmationFragment
+import com.jim.multipos.environment.admin.ui.signup.fragment.general.GeneralFragment
+import com.jim.multipos.environment.admin.ui.signup.fragment.info.InfoFragment
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector

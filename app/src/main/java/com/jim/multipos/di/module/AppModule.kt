@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 import com.jim.multipos.core.managers.AppDataManager
 import com.jim.multipos.core.managers.DataManager
-import com.jim.multipos.utils.Constants
+import com.jim.multipos.utils.BASE_URL
 
 
 @Module
@@ -21,7 +21,7 @@ class AppModule{
     fun provideRetrofit():Retrofit{
         return Retrofit.Builder()
                 .client(OkHttpClient())
-                .baseUrl(Constants.BASE_URL)
+                .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()

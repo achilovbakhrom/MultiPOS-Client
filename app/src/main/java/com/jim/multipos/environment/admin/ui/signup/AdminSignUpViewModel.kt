@@ -6,6 +6,7 @@ import com.jim.multipos.core.managers.DataManager
 import com.jim.multipos.environment.admin.model.SignUp
 import com.jim.multipos.environment.admin.ui.signup.model.SignUpModel
 import com.jim.multipos.core.BaseViewModel
+import com.jim.multipos.utils.Response
 
 class AdminSignUpViewModel(mDataManager: DataManager) : BaseViewModel(mDataManager) {
 

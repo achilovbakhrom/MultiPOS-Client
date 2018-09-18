@@ -7,10 +7,10 @@ import android.view.View
 import com.jim.multipos.BR
 import com.jim.multipos.R
 import com.jim.multipos.databinding.AdminSignupGeneralFragmentLayoutBinding
-import com.jim.multipos.ui.adminsignup.AdminSignUpViewModel
-import com.jim.multipos.ui.adminsignup.model.SignUpModel
 import com.jim.multipos.core.BaseFragment
-import com.jim.multipos.utils.Utils
+import com.jim.multipos.environment.admin.ui.signup.AdminSignUpViewModel
+import com.jim.multipos.environment.admin.ui.signup.model.SignUpModel
+import com.jim.multipos.utils.isEmailValid
 import kotlinx.android.synthetic.main.admin_signup_general_fragment_layout.*
 import javax.inject.Inject
 
@@ -47,7 +47,7 @@ class GeneralFragment: BaseFragment<AdminSignupGeneralFragmentLayoutBinding, Adm
     }
 
     fun checkValidation():Boolean{
-        if(!Utils.isEmailValid(mViewDataBinding!!.etLogin.text.toString())) {
+        if(!isEmailValid(mViewDataBinding!!.etLogin.text.toString())) {
             mViewDataBinding!!.etLogin.error = getString(R.string.incorrect_email)
             return false
         }else if (!mViewDataBinding!!.etPassword.text.toString().equals(mViewDataBinding!!.etConfirmPassword.text.toString())){

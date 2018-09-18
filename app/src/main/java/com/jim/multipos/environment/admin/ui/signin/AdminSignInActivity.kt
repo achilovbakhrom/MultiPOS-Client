@@ -8,9 +8,9 @@ import android.view.View
 import com.jim.multipos.BR
 import com.jim.multipos.R
 import com.jim.multipos.databinding.AdminSigninLayoutBinding
-import com.jim.multipos.ui.adminmainpage.AdminMainPageActivity
-import com.jim.multipos.ui.adminsignup.AdminSignUpActivity
 import com.jim.multipos.core.BaseActivity
+import com.jim.multipos.environment.admin.ui.mainpage.MainPageActivity
+import com.jim.multipos.environment.admin.ui.signup.AdminSignUpActivity
 import javax.inject.Inject
 
 class AdminSignInActivity: BaseActivity<AdminSigninLayoutBinding, AdminSignInViewModel>(){
@@ -43,7 +43,7 @@ class AdminSignInActivity: BaseActivity<AdminSigninLayoutBinding, AdminSignInVie
     }
 
     fun SignIn(view: View){
-        startActivity(Intent(this, AdminMainPageActivity::class.java))
+        startActivity(Intent(this, MainPageActivity::class.java))
     }
 
     fun SignUp(view: View){

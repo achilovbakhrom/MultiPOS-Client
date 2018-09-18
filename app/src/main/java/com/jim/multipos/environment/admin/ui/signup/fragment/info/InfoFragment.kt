@@ -9,9 +9,9 @@ import com.jim.multipos.BR
 import com.jim.multipos.R
 import com.jim.multipos.customView.MpCheckbox
 import com.jim.multipos.databinding.AdminSignupInfoFragmentLayoutBinding
-import com.jim.multipos.ui.adminsignup.AdminSignUpViewModel
-import com.jim.multipos.ui.adminsignup.model.SignUpModel
 import com.jim.multipos.core.BaseFragment
+import com.jim.multipos.environment.admin.ui.signup.AdminSignUpViewModel
+import com.jim.multipos.environment.admin.ui.signup.model.SignUpModel
 import kotlinx.android.synthetic.main.admin_signup_info_fragment_layout.*
 import java.text.SimpleDateFormat
 import java.util.*

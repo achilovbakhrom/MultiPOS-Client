@@ -12,10 +12,9 @@ import android.widget.ImageView;
 
 import com.jim.multipos.R;
 import com.jim.multipos.customView.adapter.SpinnerAdapter;
-import com.jim.multipos.utils.Utils;
-
 import static android.view.Gravity.CENTER_VERTICAL;
 import static android.view.Gravity.END;
+import static com.jim.multipos.utils.UtilsKt.convertDpToPx;
 
 public class MpSpinner extends FrameLayout {
 
@@ -42,10 +41,10 @@ public class MpSpinner extends FrameLayout {
         AppCompatSpinner spinner = new AppCompatSpinner(context);
         spinner.setId(R.id.spinner);
         LayoutParams spinnerLP = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        spinnerLP.topMargin = (int) Utils.Companion.convertDpToPx(context, 2);
-        spinnerLP.bottomMargin = (int) Utils.Companion.convertDpToPx(context, 2);
-        spinnerLP.leftMargin = (int) Utils.Companion.convertDpToPx(context, 4);
-        spinnerLP.rightMargin = (int) Utils.Companion.convertDpToPx(context, 4);
+        spinnerLP.topMargin = (int) convertDpToPx(context, 2);
+        spinnerLP.bottomMargin = (int) convertDpToPx(context, 2);
+        spinnerLP.leftMargin = (int) convertDpToPx(context, 4);
+        spinnerLP.rightMargin = (int) convertDpToPx(context, 4);
 
         spinnerLP.gravity = CENTER_VERTICAL;
         spinner.setLayoutParams(spinnerLP);
@@ -67,7 +66,7 @@ public class MpSpinner extends FrameLayout {
         ImageView imageView = new ImageView(context);
         imageView.setImageResource(R.drawable.triangle);
         LayoutParams lp = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        lp.rightMargin = (int) Utils.Companion.convertDpToPx(context, 10);
+        lp.rightMargin = (int) convertDpToPx(context, 10);
         lp.gravity = END | CENTER_VERTICAL;
         imageView.setLayoutParams(lp);
         addView(imageView);
