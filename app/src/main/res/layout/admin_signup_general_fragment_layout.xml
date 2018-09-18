@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.jim.multipos.ui.adminsignup.AdminSignUpViewModel"/>
+            type="com.jim.multipos.environment.admin.ui.signup.fragment.SignUpFragmentViewModel"/>
     </data>
 
     <LinearLayout
@@ -16,7 +16,7 @@
         android:orientation="vertical"
         android:padding="@dimen/fifteen_dp">
 
-        <com.jim.multipos.custom.MpEditText
+        <com.jim.multipos.customView.MpEditText
             android:id="@+id/etLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,7 +24,7 @@
             android:hint="@string/email"
             android:inputType="textEmailAddress" />
 
-        <com.jim.multipos.custom.MpEditText
+        <com.jim.multipos.customView.MpEditText
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
             android:hint="@string/password"
             android:inputType="textPassword" />
 
-        <com.jim.multipos.custom.MpEditText
+        <com.jim.multipos.customView.MpEditText
             android:id="@+id/etConfirmPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

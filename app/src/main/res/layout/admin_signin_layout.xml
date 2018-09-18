@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.jim.multipos.ui.adminsignin.AdminSignInViewModel"/>
+            type="com.jim.multipos.environment.admin.ui.signin.AdminSignInViewModel"/>
     </data>
 
     <LinearLayout
@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.jim.multipos.custom.MpToolbar
+        <com.jim.multipos.customView.MpToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/seventy_dp"
@@ -46,7 +46,7 @@
                     android:layout_marginBottom="@dimen/fifteen_dp"
                     android:layout_marginStart="@dimen/five_dp"/>
 
-                <com.jim.multipos.custom.MpEditText
+                <com.jim.multipos.customView.MpEditText
                     android:id="@+id/etUsername"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -55,7 +55,7 @@
                     android:drawablePadding="@dimen/ten_dp"
                     android:layout_marginBottom="@dimen/fifteen_dp"/>
 
-                <com.jim.multipos.custom.MpEditText
+                <com.jim.multipos.customView.MpEditText
                     android:id="@+id/etPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

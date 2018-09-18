@@ -6,13 +6,13 @@
 
         <variable
             name="viewModel"
-            type="com.jim.multipos.ui.adminmainpage.fragments.dashboard.viewmodel.DashboardItemViewModel"/>
+            type="com.jim.multipos.environment.admin.ui.mainpage.fragments.dashboard.viewmodel.DashboardItemViewModel"/>
     </data>
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@{viewModel.isClicked ? @color/colorNavy : @color/colorWhite }"
+        android:background="@{safeUnbox(viewModel.isClicked ? @color/colorNavy : @color/colorWhite) }"
         android:padding="@dimen/fifteen_dp">
 
         <TextView
@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/five_dp"
             android:text="@{viewModel.title}"
-            android:textColor="@{viewModel.isClicked ? @color/colorWhite : @color/colorTitle }"/>
+            android:textColor="@{safeUnbox(viewModel.isClicked ? @color/colorWhite : @color/colorTitle) }"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -33,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/dashboard"
-                android:textColor="@{viewModel.isClicked ? @color/colorWhite : @color/colorDarkTitle }"/>
+                android:textColor="@{safeUnbox(viewModel.isClicked ? @color/colorWhite : @color/colorDarkTitle) }"/>
 
             <TextView
                 android:id="@+id/tvCashValue"
@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:text="@string/inventory"
-                android:textColor="@{viewModel.isClicked ? @color/colorWhite : @color/colorDarkTitle }"/>
+                android:textColor="@{safeUnbox(viewModel.isClicked ? @color/colorWhite : @color/colorDarkTitle) }"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -53,14 +53,14 @@
                 android:id="@+id/tvCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@{viewModel.isClicked ? @color/colorWhite : @color/colorDarkTitle }"/>
+                android:textColor="@{safeUnbox(viewModel.isClicked ? @color/colorWhite : @color/colorDarkTitle) }"/>
 
             <TextView
                 android:id="@+id/tvCardValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:textColor="@{viewModel.isClicked ? @color/colorWhite : @color/colorDarkTitle }"/>
+                android:textColor="@{safeUnbox(viewModel.isClicked ? @color/colorWhite : @color/colorDarkTitle) }"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -74,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:textStyle="italic"
                 android:text="@string/data_encryption"
-                android:textColor="@{viewModel.isClicked ? @color/colorWhite : @color/colorDarkTitle }"/>
+                android:textColor="@{safeUnbox(viewModel.isClicked ? @color/colorWhite : @color/colorDarkTitle) }"/>
 
             <TextView
                 android:id="@+id/tvOrderValue"
@@ -82,7 +82,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:textStyle="italic"
-                android:textColor="@{viewModel.isClicked ? @color/colorWhite : @color/colorDarkTitle }"/>
+                android:textColor="@{safeUnbox(viewModel.isClicked ? @color/colorWhite : @color/colorDarkTitle) }"/>
         </RelativeLayout>
     </LinearLayout>
 </layout>

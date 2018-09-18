@@ -6,14 +6,14 @@
 
         <variable
             name="viewModel"
-            type="com.jim.multipos.ui.adminsignup.AdminSignUpViewModel"/>
+            type="com.jim.multipos.environment.admin.ui.signup.fragment.SignUpFragmentViewModel"/>
     </data>
     <LinearLayout
         android:orientation="vertical" android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="@dimen/fifteen_dp">
 
-        <com.jim.multipos.custom.MpEditText
+        <com.jim.multipos.customView.MpEditText
             android:id="@+id/etConfirmation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

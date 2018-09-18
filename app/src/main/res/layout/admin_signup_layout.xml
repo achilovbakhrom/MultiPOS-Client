@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.jim.multipos.ui.adminsignup.AdminSignUpViewModel"/>
+            type="com.jim.multipos.environment.admin.ui.signup.fragment.SignUpFragmentViewModel"/>
     </data>
 
     <LinearLayout

@@ -7,14 +7,14 @@
 
         <variable
             name="viewModel"
-            type="com.jim.multipos.ui.adminmainpage.fragments.establishment.viewmodel.EstablishmentPosItemViewModel"/>
+            type="com.jim.multipos.environment.admin.ui.mainpage.fragments.establishment.viewmodel.EstablishmentPosItemViewModel"/>
     </data>
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/ten_dp"
         app:cardCornerRadius="@dimen/eight_dp"
-        app:cardBackgroundColor="@{viewModel.isClicked ? @color/colorNavy : @color/colorWhite}">
+        app:cardBackgroundColor="@{ safeUnbox(viewModel.isClicked ? @color/colorNavy : @color/colorWhite) }">
 
         <LinearLayout
             android:orientation="vertical"
@@ -35,14 +35,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{viewModel.establishmentName}"
-                    android:textColor="@{viewModel.isClicked ? @color/colorWhite : @color/colorDarkTitle}" />
+                    android:textColor="@{ safeUnbox(viewModel.isClicked ? @color/colorWhite : @color/colorDarkTitle) }" />
 
                 <TextView
                     android:id="@+id/tvPosValue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:textColor="@{viewModel.isClicked ? @color/colorWhite : @color/colorDarkTitle}" />
+                    android:textColor="@{ safeUnbox(viewModel.isClicked ? @color/colorWhite : @color/colorDarkTitle) }" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -53,14 +53,14 @@
                     android:id="@+id/tvLocation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@{viewModel.isClicked ? @color/colorWhite : @color/colorDarkTitle}" />
+                    android:textColor="@{ safeUnbox(viewModel.isClicked ? @color/colorWhite : @color/colorDarkTitle) }" />
 
                 <TextView
                     android:id="@+id/tvLocationValue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:textColor="@{viewModel.isClicked ? @color/colorWhite : @color/colorDarkTitle}" />
+                    android:textColor="@{ safeUnbox(viewModel.isClicked ? @color/colorWhite : @color/colorDarkTitle) }" />
             </RelativeLayout>
         </LinearLayout>
     </android.support.v7.widget.CardView>

@@ -1,16 +1,15 @@
 package com.jim.multipos.di.module
 
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import com.jim.multipos.data.remote.NetworkService
+import com.jim.multipos.core.managers.NetworkService
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
-import uk.co.chrisjenx.calligraphy.CalligraphyConfig
-import com.jim.multipos.data.AppDataManager
-import com.jim.multipos.data.DataManager
+import com.jim.multipos.core.managers.AppDataManager
+import com.jim.multipos.core.managers.DataManager
 import com.jim.multipos.utils.Constants
 
 
@@ -30,7 +29,7 @@ class AppModule{
 
     @Provides
     @Singleton
-    fun provideNetworkService(retrofit: Retrofit): NetworkService{
+    fun provideNetworkService(retrofit: Retrofit): NetworkService {
         return retrofit.create(NetworkService::class.java)
     }
 

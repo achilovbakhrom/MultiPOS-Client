@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.jim.multipos.ui.adminmainpage.fragments.dashboard.viewmodel.DashboardViewModel"/>
+            type="com.jim.multipos.environment.admin.ui.mainpage.fragments.dashboard.viewmodel.DashboardOrderItemViewModel"/>
     </data>
 
     <LinearLayout

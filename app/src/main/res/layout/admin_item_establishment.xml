@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.jim.multipos.ui.adminmainpage.fragments.establishment.viewmodel.EstablishmentItemViewModel"/>
+            type="com.jim.multipos.environment.admin.ui.mainpage.fragments.establishment.viewmodel.EstablishmentItemViewModel"/>
     </data>
     <LinearLayout
         android:orientation="vertical"
@@ -17,26 +17,26 @@
         android:paddingBottom="@dimen/ten_dp"
         android:paddingStart="@dimen/twenty_dp"
         android:paddingEnd="@dimen/twenty_dp"
-        android:background="@{viewModel.isClicked ? @color/colorNavy : @color/colorWhite}">
+        android:background="@{ safeUnbox(viewModel.isClicked ? @color/colorNavy : @color/colorWhite) }">
 
         <TextView
             android:id="@+id/tvEstablishmentName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@{viewModel.isClicked ? @color/colorWhite : @color/colorDarkTitle}"
+            android:textColor="@{safeUnbox(viewModel.isClicked ? @color/colorWhite : @color/colorDarkTitle) }"
             android:text="@{viewModel.establishmentName}"
             android:layout_marginBottom="@dimen/five_dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@{viewModel.isClicked ? @color/colorWhite : @color/colorDarkTitle}"
+            android:textColor="@{safeUnbox(viewModel.isClicked ? @color/colorWhite : @color/colorDarkTitle) }"
             android:layout_marginBottom="@dimen/five_dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@{viewModel.isClicked ? @color/colorWhite : @color/colorDarkTitle}"
+            android:textColor="@{safeUnbox(viewModel.isClicked ? @color/colorWhite : @color/colorDarkTitle) }"
             android:layout_marginBottom="@dimen/five_dp"/>
     </LinearLayout>
 </layout>

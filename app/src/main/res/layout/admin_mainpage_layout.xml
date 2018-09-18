@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.jim.multipos.ui.adminmainpage.AdminMainPageViewModel"/>
+            type="com.jim.multipos.environment.admin.ui.mainpage.MainPageViewModel"/>
     </data>
 
     <LinearLayout
@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.jim.multipos.custom.MpToolbar
+        <com.jim.multipos.customView.MpToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/seventy_dp"

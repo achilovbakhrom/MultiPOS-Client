@@ -12,15 +12,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.adminsignin.AdminSignInActivity">
+        <activity android:name=".environment.admin.ui.signin.AdminSignInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.adminsignup.AdminSignUpActivity"/>
-        <activity android:name=".ui.adminmainpage.AdminMainPageActivity"/>
+        <activity android:name=".environment.admin.ui.signup.AdminSignUpActivity"/>
+        <activity android:name=".environment.admin.ui.mainpage.MainPageActivity"/>
     </application>
 
 </manifest>

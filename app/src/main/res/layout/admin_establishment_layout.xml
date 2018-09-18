@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.jim.multipos.ui.adminmainpage.fragments.establishment.viewmodel.EstablishmentViewModel"/>
+            type="com.jim.multipos.environment.admin.ui.mainpage.fragments.establishment.viewmodel.EstablishmentViewModel"/>
     </data>
     <LinearLayout
         android:layout_width="match_parent"
@@ -168,7 +168,7 @@
                                     android:layout_marginTop="@dimen/twenty_dp"
                                     android:text="@string/company_name" />
 
-                                <com.jim.multipos.custom.MpEditText
+                                <com.jim.multipos.customView.MpEditText
                                     android:id="@+id/etCompanyName"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -185,7 +185,7 @@
                                     android:layout_marginTop="@dimen/ten_dp"
                                     android:text="@string/company_id" />
 
-                                <com.jim.multipos.custom.MpEditText
+                                <com.jim.multipos.customView.MpEditText
                                     android:id="@+id/etCompanyID"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -201,7 +201,7 @@
                                     android:layout_marginTop="@dimen/ten_dp"
                                     android:text="@string/address" />
 
-                                <com.jim.multipos.custom.MpEditText
+                                <com.jim.multipos.customView.MpEditText
                                     android:id="@+id/etCompanyAddress"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -217,7 +217,7 @@
                                     android:layout_marginTop="@dimen/ten_dp"
                                     android:text="@string/ipcode" />
 
-                                <com.jim.multipos.custom.MpEditText
+                                <com.jim.multipos.customView.MpEditText
                                     android:id="@+id/etIPCode"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -289,7 +289,7 @@
                                     android:layout_marginTop="@dimen/twenty_dp"
                                     android:text="@string/company_name" />
 
-                                <com.jim.multipos.custom.MpEditText
+                                <com.jim.multipos.customView.MpEditText
                                     android:id="@+id/etPosName"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"

@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.jim.multipos.ui.adminmainpage.fragments.products.ProductViewModel"/>
+            type="com.jim.multipos.environment.admin.ui.mainpage.fragments.products.ProductViewModel"/>
 
     </data>
 
@@ -32,14 +32,14 @@
                 android:padding="@dimen/seven_dp"
                 android:background="@color/colorWhite">
 
-                <com.jim.multipos.custom.MpSpinner
+                <com.jim.multipos.customView.MpSpinner
                     android:id="@+id/spinnerCategory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="@dimen/ten_dp"/>
 
-                <com.jim.multipos.custom.MpSpinner
+                <com.jim.multipos.customView.MpSpinner
                     android:id="@+id/spinnerSubCategory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
                     android:layout_marginStart="@dimen/ten_dp"
                     android:layout_toEndOf="@id/spinnerCategory"/>
 
-                <com.jim.multipos.custom.MpSpinner
+                <com.jim.multipos.customView.MpSpinner
                     android:id="@+id/spinnerProductClass"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -167,7 +167,7 @@
                             android:layout_marginTop="@dimen/twenty_dp"
                             android:text="@string/name" />
 
-                        <com.jim.multipos.custom.MpEditText
+                        <com.jim.multipos.customView.MpEditText
                             android:id="@+id/etCompanyName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -184,7 +184,7 @@
                             android:layout_marginTop="@dimen/ten_dp"
                             android:text="@string/barcode" />
 
-                        <com.jim.multipos.custom.MpEditText
+                        <com.jim.multipos.customView.MpEditText
                             android:id="@+id/etCompanyID"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -200,7 +200,7 @@
                             android:layout_marginTop="@dimen/ten_dp"
                             android:text="@string/sku" />
 
-                        <com.jim.multipos.custom.MpEditText
+                        <com.jim.multipos.customView.MpEditText
                             android:id="@+id/etCompanyAddress"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -216,7 +216,7 @@
                             android:layout_marginTop="@dimen/ten_dp"
                             android:text="@string/ipcode" />
 
-                        <com.jim.multipos.custom.MpEditText
+                        <com.jim.multipos.customView.MpEditText
                             android:id="@+id/etIPCode"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

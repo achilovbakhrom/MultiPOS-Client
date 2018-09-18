@@ -7,14 +7,14 @@
 
         <variable
             name="viewModel"
-            type="com.jim.multipos.ui.adminmainpage.fragments.company.CompanyItemViewModel"/>
+            type="com.jim.multipos.environment.admin.ui.mainpage.fragments.company.CompanyItemViewModel"/>
     </data>
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/five_dp"
-        app:cardBackgroundColor="@{viewModel.isClicked ? @color/colorNavy : @color/colorWhite }"
+        app:cardBackgroundColor="@{ viewModel.isClicked == Boolean.TRUE ? @color/colorNavy : @color/colorWhite }"
         app:cardCornerRadius="@dimen/fifteen_dp">
 
         <LinearLayout
@@ -55,7 +55,7 @@
                         android:textSize="18sp"
                         android:maxLines="2"
                         android:text="@{viewModel.title}"
-                        android:textColor="@{viewModel.isClicked ? @color/colorWhite : @color/colorTitle }"
+                        android:textColor="@{ safeUnbox(viewModel.isClicked ? @color/colorWhite : @color/colorTitle) }"
                         android:layout_marginBottom="@dimen/ten_dp" />
 
                     <ImageView
