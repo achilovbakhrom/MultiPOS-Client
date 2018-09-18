@@ -123,6 +123,7 @@ class MainPageActivity: BaseActivity<AdminMainpageLayoutBinding, MainPageViewMod
     private fun openDashboard(leftFragment: Fragment, rightFragment: Fragment, topFragment: Fragment){
         dashboardContainer.visibility = VISIBLE
         container.visibility = GONE
+        layoutEntities.visibility = GONE
         addFragmentWithoutBackStack(topFragment, R.id.topContainer)
         addFragmentWithoutBackStack(leftFragment, R.id.dashboardLeft)
         addFragmentWithoutBackStack(rightFragment, R.id.dashboardRight)

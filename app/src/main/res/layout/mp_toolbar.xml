@@ -69,7 +69,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/add_admin_photo_plus"
+                        android:src="@drawable/admin_company"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="@dimen/ten_dp"
                         android:layout_marginBottom="@dimen/five_dp"/>
@@ -78,6 +78,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="10sp"
+                        android:textColor="@color/colorWhite"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginBottom="@dimen/fifteen_dp"
                         android:text="@string/company"/>
@@ -99,7 +100,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/add_admin_photo_plus"
+                        android:src="@drawable/admin_dashboard"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="@dimen/ten_dp"
                         android:layout_marginBottom="@dimen/five_dp"/>
@@ -109,6 +110,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="10sp"
                         android:layout_gravity="center_horizontal"
+                        android:textColor="@color/colorWhite"
                         android:layout_marginBottom="@dimen/fifteen_dp"
                         android:text="@string/dashboard"/>
                 </LinearLayout>
@@ -129,7 +131,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/add_admin_photo_plus"
+                        android:src="@drawable/admin_establishment"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="@dimen/ten_dp"
                         android:layout_marginBottom="@dimen/five_dp"/>
@@ -139,6 +141,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="10sp"
                         android:layout_gravity="center_horizontal"
+                        android:textColor="@color/colorWhite"
                         android:layout_marginBottom="@dimen/fifteen_dp"
                         android:text="@string/establishment"/>
                 </LinearLayout>
@@ -159,7 +162,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/add_admin_photo_plus"
+                        android:src="@drawable/admin_entities"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="@dimen/ten_dp"
                         android:layout_marginBottom="@dimen/five_dp"/>
@@ -169,6 +172,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="10sp"
                         android:layout_gravity="center_horizontal"
+                        android:textColor="@color/colorWhite"
                         android:layout_marginBottom="@dimen/fifteen_dp"
                         android:text="@string/entities"/>
                 </LinearLayout>
@@ -189,7 +193,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/add_admin_photo_plus"
+                        android:src="@drawable/admin_management"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="@dimen/ten_dp"
                         android:layout_marginBottom="@dimen/five_dp"/>
@@ -199,6 +203,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="10sp"
                         android:layout_gravity="center_horizontal"
+                        android:textColor="@color/colorWhite"
                         android:layout_marginBottom="@dimen/fifteen_dp"
                         android:text="@string/managements"/>
                 </LinearLayout>
@@ -219,7 +224,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/add_admin_photo_plus"
+                        android:src="@drawable/admin_warehouse"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="@dimen/ten_dp"
                         android:layout_marginBottom="@dimen/five_dp"/>
@@ -229,8 +234,9 @@
                         android:layout_height="wrap_content"
                         android:textSize="10sp"
                         android:layout_gravity="center_horizontal"
+                        android:textColor="@color/colorWhite"
                         android:layout_marginBottom="@dimen/fifteen_dp"
-                        android:text="@string/inventory"/>
+                        android:text="@string/warehouse"/>
                 </LinearLayout>
 
                 <View
@@ -249,7 +255,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/add_admin_photo_plus"
+                        android:src="@drawable/admin_crm"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="@dimen/ten_dp"
                         android:layout_marginBottom="@dimen/five_dp"/>
@@ -259,6 +265,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="10sp"
                         android:layout_gravity="center_horizontal"
+                        android:textColor="@color/colorWhite"
                         android:layout_marginBottom="@dimen/fifteen_dp"
                         android:text="@string/crm"/>
                 </LinearLayout>
@@ -279,7 +286,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/add_admin_photo_plus"
+                        android:src="@drawable/admin_hrm"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="@dimen/ten_dp"
                         android:layout_marginBottom="@dimen/five_dp"/>
@@ -289,6 +296,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="10sp"
                         android:layout_gravity="center_horizontal"
+                        android:textColor="@color/colorWhite"
                         android:layout_marginBottom="@dimen/fifteen_dp"
                         android:text="@string/hrm"/>
                 </LinearLayout>
@@ -309,7 +317,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/add_admin_photo_plus"
+                        android:src="@drawable/admin_reports"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="@dimen/ten_dp"
                         android:layout_marginBottom="@dimen/five_dp"/>
@@ -319,6 +327,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="10sp"
                         android:layout_gravity="center_horizontal"
+                        android:textColor="@color/colorWhite"
                         android:layout_marginBottom="@dimen/fifteen_dp"
                         android:text="@string/reports"/>
                 </LinearLayout>
