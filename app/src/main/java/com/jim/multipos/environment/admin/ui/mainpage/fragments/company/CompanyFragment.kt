@@ -3,11 +3,14 @@ package com.jim.multipos.environment.admin.ui.mainpage.fragments.company
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
+import android.graphics.PorterDuff
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
+import android.widget.ImageView
 import android.widget.RelativeLayout
 import com.jim.multipos.BR
 import com.jim.multipos.R
@@ -54,6 +57,13 @@ class CompanyFragment: BaseFragment<AdminCompanyFragmentBinding, CompanyViewMode
     private fun setUp(){
         dialog = LayoutInflater.from(context).inflate(R.layout.dialog, null, false)
         dialog!!.layoutParams = RelativeLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT)
+        dialog!!.findViewById<ImageView>(R.id.ivBack).setColorFilter(ContextCompat.getColor(context!!, R.color.colorGray), PorterDuff.Mode.SRC_IN)
+        dialog!!.findViewById<ImageView>(R.id.ivBack).setOnClickListener {
+            if(dialogVisible) {
+                rlEditor.removeView(dialog)
+                dialogVisible = false
+            }
+        }
 
         mViewDataBinding!!.root.setOnClickListener {
             if(dialogVisible) {
@@ -92,6 +102,15 @@ class CompanyFragment: BaseFragment<AdminCompanyFragmentBinding, CompanyViewMode
                 mViewModel?.companyName?.set("")
                 mViewModel?.companyName?.set(lastItem)
             }//delete request
+        }
+
+        ivCard.setOnClickListener {
+            ivCard.setColorFilter(ContextCompat.getColor(context!!, R.color.colorNavy), PorterDuff.Mode.SRC_IN)
+            ivList.setColorFilter(ContextCompat.getColor(context!!, R.color.colorGray), PorterDuff.Mode.SRC_IN)
+        }
+        ivList.setOnClickListener {
+            ivList.setColorFilter(ContextCompat.getColor(context!!, R.color.colorNavy), PorterDuff.Mode.SRC_IN)
+            ivCard.setColorFilter(ContextCompat.getColor(context!!, R.color.colorGray), PorterDuff.Mode.SRC_IN)
         }
     }
 

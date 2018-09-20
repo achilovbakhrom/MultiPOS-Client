@@ -17,27 +17,64 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:background="@color/colorLightGray">
 
             <TextView
+                android:id="@+id/tvSelectCompany"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/select_company"
-                android:padding="@dimen/fifteen_dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/ten_dp"
                 android:textColor="@color/colorTitle"/>
+
+            <ImageView
+                android:id="@+id/ivRightArrow"
+                android:layout_width="@dimen/thirty_dp"
+                android:layout_height="@dimen/thirty_dp"
+                android:src="@drawable/right_arrow"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/tvSelectCompany"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{viewModel.companyName}"
                 android:padding="@dimen/fifteen_dp"
+                android:layout_toEndOf="@+id/ivRightArrow"
                 android:textColor="@color/colorTitle"/>
 
-        </LinearLayout>
+            <ImageView
+                android:id="@+id/ivList"
+                android:layout_width="@dimen/thirty_dp"
+                android:layout_height="@dimen/thirty_dp"
+                android:layout_toStartOf="@+id/ivCard"
+                android:layout_marginEnd="@dimen/fifteen_dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/item_list"/>
+
+            <ImageView
+                android:id="@+id/ivCard"
+                android:layout_width="@dimen/thirty_dp"
+                android:layout_height="@dimen/thirty_dp"
+                android:layout_toStartOf="@+id/ivSearch"
+                android:layout_marginEnd="@dimen/ten_dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/item_card"/>
+
+            <ImageView
+                android:id="@+id/ivSearch"
+                android:layout_width="@dimen/thirty_dp"
+                android:layout_height="@dimen/thirty_dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/ten_dp"
+                android:src="@drawable/search"/>
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
