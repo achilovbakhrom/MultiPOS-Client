@@ -115,15 +115,15 @@ class MainPageActivity: BaseActivity<AdminMainpageLayoutBinding, MainPageViewMod
     private fun openEntity(fragment: Fragment){
         dashboardContainer.visibility = GONE
         container.visibility = GONE
-        layoutEntities.visibility = VISIBLE
+        entitiesContainer.visibility = VISIBLE
         addFragmentWithoutBackStack(fragment, R.id.entityContainer)
         setUpEntityTabs()
     }
 
     private fun openDashboard(leftFragment: Fragment, rightFragment: Fragment, topFragment: Fragment){
-        dashboardContainer.visibility = VISIBLE
         container.visibility = GONE
-        layoutEntities.visibility = GONE
+        entitiesContainer.visibility = GONE
+        dashboardContainer.visibility = VISIBLE
         addFragmentWithoutBackStack(topFragment, R.id.topContainer)
         addFragmentWithoutBackStack(leftFragment, R.id.dashboardLeft)
         addFragmentWithoutBackStack(rightFragment, R.id.dashboardRight)

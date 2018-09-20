@@ -76,210 +76,206 @@
                     app:backgroundTint="@color/colorNavy" />
             </android.support.design.widget.CoordinatorLayout>
 
-            <android.support.v7.widget.CardView
+
+            <RelativeLayout
+                android:id="@+id/rlEditor"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.33"
-                app:cardElevation="@dimen/ten_dp"
-                app:cardBackgroundColor="@color/colorLightGray">
+                android:layout_weight="0.33">
 
-                <RelativeLayout
+                <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/layout"
+                    android:orientation="vertical">
 
-                    <ScrollView
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_above="@+id/layout"
+                        android:layout_height="wrap_content"
                         android:orientation="vertical">
+
+                        <android.support.v7.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:cardElevation="@dimen/two_dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/ten_dp"
+                                android:text="@string/edit_company"
+                                android:textColor="@color/colorTitle" />
+
+                        </android.support.v7.widget.CardView>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/fifteen_dp"
+                            android:layout_marginStart="@dimen/fourty_dp"
+                            android:layout_marginTop="@dimen/thirty_dp"
+                            android:text="@string/add_company_photo" />
+
+                        <RelativeLayout
+                            android:layout_width="@dimen/hundred_dp"
+                            android:layout_height="@dimen/hundred_dp"
+                            android:layout_gravity="center_horizontal">
+
+                            <ImageView
+                                android:id="@+id/ivCompany"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/company_icon_placeholder" />
+
+                            <ImageView
+                                android:layout_width="@dimen/twenty_five_dp"
+                                android:layout_height="@dimen/twenty_five_dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignParentEnd="true"
+                                android:src="@drawable/add_admin_photo_plus" />
+                        </RelativeLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/five_dp"
+                            android:layout_marginStart="@dimen/fourty_dp"
+                            android:layout_marginTop="@dimen/twenty_dp"
+                            android:text="@string/company_name" />
+
+                        <com.jim.multipos.customView.MpEditText
+                            android:id="@+id/etCompanyName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/thirty_dp"
+                            android:enabled="@{viewModel.isEditable}"
+                            android:text="@{viewModel.companyName}"
+                            android:layout_marginStart="@dimen/twenty_five_dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/five_dp"
+                            android:layout_marginStart="@dimen/fourty_dp"
+                            android:layout_marginTop="@dimen/ten_dp"
+                            android:text="@string/company_name" />
+
+                        <com.jim.multipos.customView.MpEditText
+                            android:id="@+id/etCompanyID"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:enabled="@{viewModel.isEditable}"
+                            android:layout_marginEnd="@dimen/thirty_dp"
+                            android:layout_marginStart="@dimen/twenty_five_dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/five_dp"
+                            android:layout_marginStart="@dimen/fourty_dp"
+                            android:layout_marginTop="@dimen/ten_dp"
+                            android:text="@string/address" />
+
+                        <com.jim.multipos.customView.MpEditText
+                            android:id="@+id/etCompanyAddress"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:enabled="@{viewModel.isEditable}"
+                            android:layout_marginEnd="@dimen/thirty_dp"
+                            android:layout_marginStart="@dimen/twenty_five_dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/five_dp"
+                            android:layout_marginStart="@dimen/fourty_dp"
+                            android:layout_marginTop="@dimen/ten_dp"
+                            android:text="@string/ipcode" />
+
+                        <com.jim.multipos.customView.MpEditText
+                            android:id="@+id/etIPCode"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:enabled="@{viewModel.isEditable}"
+                            android:layout_marginEnd="@dimen/thirty_dp"
+                            android:layout_marginStart="@dimen/twenty_five_dp" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <android.support.v7.widget.CardView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:cardElevation="@dimen/two_dp">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_margin="@dimen/ten_dp"
-                                    android:text="@string/edit_company"
-                                    android:textColor="@color/colorTitle" />
-
-                            </android.support.v7.widget.CardView>
-
+                            android:layout_marginEnd="@dimen/thirty_dp"
+                            android:layout_marginStart="@dimen/fourty_dp"
+                            android:layout_marginTop="@dimen/fifteen_dp"
+                            android:orientation="horizontal">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginBottom="@dimen/fifteen_dp"
-                                android:layout_marginStart="@dimen/fourty_dp"
-                                android:layout_marginTop="@dimen/thirty_dp"
-                                android:text="@string/add_company_photo" />
+                                android:layout_gravity="center_vertical"
+                                android:text="@string/is_active" />
 
-                            <RelativeLayout
-                                android:layout_width="@dimen/hundred_dp"
-                                android:layout_height="@dimen/hundred_dp"
-                                android:layout_gravity="center_horizontal">
-
-                                <ImageView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:src="@drawable/company_icon_placeholder" />
-
-                                <ImageView
-                                    android:layout_width="@dimen/twenty_five_dp"
-                                    android:layout_height="@dimen/twenty_five_dp"
-                                    android:layout_alignParentBottom="true"
-                                    android:layout_alignParentEnd="true"
-                                    android:src="@drawable/add_admin_photo_plus" />
-                            </RelativeLayout>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="@dimen/five_dp"
-                                android:layout_marginStart="@dimen/fourty_dp"
-                                android:layout_marginTop="@dimen/twenty_dp"
-                                android:text="@string/company_name" />
-
-                            <com.jim.multipos.customView.MpEditText
-                                android:id="@+id/etCompanyName"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="@dimen/thirty_dp"
-                                android:enabled="@{viewModel.isEditable}"
-                                android:text="@{viewModel.companyName}"
-                                android:layout_marginStart="@dimen/twenty_five_dp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="@dimen/five_dp"
-                                android:layout_marginStart="@dimen/fourty_dp"
-                                android:layout_marginTop="@dimen/ten_dp"
-                                android:text="@string/company_name" />
-
-                            <com.jim.multipos.customView.MpEditText
-                                android:id="@+id/etCompanyID"
+                            <Switch
+                                android:id="@+id/isActive"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:enabled="@{viewModel.isEditable}"
-                                android:layout_marginEnd="@dimen/thirty_dp"
-                                android:layout_marginStart="@dimen/twenty_five_dp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="@dimen/five_dp"
-                                android:layout_marginStart="@dimen/fourty_dp"
-                                android:layout_marginTop="@dimen/ten_dp"
-                                android:text="@string/address" />
-
-                            <com.jim.multipos.customView.MpEditText
-                                android:id="@+id/etCompanyAddress"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:enabled="@{viewModel.isEditable}"
-                                android:layout_marginEnd="@dimen/thirty_dp"
-                                android:layout_marginStart="@dimen/twenty_five_dp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="@dimen/five_dp"
-                                android:layout_marginStart="@dimen/fourty_dp"
-                                android:layout_marginTop="@dimen/ten_dp"
-                                android:text="@string/ipcode" />
-
-                            <com.jim.multipos.customView.MpEditText
-                                android:id="@+id/etIPCode"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:enabled="@{viewModel.isEditable}"
-                                android:layout_marginEnd="@dimen/thirty_dp"
-                                android:layout_marginStart="@dimen/twenty_five_dp" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="@dimen/thirty_dp"
-                                android:layout_marginStart="@dimen/fourty_dp"
-                                android:layout_marginTop="@dimen/fifteen_dp"
-                                android:orientation="horizontal">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_vertical"
-                                    android:text="@string/is_active" />
-
-                                <Switch
-                                    android:id="@+id/isActive"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:enabled="@{viewModel.isEditable}"
-                                    android:layout_gravity="end" />
-                            </LinearLayout>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="@dimen/fifteen_dp"
-                                android:layout_marginStart="@dimen/fourty_dp"
-                                android:layout_marginTop="@dimen/fifteen_dp"
-                                android:text="@string/description" />
-
-                            <EditText
-                                android:id="@+id/etDescription"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/seventy_dp"
-                                android:layout_marginBottom="@dimen/ten_dp"
-                                android:layout_marginEnd="@dimen/thirty_dp"
-                                android:layout_marginStart="@dimen/twenty_five_dp"
-                                android:enabled="@{viewModel.isEditable}"
-                                android:background="@drawable/edit_text_bg"
-                                android:padding="@dimen/ten_dp" />
-
+                                android:layout_gravity="end" />
                         </LinearLayout>
-                    </ScrollView>
 
-                    <LinearLayout
-                        android:id="@+id/layout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_margin="@dimen/fifteen_dp"
-                        android:orientation="horizontal">
-
-                        <Button
-                            android:id="@+id/btnDelete"
-                            android:layout_width="0dp"
+                        <TextView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/five_dp"
-                            android:layout_marginEnd="@dimen/one_dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/circular_button_red"
-                            android:text="@{viewModel.isEditable? @string/cancel : @string/delete}"
-                            android:textColor="@color/colorWhite" />
+                            android:layout_marginBottom="@dimen/fifteen_dp"
+                            android:layout_marginStart="@dimen/fourty_dp"
+                            android:layout_marginTop="@dimen/fifteen_dp"
+                            android:text="@string/description" />
 
-                        <Button
-                            android:id="@+id/btnEdit"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/five_dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/circular_button_green"
-                            android:text="@{viewModel.isEditable? @string/save : @string/edit}"
-                            android:textColor="@color/colorWhite" />
+                        <EditText
+                            android:id="@+id/etDescription"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/seventy_dp"
+                            android:layout_marginBottom="@dimen/ten_dp"
+                            android:layout_marginEnd="@dimen/thirty_dp"
+                            android:layout_marginStart="@dimen/twenty_five_dp"
+                            android:enabled="@{viewModel.isEditable}"
+                            android:background="@drawable/edit_text_bg"
+                            android:padding="@dimen/ten_dp" />
+
                     </LinearLayout>
-                </RelativeLayout>
+                </ScrollView>
 
-            </android.support.v7.widget.CardView>
+                <LinearLayout
+                    android:id="@+id/layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="@dimen/fifteen_dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnDelete"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/five_dp"
+                        android:layout_marginEnd="@dimen/one_dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/circular_button_red"
+                        android:text="@{viewModel.isEditable? @string/cancel : @string/delete}"
+                        android:textColor="@color/colorWhite" />
+
+                    <Button
+                        android:id="@+id/btnEdit"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/five_dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/circular_button_green"
+                        android:text="@{viewModel.isEditable? @string/save : @string/edit}"
+                        android:textColor="@color/colorWhite" />
+                </LinearLayout>
+            </RelativeLayout>
+
         </LinearLayout>
     </LinearLayout>
 
