@@ -21,7 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="@color/colorLightGray">
+            android:background="@color/colorLightGray"
+            android:padding="@dimen/ten_dp">
 
             <TextView
                 android:id="@+id/tvSelectCompany"
@@ -44,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{viewModel.companyName}"
-                android:padding="@dimen/fifteen_dp"
+                android:layout_centerVertical="true"
                 android:layout_toEndOf="@+id/ivRightArrow"
                 android:textColor="@color/colorTitle"/>
 
