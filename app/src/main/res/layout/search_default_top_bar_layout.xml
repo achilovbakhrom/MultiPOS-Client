@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@color/colorLightGray">
+    <View
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+    <ImageView
+        android:layout_width="@dimen/thirty_dp"
+        android:layout_height="@dimen/thirty_dp"
+        android:id="@+id/ivRowMode"
+        android:src="@drawable/item_list"
+        android:layout_gravity="center" />
+    <ImageView
+        android:layout_width="@dimen/thirty_dp"
+        android:layout_height="@dimen/thirty_dp"
+        android:id="@+id/ivGridMode"
+        android:layout_marginStart="@dimen/fifteen_dp"
+        android:src="@drawable/item_card"
+        android:layout_gravity="center" />
+    <ImageView
+        android:layout_width="@dimen/thirty_dp"
+        android:layout_height="@dimen/thirty_dp"
+        android:id="@+id/ivSearch"
+        android:src="@drawable/search"
+        android:layout_marginStart="@dimen/fifteen_dp"
+        android:layout_gravity="center"
+        android:layout_marginEnd="@dimen/ten_dp" />
+
+</LinearLayout>
