@@ -22,10 +22,10 @@ abstract class TrippleHorizontalFragment<T: ViewDataBinding, V: BaseViewModel>: 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (getLeftFragment() == null) {
-            throw Exception(message = "LEFT Fragment is not set")
+            throw Exception("LEFT Fragment is not set")
         }
         if (getRightFragment() == null) {
-            throw Exception(message = "RIGHT Fragment is not set")
+            throw Exception("RIGHT Fragment is not set")
         }
 
         if (activity?.supportFragmentManager?.findFragmentByTag(LEFT_FRAGMENT_TAG) == null &&

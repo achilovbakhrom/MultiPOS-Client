@@ -9,20 +9,10 @@ import kotlinx.android.synthetic.main.search_header_fragment.*
 
 abstract class SearchHeaderFragment<T: ViewDataBinding, V: BaseViewModel>: BaseFragment<T, V>() {
 
-
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initDefaultTopBar()
     }
-
-
-    override fun getLayoutId(): Int {
-        return R.layout.search_header_fragment
-    }
-
-    fun isCustomTopBar(): Boolean = false
 
     private fun initDefaultTopBar() {
         val topBarLayoutId = if (isCustomTopBar()) {
@@ -33,9 +23,12 @@ abstract class SearchHeaderFragment<T: ViewDataBinding, V: BaseViewModel>: BaseF
         if (topBarLayoutId != -1) {
             LayoutInflater.from(context).inflate(topBarLayoutId, llHeader, true)
         } else {
-            throw Exception(message = "Layout id is not initialized")
+            throw Exception("Layout id is not initialized")
         }
     }
 
-    protected fun getCustomTopBarLayoutId() : Int = -1
+    open fun getCustomTopBarLayoutId() : Int = -1
+
+    open fun isCustomTopBar() : Boolean = false
+
 }

@@ -86,7 +86,7 @@
                 android:orientation="vertical"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.66"
+                android:layout_weight="1"
                 android:background="@color/colorDarkBlue">
 
                 <LinearLayout
@@ -119,7 +119,7 @@
                 android:id="@+id/rlEditor"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.33">
+                android:layout_weight="1">
 
                 <ScrollView
                     android:layout_width="match_parent"

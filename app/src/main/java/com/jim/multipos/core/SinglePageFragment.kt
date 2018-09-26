@@ -18,7 +18,7 @@ abstract class SinglePageFragment<T: ViewDataBinding, V: BaseViewModel>: SearchH
         super.onViewCreated(view, savedInstanceState)
 
         if (getFragment() == null) {
-            throw Exception(message = "Fragment is not set")
+            throw Exception("Fragment is not set")
         }
 
         if (activity

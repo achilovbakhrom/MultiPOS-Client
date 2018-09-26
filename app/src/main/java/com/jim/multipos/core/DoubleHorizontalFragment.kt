@@ -11,8 +11,6 @@ import kotlinx.android.synthetic.main.search_header_fragment.*
 abstract class DoubleHorizontalFragment<T: ViewDataBinding, V: BaseViewModel>: SearchHeaderFragment<T, V>() {
 
 
-
-
     companion object {
         protected val LEFT_FRAGMENT_TAG = "LEFT_FRAGMENT_TAG"
         protected val RIGHT_FRAGMENT_TAG = "RIGHT_FRAGMENT_TAG"
@@ -21,10 +19,10 @@ abstract class DoubleHorizontalFragment<T: ViewDataBinding, V: BaseViewModel>: S
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (getLeftFragment() == null) {
-            throw Exception(message = "LEFT Fragment is not set")
+            throw Exception("LEFT Fragment is not set")
         }
         if (getRightFragment() == null) {
-            throw Exception(message = "RIGHT Fragment is not set")
+            throw Exception("RIGHT Fragment is not set")
         }
 
         if (activity?.supportFragmentManager?.findFragmentByTag(LEFT_FRAGMENT_TAG) == null &&
@@ -40,7 +38,7 @@ abstract class DoubleHorizontalFragment<T: ViewDataBinding, V: BaseViewModel>: S
             activity
                     ?.supportFragmentManager
                     ?.beginTransaction()
-                    ?.add(R.id.flRightConainer, getLeftFragment(), RIGHT_FRAGMENT_TAG)
+                    ?.add(R.id.flRightConainer, getRightFragment(), RIGHT_FRAGMENT_TAG)
                     ?.commit()
         }
     }
@@ -51,5 +49,7 @@ abstract class DoubleHorizontalFragment<T: ViewDataBinding, V: BaseViewModel>: S
     private fun initFragmentContent() {
         LayoutInflater.from(context).inflate(R.layout.double_horizontal_fragment, flContainer, true)
     }
+
+    override fun isCustomTopBar(): Boolean = true
 
 }

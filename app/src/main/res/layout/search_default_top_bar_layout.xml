@@ -4,6 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
+    android:paddingTop="@dimen/ten_dp"
+    android:paddingBottom="@dimen/ten_dp"
     android:background="@color/colorLightGray">
     <View
         android:layout_width="0dp"

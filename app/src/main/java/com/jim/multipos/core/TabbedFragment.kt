@@ -56,7 +56,7 @@ abstract class TabbedFragment<T: ViewDataBinding, V: BaseViewModel>: BaseFragmen
                     }
                 }
             } else {
-                throw Exception(message = "Tab data is not set!!!")
+                throw Exception("Tab data is not set!!!")
             }
         }
 
