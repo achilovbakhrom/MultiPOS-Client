@@ -6,12 +6,12 @@ import android.support.v4.app.Fragment
 import com.jim.multipos.BR
 import com.jim.multipos.R
 import com.jim.multipos.core.DoubleHorizontalFragment
+import com.jim.multipos.customView.CustomMpDialog
 import com.jim.multipos.databinding.SearchHeaderFragmentBinding
-import com.jim.multipos.environment.admin.ui.mainpage.MainPageViewModel
 import com.jim.multipos.environment.admin.ui.mainpage.SearchViewModel
-import com.jim.multipos.environment.admin.ui.mainpage.fragments.company.CompanyViewModel
 import com.jim.multipos.environment.admin.ui.mainpage.fragments.company.left.CompanyLeftFragment
 import com.jim.multipos.environment.admin.ui.mainpage.fragments.company.right.CompanyRightFragment
+import kotlinx.android.synthetic.main.double_horizontal_fragment.*
 import javax.inject.Inject
 
 
@@ -120,7 +120,7 @@ class CompanyFragment: DoubleHorizontalFragment<SearchHeaderFragmentBinding, Sea
 
     @Inject
     lateinit var mViewModelFactory: ViewModelProvider.Factory
-    private var mViewModel: SearchViewModel? = null
+    var mViewModel: SearchViewModel? = null
 
     override fun getLayoutId(): Int {
        return R.layout.search_header_fragment
@@ -147,6 +147,13 @@ class CompanyFragment: DoubleHorizontalFragment<SearchHeaderFragmentBinding, Sea
 
     override fun getCustomTopBarLayoutId(): Int {
         return super.getCustomTopBarLayoutId()
+    }
+
+    fun updateRV(){
+        val fragment = activity?.supportFragmentManager?.findFragmentByTag(LEFT_FRAGMENT_TAG)
+//        if(fragment!=null && fragment is CompanyLeftFragment)
+//            fragment.update()
+
     }
 
 

@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.jim.multipos.environment.admin.ui.mainpage.fragments.company.left.CompanyLeftViewModel"/>
+            type="com.jim.multipos.environment.admin.ui.mainpage.fragments.establishment.left.EstablishmentLeftViewModel"/>
 
     </data>
     <android.support.design.widget.CoordinatorLayout
@@ -26,11 +26,14 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/fifteen_dp">
+                app:cardCornerRadius="0dp"
+                app:cardElevation="@dimen/ten_dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/ten_dp"
+                    android:textColor="@color/colorTitle"
                     android:text="@{viewModel.establishmentName}" />
             </android.support.v7.widget.CardView>
 

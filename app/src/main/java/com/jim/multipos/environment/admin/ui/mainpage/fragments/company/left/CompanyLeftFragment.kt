@@ -59,4 +59,9 @@ class CompanyLeftFragment: BaseFragment<CompanyLeftFragmentBinding, CompanyLeftV
         })
 
     }
+
+    fun update(){
+        mViewModel?.fetch()
+    }
+
 }

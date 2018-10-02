@@ -18,6 +18,12 @@ import javax.inject.Inject
 
 class MainPageActivity: BaseActivity<AdminMainpageLayoutBinding, MainPageViewModel>(), HasSupportFragmentInjector {
 
+    companion object {
+        val COMPANY_FRAGMENT = "COMPANY_FRAGMENT"
+        val ESTABLISHMENT_FRAGMENT = "ESTABLISHMENT_FRAGMENT"
+    }
+
+
     @Inject
     lateinit var fragmentDispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
 
@@ -51,14 +57,14 @@ class MainPageActivity: BaseActivity<AdminMainpageLayoutBinding, MainPageViewMod
     private fun setUp() {
         toolbar.setItemSelected(object : MpToolbar.OnToolbarItemSelected {
             override fun onCompany() {
-                openFragment(CompanyFragment())
+                openFragment(CompanyFragment(), COMPANY_FRAGMENT)
             }
 
             override fun onDashboard() {
             }
 
             override fun onEstablishment() {
-                openFragment(EstablishmentFragment())
+                openFragment(EstablishmentFragment(), ESTABLISHMENT_FRAGMENT)
             }
 
             override fun onEntities() {
@@ -87,10 +93,10 @@ class MainPageActivity: BaseActivity<AdminMainpageLayoutBinding, MainPageViewMod
 
         })
 
-        openFragment(CompanyFragment())
+        openFragment(CompanyFragment(), COMPANY_FRAGMENT)
     }
 
-    private fun openFragment(fragment: Fragment) {
-        addFragmentWithoutBackStack(fragment, R.id.container)
+    private fun openFragment(fragment: Fragment, tag: String) {
+        addFragmentWithoutBackStack(fragment, R.id.container, tag)
     }
 }

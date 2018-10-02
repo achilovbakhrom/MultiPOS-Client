@@ -13,13 +13,17 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel> : AppCompatA
 
     private var mViewDataBinding: T? = null
     var mViewModel: V? = null
+    var isDialogOpened = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         performDataBinding()
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        if (savedInstanceState != null) {
+            isDialogOpened = savedInstanceState.getBoolean("isDialogOpened", false)
+        }
     }
 
     fun getViewDataBinding(): T? {
@@ -40,14 +44,45 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel> : AppCompatA
                 .commit()
     }
 
-    fun addFragmentWithoutBackStack(fragment: Fragment, layoutId: Int){
+    fun addFragmentWithoutTag(fragment: Fragment, layoutId: Int){
         supportFragmentManager.beginTransaction()
                 .replace(layoutId, fragment)
+                .commit()
+    }
+
+    fun addFragmentWithoutBackStack(fragment: Fragment, layoutId: Int, tag: String){
+        supportFragmentManager.beginTransaction()
+                .replace(layoutId, fragment, tag)
                 .commit()
     }
 
     abstract fun getBindingVariable() : Int
     abstract fun getLayoutId() : Int
     abstract fun getViewModel() : V?
+
+
+
+    override fun onSaveInstanceState(outState: Bundle?) {
+        super.onSaveInstanceState(outState)
+        outState?.putBoolean("isDialogOpened", isDialogOpened)
+    }
+
+
+
+    override fun onBackPressed() {
+        if (isDialogOpened) {
+            val fragments = this.supportFragmentManager?.fragments
+            if (fragments != null) {
+                for (fragment in fragments) {
+                    if (fragment is BackPressable) {
+                        fragment.onBackPressed()
+                        isDialogOpened = false
+                    }
+                }
+            }
+        } else {
+            super.onBackPressed()
+        }
+    }
 
 }

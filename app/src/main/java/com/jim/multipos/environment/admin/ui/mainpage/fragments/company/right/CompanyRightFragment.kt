@@ -3,12 +3,19 @@ package com.jim.multipos.environment.admin.ui.mainpage.fragments.company.right
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.view.View
+import android.widget.FrameLayout
 import com.android.databinding.library.baseAdapters.BR
 import com.jim.multipos.R
 import com.jim.multipos.core.BaseFragment
+import com.jim.multipos.customView.CustomMpDialog
 import com.jim.multipos.databinding.CompanyRightFragmentBinding
+import com.jim.multipos.environment.admin.ui.mainpage.MainPageActivity
+import com.jim.multipos.environment.admin.ui.mainpage.MainPageActivity.Companion.COMPANY_FRAGMENT
+import com.jim.multipos.environment.admin.ui.mainpage.fragments.company.main.CompanyFragment
 import kotlinx.android.synthetic.main.company_right_fragment.*
+import kotlinx.android.synthetic.main.double_horizontal_fragment.*
 import javax.inject.Inject
 
 class CompanyRightFragment: BaseFragment<CompanyRightFragmentBinding, CompanyRightViewModel>(){
@@ -41,10 +48,31 @@ class CompanyRightFragment: BaseFragment<CompanyRightFragmentBinding, CompanyRig
     }
 
     private fun setUp() {
+
+        dialog.listener = object : CustomMpDialog.DialogListener{
+            override fun onBack() {
+                activity?.onBackPressed()
+            }
+
+            override fun onClick() {
+                if(!dialog.isVisible) {
+                    dialog.showDialog(view?.parent as FrameLayout, "MY", listOf("asd", "sad"))
+                    if (activity is MainPageActivity)
+                        (activity as MainPageActivity).isDialogOpened = true
+                    dialog.isVisible = true
+                }
+            }
+        }
+
+
+
         btnEdit.setOnClickListener {
                         if(btnEdit.text == getString(R.string.edit))
-                mViewModel?.isEditable?.set(true)
-            //else netWorkRequest
+                            mViewModel?.isEditable?.set(true)
+                        else {
+                            val fragment = activity?.supportFragmentManager?.findFragmentByTag(COMPANY_FRAGMENT)
+                            (fragment as? CompanyFragment)?.updateRV()
+                        }
         }
 
         btnDelete.setOnClickListener {
@@ -54,6 +82,10 @@ class CompanyRightFragment: BaseFragment<CompanyRightFragmentBinding, CompanyRig
                 mViewModel?.companyName?.set(lastItem)
             }//delete request
         }
+    }
+
+    override fun onBackPressed() {
+        dialog.dismiss(view?.parent as FrameLayout)
     }
 
 }

@@ -51,7 +51,7 @@ class AdminSignUpActivity : BaseActivity<AdminSignupLayoutBinding, AdminSignUpVi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mSingUpActivityDataBinding = getViewDataBinding()
-        addFragmentWithoutBackStack(GeneralFragment(), R.id.container)
+        addFragmentWithoutTag(GeneralFragment(), R.id.container)
         mSignUpViewModel!!.getGeneralData().observe(this, Observer{ response ->
             openInfoFragment(response!!.data!!.email, response!!.data!!.pass)
         })
