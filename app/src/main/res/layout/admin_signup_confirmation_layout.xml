@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.jim.multipos.environment.admin.ui.signup.fragment.SignUpFragmentViewModel"/>
+            type="com.jim.multipos.environment.admin.ui.signup.AdminSignUpViewModel"/>
     </data>
     <LinearLayout
         android:orientation="vertical" android:layout_width="match_parent"

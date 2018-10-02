@@ -46,9 +46,10 @@ class EstablishmentLeftFragment: BaseFragment<EstablishmentLeftFragmentBinding, 
 
     private fun setUp() {
         adapter = EstablishmentAdapter()
-        adapter!!.listener = object : BaseClickListener<String> {
+        adapter?.listener = object : BaseClickListener<String> {
             override fun onItemClick(item: String) {
                 mViewModel?.establishmentName?.set(item)
+
             }
         }
         rvEstablishment.itemAnimator.changeDuration = 0

@@ -12,12 +12,15 @@ import com.jim.multipos.R
 import com.jim.multipos.databinding.AdminEstablishmentLayoutBinding
 import com.jim.multipos.core.BaseClickListener
 import com.jim.multipos.core.BaseFragment
+import com.jim.multipos.core.DoubleHorizontalFragment
 import com.jim.multipos.core.TrippleHorizontalFragment
 import com.jim.multipos.databinding.SearchHeaderFragmentBinding
 import com.jim.multipos.environment.admin.ui.mainpage.SearchViewModel
 import com.jim.multipos.environment.admin.ui.mainpage.fragments.establishment.adapter.EstablishmentAdapter
 import com.jim.multipos.environment.admin.ui.mainpage.fragments.establishment.adapter.EstablishmentPosAdapter
+import com.jim.multipos.environment.admin.ui.mainpage.fragments.establishment.center.EstablishmentCenterFragment
 import com.jim.multipos.environment.admin.ui.mainpage.fragments.establishment.left.EstablishmentLeftFragment
+import com.jim.multipos.environment.admin.ui.mainpage.fragments.establishment.right.EstablishmentRightFragment
 import com.jim.multipos.environment.admin.ui.mainpage.fragments.establishment.viewmodel.EstablishmentViewModel
 import kotlinx.android.synthetic.main.admin_establishment_layout.*
 import javax.inject.Inject
@@ -114,11 +117,11 @@ class EstablishmentFragment: TrippleHorizontalFragment<SearchHeaderFragmentBindi
     }
 
     override fun getCenterFragment(): Fragment? {
-        return EstablishmentLeftFragment()
+        return EstablishmentCenterFragment()
     }
 
     override fun getRightFragment(): Fragment? {
-        return EstablishmentLeftFragment()
+        return EstablishmentRightFragment()
     }
 
     override fun getBindingVariable(): Int {
@@ -134,4 +137,10 @@ class EstablishmentFragment: TrippleHorizontalFragment<SearchHeaderFragmentBindi
         return mViewModel as SearchViewModel
     }
 
+    fun fetchPosItems(position: Int){
+        val fragment = activity?.supportFragmentManager?.findFragmentByTag(DoubleHorizontalFragment.LEFT_FRAGMENT_TAG)
+        if(fragment!=null && fragment is EstablishmentCenterFragment){
+            fragment.fetchData()
+        }
+    }
 }

@@ -28,50 +28,27 @@ abstract class TrippleHorizontalFragment<T: ViewDataBinding, V: BaseViewModel>: 
             throw Exception("RIGHT Fragment is not set")
         }
 
-//        if (activity?.supportFragmentManager?.findFragmentByTag(LEFT_FRAGMENT_TAG) == null &&
-//                activity?.supportFragmentManager?.findFragmentByTag(CENTER_FRAGMENT_TAG) == null &&
-//                activity?.supportFragmentManager?.findFragmentByTag(RIGHT_FRAGMENT_TAG) == null) {
 
-            initFragmentContent()
+        if (activity?.supportFragmentManager?.findFragmentByTag(TRIPLE_LEFT_FRAGMENT_TAG) != null) {
+            removeFragment(TRIPLE_LEFT_FRAGMENT_TAG)
 
-            activity
-                    ?.supportFragmentManager
-                    ?.beginTransaction()
-                    ?.add(R.id.flLeftContainer, getLeftFragment(), TRIPLE_LEFT_FRAGMENT_TAG)
-                    ?.commit()
+        }
 
-            activity
-                    ?.supportFragmentManager
-                    ?.beginTransaction()
-                    ?.add(R.id.flCenterContainer, getCenterFragment(), TRIPLE_CENTER_FRAGMENT_TAG)
-                    ?.commit()
+        if (activity?.supportFragmentManager?.findFragmentByTag(TRIPLE_CENTER_FRAGMENT_TAG) != null) {
+            removeFragment(TRIPLE_CENTER_FRAGMENT_TAG)
+        }
 
-            activity
-                    ?.supportFragmentManager
-                    ?.beginTransaction()
-                    ?.add(R.id.flRightContainer, getRightFragment(), TRIPLE_RIGHT_FRAGMENT_TAG)
-                    ?.commit()
-//        }
+        if (activity?.supportFragmentManager?.findFragmentByTag(TRIPLE_RIGHT_FRAGMENT_TAG) != null) {
+            removeFragment(TRIPLE_RIGHT_FRAGMENT_TAG)
+        }
+
+        initFragmentContent()
+        addFragment(getLeftFragment(), TRIPLE_LEFT_FRAGMENT_TAG, R.id.flLeftContainer)
+        addFragment(getCenterFragment(), TRIPLE_CENTER_FRAGMENT_TAG, R.id.flCenterContainer)
+        addFragment(getRightFragment(), TRIPLE_RIGHT_FRAGMENT_TAG, R.id.flRightContainer)
+
     }
 
-    override fun onStop() {
-        super.onStop()
-
-        activity?.supportFragmentManager
-                ?.beginTransaction()
-                ?.remove(activity?.supportFragmentManager?.findFragmentByTag(TRIPLE_LEFT_FRAGMENT_TAG))
-                ?.commit()
-
-        activity?.supportFragmentManager
-                ?.beginTransaction()
-                ?.remove(activity?.supportFragmentManager?.findFragmentByTag(TRIPLE_CENTER_FRAGMENT_TAG))
-                ?.commit()
-
-        activity?.supportFragmentManager
-                ?.beginTransaction()
-                ?.remove(activity?.supportFragmentManager?.findFragmentByTag(TRIPLE_RIGHT_FRAGMENT_TAG))
-                ?.commit()
-    }
 
     abstract fun getLeftFragment() : Fragment?
     abstract fun getCenterFragment() : Fragment?

@@ -10,7 +10,6 @@ import com.jim.multipos.core.managers.DataManager
 class EstablishmentLeftViewModel(dataManager: DataManager): BaseViewModel(dataManager) {
 
     private val establishmentItems = MutableLiveData<List<String>>()
-    private val establishmentPosItems = MutableLiveData<List<String>>()
 
     val establishmentName = ObservableField<String>()
     val posName = ObservableField<String>()

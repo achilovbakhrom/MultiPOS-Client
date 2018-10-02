@@ -18,6 +18,7 @@ abstract class DoubleHorizontalFragment<T: ViewDataBinding, V: BaseViewModel>: S
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         if (getLeftFragment() == null) {
             throw Exception("LEFT Fragment is not set")
         }
@@ -25,42 +26,19 @@ abstract class DoubleHorizontalFragment<T: ViewDataBinding, V: BaseViewModel>: S
             throw Exception("RIGHT Fragment is not set")
         }
 
+        if (activity?.supportFragmentManager?.findFragmentByTag(LEFT_FRAGMENT_TAG) != null) {
+            removeFragment(LEFT_FRAGMENT_TAG)
 
-//        if (activity?.supportFragmentManager?.findFragmentByTag(LEFT_FRAGMENT_TAG) == null &&
-//                activity?.supportFragmentManager?.findFragmentByTag(RIGHT_FRAGMENT_TAG) == null) {
-            initFragmentContent()
-            activity
-                    ?.supportFragmentManager
-                    ?.beginTransaction()
-                    ?.add(R.id.flLeftConainer, getLeftFragment(), LEFT_FRAGMENT_TAG)
-                    ?.commit()
+        }
 
+        if (activity?.supportFragmentManager?.findFragmentByTag(RIGHT_FRAGMENT_TAG) != null) {
+            removeFragment(RIGHT_FRAGMENT_TAG)
+        }
 
-
-            activity
-                    ?.supportFragmentManager
-                    ?.beginTransaction()
-                    ?.add(R.id.flRightConainer, getRightFragment(), RIGHT_FRAGMENT_TAG)
-                    ?.commit()
-
-//        }
+        initFragmentContent()
+        addFragment(getLeftFragment(), LEFT_FRAGMENT_TAG, R.id.flLeftConainer)
+        addFragment(getRightFragment(), RIGHT_FRAGMENT_TAG, R.id.flRightConainer)
     }
-
-    override fun onStop() {
-        super.onStop()
-
-        activity?.supportFragmentManager
-                ?.beginTransaction()
-                ?.remove(activity?.supportFragmentManager?.findFragmentByTag(LEFT_FRAGMENT_TAG))
-                ?.commit()
-
-        activity?.supportFragmentManager
-                ?.beginTransaction()
-                ?.remove(activity?.supportFragmentManager?.findFragmentByTag(RIGHT_FRAGMENT_TAG))
-                ?.commit()
-
-    }
-
 
     abstract fun getLeftFragment() : Fragment?
     abstract fun getRightFragment() : Fragment?

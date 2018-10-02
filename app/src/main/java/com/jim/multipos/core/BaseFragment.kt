@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.jim.multipos.R
 import dagger.android.support.AndroidSupportInjection
 
 
@@ -36,5 +37,22 @@ abstract class BaseFragment<T: ViewDataBinding, V: BaseViewModel> : Fragment(), 
     abstract fun getBindingVariable(): Int
     abstract fun getLayoutId() : Int
     abstract fun getViewModel() : V
+
+    internal fun addFragment(fragment: Fragment?, tag: String, id: Int) {
+        activity
+                ?.supportFragmentManager
+                ?.beginTransaction()
+                ?.add(id, fragment, tag)
+                ?.commit()
+    }
+
+    internal fun removeFragment(tag: String) {
+        activity
+                ?.supportFragmentManager
+                ?.beginTransaction()
+                ?.remove(activity?.supportFragmentManager?.findFragmentByTag(tag))
+                ?.commit()
+    }
+
 
 }

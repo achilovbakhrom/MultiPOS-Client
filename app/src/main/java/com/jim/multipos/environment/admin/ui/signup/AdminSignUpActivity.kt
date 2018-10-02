@@ -32,7 +32,7 @@ class AdminSignUpActivity : BaseActivity<AdminSignupLayoutBinding, AdminSignUpVi
     private var mSingUpActivityDataBinding: AdminSignupLayoutBinding? = null
 
     override fun supportFragmentInjector(): AndroidInjector<Fragment> {
-        return fragmentDispatchingAndroidInjector!!
+        return fragmentDispatchingAndroidInjector
     }
 
     override fun getLayoutId(): Int {
