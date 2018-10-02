@@ -14,9 +14,9 @@ abstract class TrippleHorizontalFragment<T: ViewDataBinding, V: BaseViewModel>: 
 
 
     companion object {
-        protected val LEFT_FRAGMENT_TAG = "LEFT_FRAGMENT_TAG"
-        protected val CENTER_FRAGMENT_TAG = "LEFT_FRAGMENT_TAG"
-        protected val RIGHT_FRAGMENT_TAG = "RIGHT_FRAGMENT_TAG"
+        protected val TRIPLE_LEFT_FRAGMENT_TAG = "TRIPLE_LEFT_FRAGMENT_TAG"
+        protected val TRIPLE_CENTER_FRAGMENT_TAG = "TRIPLE_CENTER_FRAGMENT_TAG"
+        protected val TRIPLE_RIGHT_FRAGMENT_TAG = "TRIPLE_RIGHT_FRAGMENT_TAG"
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -28,30 +28,49 @@ abstract class TrippleHorizontalFragment<T: ViewDataBinding, V: BaseViewModel>: 
             throw Exception("RIGHT Fragment is not set")
         }
 
-        if (activity?.supportFragmentManager?.findFragmentByTag(LEFT_FRAGMENT_TAG) == null &&
-                activity?.supportFragmentManager?.findFragmentByTag(CENTER_FRAGMENT_TAG) == null &&
-                activity?.supportFragmentManager?.findFragmentByTag(RIGHT_FRAGMENT_TAG) == null) {
+//        if (activity?.supportFragmentManager?.findFragmentByTag(LEFT_FRAGMENT_TAG) == null &&
+//                activity?.supportFragmentManager?.findFragmentByTag(CENTER_FRAGMENT_TAG) == null &&
+//                activity?.supportFragmentManager?.findFragmentByTag(RIGHT_FRAGMENT_TAG) == null) {
 
             initFragmentContent()
 
             activity
                     ?.supportFragmentManager
                     ?.beginTransaction()
-                    ?.add(R.id.flLeftConainer, getLeftFragment(), LEFT_FRAGMENT_TAG)
+                    ?.add(R.id.flLeftContainer, getLeftFragment(), TRIPLE_LEFT_FRAGMENT_TAG)
                     ?.commit()
 
             activity
                     ?.supportFragmentManager
                     ?.beginTransaction()
-                    ?.add(R.id.flCenterContainer, getCenterFragment(), CENTER_FRAGMENT_TAG)
+                    ?.add(R.id.flCenterContainer, getCenterFragment(), TRIPLE_CENTER_FRAGMENT_TAG)
                     ?.commit()
 
             activity
                     ?.supportFragmentManager
                     ?.beginTransaction()
-                    ?.add(R.id.flRightConainer, getRightFragment(), RIGHT_FRAGMENT_TAG)
+                    ?.add(R.id.flRightContainer, getRightFragment(), TRIPLE_RIGHT_FRAGMENT_TAG)
                     ?.commit()
-        }
+//        }
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+        activity?.supportFragmentManager
+                ?.beginTransaction()
+                ?.remove(activity?.supportFragmentManager?.findFragmentByTag(TRIPLE_LEFT_FRAGMENT_TAG))
+                ?.commit()
+
+        activity?.supportFragmentManager
+                ?.beginTransaction()
+                ?.remove(activity?.supportFragmentManager?.findFragmentByTag(TRIPLE_CENTER_FRAGMENT_TAG))
+                ?.commit()
+
+        activity?.supportFragmentManager
+                ?.beginTransaction()
+                ?.remove(activity?.supportFragmentManager?.findFragmentByTag(TRIPLE_RIGHT_FRAGMENT_TAG))
+                ?.commit()
     }
 
     abstract fun getLeftFragment() : Fragment?

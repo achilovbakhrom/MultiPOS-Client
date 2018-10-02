@@ -11,7 +11,7 @@ import android.view.ViewGroup
 import dagger.android.support.AndroidSupportInjection
 
 
-abstract class BaseFragment<T: ViewDataBinding, V: BaseViewModel> : Fragment() {
+abstract class BaseFragment<T: ViewDataBinding, V: BaseViewModel> : Fragment(), BackPressable {
     private var mViewDataBinding: T? = null
     private var mViewModel: V? = null
 

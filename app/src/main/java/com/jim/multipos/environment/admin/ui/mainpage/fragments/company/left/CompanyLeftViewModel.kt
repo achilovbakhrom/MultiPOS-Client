@@ -11,15 +11,15 @@ class CompanyLeftViewModel(dataManager: DataManager): BaseViewModel(dataManager)
 
     private val companyItems = MutableLiveData<List<String>>()
 
-    val establishmentName = ObservableField<String>()
+    val companyName = ObservableField<String>()
     val isEditable = ObservableBoolean(false)
     val title = ObservableField<String>()
 
     init {
-        fetch()
+//        fetch()
     }
 
-    private fun fetch(){
+    fun fetch(){
         val l = mutableListOf<String>()
         l.add("asdsad123")
         l.add("asdsad456")
