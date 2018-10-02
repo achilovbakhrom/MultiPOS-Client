@@ -1,10 +1,13 @@
 apply plugin: 'com.android.application'
 
+apply plugin: 'realm-android'
+
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
+
 
 android {
     compileSdkVersion 27
@@ -29,12 +32,19 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
         }
     }
 }
 
+
+realm {
+    syncEnabled = true;
+}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -74,9 +84,11 @@ dependencies {
     annotationProcessor "android.arch.lifecycle:compiler:$rootProject.lifecycle"
 
     //data binding
-    kapt 'com.android.databinding:compiler:3.1.4'
+//    kapt 'com.android.databinding:compiler:3.1.4'
+    kapt "androidx.databinding:databinding-compiler:3.2.0"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
 }

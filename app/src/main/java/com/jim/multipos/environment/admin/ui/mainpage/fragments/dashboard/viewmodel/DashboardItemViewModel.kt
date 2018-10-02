@@ -6,7 +6,6 @@ import android.databinding.ObservableField
 class DashboardItemViewModel(var text: String) {
 
     val isClicked = ObservableBoolean(false)
-
     var title: ObservableField<String>?=null
 
     init {
