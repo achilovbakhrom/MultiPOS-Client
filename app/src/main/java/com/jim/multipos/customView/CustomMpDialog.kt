@@ -11,6 +11,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.jim.multipos.R
 import com.jim.multipos.customView.adapter.CustomDialogAdapter
+import kotlinx.android.synthetic.main.custom_mp_dialog.view.*
 
 class CustomMpDialog @JvmOverloads constructor(
         context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
@@ -19,6 +20,8 @@ class CustomMpDialog @JvmOverloads constructor(
     var listener: DialogListener?=null
     var list: List<String>?=null
     var isVisible: Boolean = false
+    var adapter: CustomDialogAdapter?=null
+    var text: String?=null
 
     init {
         LayoutInflater.from(context).inflate(R.layout.custom_mp_dialog, this, true)
@@ -26,6 +29,7 @@ class CustomMpDialog @JvmOverloads constructor(
         ivDialog.setOnClickListener {
             listener?.onClick()
         }
+
 
     }
 
@@ -38,7 +42,20 @@ class CustomMpDialog @JvmOverloads constructor(
 
         val recyclerView = dialogView.findViewById<RecyclerView>(R.id.rvSpinner)
         recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = CustomDialogAdapter(list, context)
+        adapter = CustomDialogAdapter(list, context)
+        adapter?.listener = object : CustomDialogAdapter.OnClickListener{
+            override fun onClick(t: String) {
+                text = t
+            }
+
+        }
+        recyclerView.adapter = adapter
+
+        val ivSave = dialogView.findViewById<ImageView>(R.id.ivSave)
+        ivSave.setOnClickListener {
+            dismiss(layout)
+            mpEditText.setText(text)
+        }
     }
 
     fun dismiss(layout: FrameLayout) {

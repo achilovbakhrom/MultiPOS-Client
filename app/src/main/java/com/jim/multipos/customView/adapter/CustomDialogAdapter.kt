@@ -16,6 +16,7 @@ import com.jim.multipos.R
 class CustomDialogAdapter(var list: List<String>, var context: Context): RecyclerView.Adapter<CustomDialogAdapter.ViewHolder>() {
 
     var lastPos = -1
+    var listener: OnClickListener?=null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = LayoutInflater.from(parent.context)
@@ -42,8 +43,13 @@ class CustomDialogAdapter(var list: List<String>, var context: Context): Recycle
         holder.tvItemName?.text = list[position]
         holder.itemView.setOnClickListener {
             lastPos = position
+            listener?.onClick(list[position])
             notifyDataSetChanged()
         }
+    }
+
+    interface OnClickListener{
+        fun onClick(text: String)
     }
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
