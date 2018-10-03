@@ -15,7 +15,8 @@
     <RelativeLayout
         android:id="@+id/rlEditor"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorLightGray">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -38,7 +39,9 @@
                 <com.jim.multipos.customView.CustomMpDialog
                     android:id="@+id/dialog"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/thirty_dp"
+                    android:layout_marginStart="@dimen/twenty_five_dp"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"

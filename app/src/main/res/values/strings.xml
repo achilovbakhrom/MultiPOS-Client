@@ -77,4 +77,6 @@
     <string name="warehouse">Warehouse</string>
     <string name="business_occupation">Business Occupation</string>
     <string name="add_establishment">Add Establishment</string>
+    <string name="warehouses">Warehouses</string>
+    <string name="main_warehouse">Main Warehouse</string>
 </resources>
