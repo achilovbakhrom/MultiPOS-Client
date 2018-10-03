@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.jim.multipos.environment.admin.ui.establishment.viewmodel.EstablishmentViewModel"/>
+            type="com.jim.multipos.environment.admin.ui.establishment.left.EstablishmentLeftViewModel"/>
     </data>
     <LinearLayout
         android:layout_width="match_parent"

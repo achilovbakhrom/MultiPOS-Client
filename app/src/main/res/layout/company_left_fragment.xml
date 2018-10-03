@@ -5,7 +5,6 @@
     tools:context=".environment.admin.ui.MainPageActivity">
 
     <data>
-        <import type="android.view.View"/>
 
         <variable
             name="viewModel"
