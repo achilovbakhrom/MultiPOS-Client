@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".environment.admin.ui.signup.AdminSignUpActivity"/>
-        <activity android:name=".environment.admin.ui.mainpage.MainPageActivity"/>
+        <activity android:name=".environment.admin.ui.MainPageActivity"/>
     </application>
 
 </manifest>

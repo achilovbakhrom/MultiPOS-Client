@@ -2,14 +2,14 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".environment.admin.ui.mainpage.MainPageActivity">
+    tools:context=".environment.admin.ui.MainPageActivity">
 
     <data>
         <import type="android.view.View"/>
 
         <variable
             name="viewModel"
-            type="com.jim.multipos.environment.admin.ui.mainpage.MainPageViewModel"/>
+            type="com.jim.multipos.environment.admin.ui.MainPageViewModel"/>
     </data>
 
     <LinearLayout

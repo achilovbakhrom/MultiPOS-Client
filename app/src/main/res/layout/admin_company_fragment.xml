@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.jim.multipos.environment.admin.ui.mainpage.fragments.company.CompanyViewModel"/>
+            type="com.jim.multipos.environment.admin.ui.company.CompanyViewModel"/>
 
     </data>
     <LinearLayout

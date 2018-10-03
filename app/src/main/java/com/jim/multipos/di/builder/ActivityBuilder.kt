@@ -1,12 +1,12 @@
 package com.jim.multipos.di.builder
 
-import com.jim.multipos.environment.admin.ui.mainpage.MainPageActivity
-import com.jim.multipos.environment.admin.ui.mainpage.MainPageModule
-import com.jim.multipos.environment.admin.ui.mainpage.fragments.company.CompanyFragmentProvider
-import com.jim.multipos.environment.admin.ui.mainpage.fragments.dashboard.di.DashboardFragmentProvider
-import com.jim.multipos.environment.admin.ui.mainpage.fragments.establishment.di.EstablishmentFragmentProvider
-import com.jim.multipos.environment.admin.ui.mainpage.fragments.productclass.ProductClassFragmentProvider
-import com.jim.multipos.environment.admin.ui.mainpage.fragments.products.ProductFragmentProvider
+import com.jim.multipos.environment.admin.ui.MainPageActivity
+import com.jim.multipos.environment.admin.ui.MainPageModule
+import com.jim.multipos.environment.admin.ui.company.CompanyFragmentProvider
+import com.jim.multipos.environment.admin.ui.dashboard.di.DashboardFragmentProvider
+import com.jim.multipos.environment.admin.ui.establishment.di.EstablishmentFragmentProvider
+import com.jim.multipos.environment.admin.ui.entities.productclass.ProductClassFragmentProvider
+import com.jim.multipos.environment.admin.ui.entities.products.ProductFragmentProvider
 import com.jim.multipos.environment.admin.ui.signin.AdminSignInActivity
 import com.jim.multipos.environment.admin.ui.signin.AdminSignInModule
 import com.jim.multipos.environment.admin.ui.signup.AdminSignUpActivity

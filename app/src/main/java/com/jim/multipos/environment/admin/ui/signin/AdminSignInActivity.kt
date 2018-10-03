@@ -9,9 +9,8 @@ import com.jim.multipos.BR
 import com.jim.multipos.R
 import com.jim.multipos.databinding.AdminSigninLayoutBinding
 import com.jim.multipos.core.BaseActivity
-import com.jim.multipos.environment.admin.ui.mainpage.MainPageActivity
+import com.jim.multipos.environment.admin.ui.MainPageActivity
 import com.jim.multipos.environment.admin.ui.signup.AdminSignUpActivity
-import kotlinx.android.synthetic.main.admin_signin_layout.*
 import javax.inject.Inject
 
 class AdminSignInActivity: BaseActivity<AdminSigninLayoutBinding, AdminSignInViewModel>(){
