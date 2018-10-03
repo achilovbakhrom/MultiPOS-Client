@@ -11,6 +11,7 @@ import com.jim.multipos.databinding.AdminSigninLayoutBinding
 import com.jim.multipos.core.BaseActivity
 import com.jim.multipos.environment.admin.ui.mainpage.MainPageActivity
 import com.jim.multipos.environment.admin.ui.signup.AdminSignUpActivity
+import kotlinx.android.synthetic.main.admin_signin_layout.*
 import javax.inject.Inject
 
 class AdminSignInActivity: BaseActivity<AdminSigninLayoutBinding, AdminSignInViewModel>(){
@@ -39,7 +40,7 @@ class AdminSignInActivity: BaseActivity<AdminSigninLayoutBinding, AdminSignInVie
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mSingInActivityDataBinding = getViewDataBinding()
-        mSingInActivityDataBinding!!.toolbar.setOnBackButtonClick { onBackPressed() }
+        mSingInActivityDataBinding?.toolbar?.setOnBackButtonClick { onBackPressed() }
     }
 
     fun SignIn(view: View){
