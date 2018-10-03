@@ -24,6 +24,8 @@ class MainPageActivity: BaseActivity<AdminMainpageLayoutBinding, MainPageViewMod
     }
 
 
+
+
     @Inject
     lateinit var fragmentDispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
 
