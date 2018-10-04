@@ -25,9 +25,10 @@ class EntitiesFragment : TabbedFragment<TabbedFragmentBinding, EmptyViewModel>()
             "Export" to ProductClassFragment()
     )
 
+
+
     override fun getBindingVariable(): Int = BR.viewModel
     override fun getViewModel(): EmptyViewModel = emptyViewModel
-    override fun getDefaultTabName(): String? =  "Product"
-
+    override fun getDefaultTabName(): String? =  "Product Class"
 
 }

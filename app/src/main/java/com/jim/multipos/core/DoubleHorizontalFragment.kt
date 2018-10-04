@@ -18,7 +18,7 @@ abstract class DoubleHorizontalFragment<T: ViewDataBinding, V: BaseViewModel>: S
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        
+
         if (getLeftFragment() == null) {
             throw Exception("LEFT Fragment is not set")
         }
@@ -47,6 +47,7 @@ abstract class DoubleHorizontalFragment<T: ViewDataBinding, V: BaseViewModel>: S
         LayoutInflater.from(context).inflate(R.layout.double_horizontal_fragment, flContainer, true)
     }
 
+    override fun getLayoutId(): Int = R.layout.search_header_fragment
 
 
     override fun isCustomTopBar(): Boolean = true

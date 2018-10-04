@@ -55,6 +55,8 @@ abstract class TrippleHorizontalFragment<T: ViewDataBinding, V: BaseViewModel>: 
     abstract fun getCenterFragment() : Fragment?
     abstract fun getRightFragment() : Fragment?
 
+    override fun getLayoutId(): Int = R.layout.search_header_fragment
+
     private fun initFragmentContent() {
         LayoutInflater.from(context).inflate(R.layout.tripple_horizontal_fragment, flContainer, true)
     }

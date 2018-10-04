@@ -11,7 +11,7 @@ fun AppCompatActivity.notify(fragment: Fragment, action: String? = null, data: A
             if (fr is Notifiable) {
                 fr.notify(action, data)
             } else {
-                throw Exception(message = "${fr::class.java.simpleName} does not support Notifiable protocol")
+                throw Exception("${fr::class.java.simpleName} does not support Notifiable protocol")
             }
             break
         }
@@ -24,7 +24,7 @@ fun AppCompatActivity.notify(tag: String, action: String? = null, data: Any? = n
         if (fragment is Notifiable) {
             fragment.notify(action, data)
         } else {
-            throw Exception(message = "${fragment::class.java.simpleName} does not support Notifiable protocol")
+            throw Exception("${fragment::class.java.simpleName} does not support Notifiable protocol")
         }
     }
 }
