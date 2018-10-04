@@ -47,10 +47,11 @@ class DashboardPosFragment: BaseFragment<AdminDashboardPosLayoutBinding, Dashboa
     }
 
     fun setUpRV(){
+
         adapter = DashboardPosAdapter(context!!)
         adapter?.listener = object : BaseClickListener<String> {
             override fun onItemClick(item: String) {
-                mViewModel!!.fetchOrders(item)
+                mViewModel?.fetchOrders(item)
             }
         }
         rvPos.itemAnimator.changeDuration = 0

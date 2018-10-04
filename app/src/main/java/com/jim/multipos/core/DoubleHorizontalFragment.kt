@@ -51,4 +51,5 @@ abstract class DoubleHorizontalFragment<T: ViewDataBinding, V: BaseViewModel>: S
 
     override fun isCustomTopBar(): Boolean = true
 
+
 }

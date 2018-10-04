@@ -8,6 +8,7 @@ import com.jim.multipos.core.BaseActivity
 import com.jim.multipos.customView.MpToolbar
 import com.jim.multipos.databinding.AdminMainpageLayoutBinding
 import com.jim.multipos.environment.admin.ui.company.main.CompanyFragment
+import com.jim.multipos.environment.admin.ui.entities.EntitiesFragment
 import com.jim.multipos.environment.admin.ui.establishment.EstablishmentFragment
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -19,8 +20,9 @@ import javax.inject.Inject
 class MainPageActivity: BaseActivity<AdminMainpageLayoutBinding, MainPageViewModel>(), HasSupportFragmentInjector {
 
     companion object {
-        val COMPANY_FRAGMENT = "COMPANY_FRAGMENT"
-        val ESTABLISHMENT_FRAGMENT = "ESTABLISHMENT_FRAGMENT"
+        const val COMPANY_FRAGMENT = "COMPANY_FRAGMENT"
+        const val ESTABLISHMENT_FRAGMENT = "ESTABLISHMENT_FRAGMENT"
+        const val ENTITIES_FRAGMENT = "ENTITIES_FRAGMENT"
     }
 
 
@@ -70,7 +72,7 @@ class MainPageActivity: BaseActivity<AdminMainpageLayoutBinding, MainPageViewMod
             }
 
             override fun onEntities() {
-
+                openFragment(EntitiesFragment(), ENTITIES_FRAGMENT)
             }
 
             override fun onManagements() {

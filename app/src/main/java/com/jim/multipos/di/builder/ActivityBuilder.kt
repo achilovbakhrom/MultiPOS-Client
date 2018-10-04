@@ -4,6 +4,7 @@ import com.jim.multipos.environment.admin.ui.MainPageActivity
 import com.jim.multipos.environment.admin.ui.MainPageModule
 import com.jim.multipos.environment.admin.ui.company.CompanyFragmentProvider
 import com.jim.multipos.environment.admin.ui.dashboard.di.DashboardFragmentProvider
+import com.jim.multipos.environment.admin.ui.entities.EntitiesFragmentProvider
 import com.jim.multipos.environment.admin.ui.establishment.di.EstablishmentFragmentProvider
 import com.jim.multipos.environment.admin.ui.entities.productclass.ProductClassFragmentProvider
 import com.jim.multipos.environment.admin.ui.entities.products.ProductFragmentProvider
@@ -38,7 +39,8 @@ abstract class ActivityBuilder {
         (DashboardFragmentProvider::class),
         (EstablishmentFragmentProvider::class),
         (ProductFragmentProvider::class),
-        (ProductClassFragmentProvider::class)
+        (ProductClassFragmentProvider::class),
+        (EntitiesFragmentProvider::class)
     ])
     abstract fun bindAdminMainPageActivity(): MainPageActivity
 }

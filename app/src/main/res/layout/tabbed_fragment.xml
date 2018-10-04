@@ -1,21 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".environment.admin.ui.MainPageActivity">
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tlContainer"
+    <data>
+        <variable
+            name="viewModel"
+            type="com.jim.multipos.core.EmptyViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/flTabContainer"
-        />
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tlContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/flTabContainer"
+            />
+    </LinearLayout>
 
 
+</layout>
 
-</LinearLayout>

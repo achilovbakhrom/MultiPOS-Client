@@ -15,7 +15,7 @@ abstract class TabbedFragment<T: ViewDataBinding, V: BaseViewModel>: BaseFragmen
 
 
     companion object {
-        val TAB_FRAGMENT_TAG = "TAB_FRAGMENT_TAG"
+        const val TAB_FRAGMENT_TAG = "TAB_FRAGMENT_TAG"
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -24,8 +24,8 @@ abstract class TabbedFragment<T: ViewDataBinding, V: BaseViewModel>: BaseFragmen
         if (tlContainer.tabCount == 0) {
 
             val data = getTabData()
-            if (data.isNotEmpty()) {
 
+            if (data.isNotEmpty()) {
                 for (key in data.keys) {
                     tlContainer.addTab(tlContainer.newTab().setText(key))
                 }
@@ -68,7 +68,7 @@ abstract class TabbedFragment<T: ViewDataBinding, V: BaseViewModel>: BaseFragmen
                 ?.supportFragmentManager
                 ?.beginTransaction()
                 ?.replace(R.id.flTabContainer, fragment, TAB_FRAGMENT_TAG)
-                ?.commitNow()
+                ?.commit()
     }
 
 
@@ -78,6 +78,8 @@ abstract class TabbedFragment<T: ViewDataBinding, V: BaseViewModel>: BaseFragmen
 
     abstract fun getTabData(): Map<String, Fragment>
 
-    fun getDefaultTabName(): String? = null
+    open fun getDefaultTabName(): String? = null
+
+
 
 }
