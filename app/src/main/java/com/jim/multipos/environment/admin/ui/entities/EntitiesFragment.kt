@@ -29,4 +29,5 @@ class EntitiesFragment : TabbedFragment<TabbedFragmentBinding, EmptyViewModel>()
     override fun getViewModel(): EmptyViewModel = emptyViewModel
     override fun getDefaultTabName(): String? =  "Product"
 
+
 }
