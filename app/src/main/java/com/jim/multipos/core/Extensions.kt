@@ -4,6 +4,19 @@ import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 
 
+enum class NotificationActions(val action: String) {
+
+    UPDATE("UPDATE"),
+    ADD("ADD"),
+    SELECT("SELECT"),
+    POPULATE("POPULATE"),
+    SEARCH("SEARCH")
+
+    ;
+
+    fun value(): String = action
+}
+
 fun AppCompatActivity.notify(fragment: Fragment, action: String? = null, data: Any? = null) {
     val fragments = this.supportFragmentManager.fragments
     for (fr in fragments) {

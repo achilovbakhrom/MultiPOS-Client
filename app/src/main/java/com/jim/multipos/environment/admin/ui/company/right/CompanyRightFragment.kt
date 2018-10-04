@@ -8,6 +8,8 @@ import android.widget.FrameLayout
 import com.android.databinding.library.baseAdapters.BR
 import com.jim.multipos.R
 import com.jim.multipos.core.BaseFragment
+import com.jim.multipos.core.Notifiable
+import com.jim.multipos.core.NotificationActions
 import com.jim.multipos.customView.CustomMpDialog
 import com.jim.multipos.databinding.CompanyRightFragmentBinding
 import com.jim.multipos.environment.admin.ui.MainPageActivity
@@ -16,7 +18,7 @@ import com.jim.multipos.environment.admin.ui.company.main.CompanyFragment
 import kotlinx.android.synthetic.main.company_right_fragment.*
 import javax.inject.Inject
 
-class CompanyRightFragment: BaseFragment<CompanyRightFragmentBinding, CompanyRightViewModel>(){
+class CompanyRightFragment: BaseFragment<CompanyRightFragmentBinding, CompanyRightViewModel>(), Notifiable{
 
     @Inject
     lateinit var mViewModelFactory: ViewModelProvider.Factory
@@ -86,4 +88,9 @@ class CompanyRightFragment: BaseFragment<CompanyRightFragmentBinding, CompanyRig
         dialog.dismiss(view?.parent as FrameLayout)
     }
 
+    override fun notify(action: String?, data: Any?) {
+        when(action){
+            NotificationActions.POPULATE.value()->etCompanyName.setText(data.toString())
+        }
+    }
 }

@@ -117,10 +117,6 @@ class EstablishmentFragment: TrippleHorizontalFragment<SearchHeaderFragmentBindi
         return BR.viewModel
     }
 
-    override fun getLayoutId(): Int {
-        return R.layout.search_header_fragment
-    }
-
     override fun getViewModel(): SearchViewModel {
         mViewModel = ViewModelProviders.of(this, mViewModelFactory).get(SearchViewModel::class.java)
         return mViewModel as SearchViewModel

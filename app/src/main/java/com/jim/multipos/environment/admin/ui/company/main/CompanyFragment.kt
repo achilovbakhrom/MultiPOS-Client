@@ -120,10 +120,6 @@ class CompanyFragment: DoubleHorizontalFragment<SearchHeaderFragmentBinding, Sea
     lateinit var mViewModelFactory: ViewModelProvider.Factory
     var mViewModel: SearchViewModel? = null
 
-    override fun getLayoutId(): Int {
-       return R.layout.search_header_fragment
-    }
-
     override fun getBindingVariable(): Int {
         return BR.viewModel
     }

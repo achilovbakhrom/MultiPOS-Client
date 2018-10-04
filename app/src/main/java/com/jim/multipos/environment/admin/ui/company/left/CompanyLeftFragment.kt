@@ -10,6 +10,8 @@ import com.jim.multipos.BR
 import com.jim.multipos.R
 import com.jim.multipos.core.BaseClickListener
 import com.jim.multipos.core.BaseFragment
+import com.jim.multipos.core.DoubleHorizontalFragment
+import com.jim.multipos.core.NotificationActions
 import com.jim.multipos.databinding.CompanyLeftFragmentBinding
 import com.jim.multipos.environment.admin.ui.company.CompanyAdapter
 import kotlinx.android.synthetic.main.company_left_fragment.*
@@ -48,7 +50,7 @@ class CompanyLeftFragment: BaseFragment<CompanyLeftFragmentBinding, CompanyLeftV
         adapter = CompanyAdapter(context!!)
         adapter?.listener = object : BaseClickListener<String>{
             override fun onItemClick(item: String) {
-
+                sendNotification(DoubleHorizontalFragment.RIGHT_FRAGMENT_TAG, NotificationActions.POPULATE.value(), item)
             }
         }
         rvCompanies.itemAnimator.changeDuration = 0

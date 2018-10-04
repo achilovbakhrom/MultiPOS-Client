@@ -16,7 +16,7 @@ class CompanyLeftViewModel(dataManager: DataManager): BaseViewModel(dataManager)
     val title = ObservableField<String>()
 
     init {
-//        fetch()
+        fetch()
     }
 
     fun fetch(){
