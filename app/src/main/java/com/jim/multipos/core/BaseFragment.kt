@@ -5,6 +5,7 @@ import android.databinding.ViewDataBinding
 import android.os.Bundle
 import android.support.annotation.IdRes
 import android.support.v4.app.Fragment
+import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -54,5 +55,17 @@ abstract class BaseFragment<T: ViewDataBinding, V: BaseViewModel> : Fragment(), 
                 ?.commit()
     }
 
+
+    internal fun sendNotification(tag: String, action: String? = null, data: Any? = null) {
+        if (activity != null && activity is AppCompatActivity) {
+            (activity as AppCompatActivity).notify(tag = tag, action = action, data = data)
+        }
+    }
+
+    internal fun sendNotification(fragment: Fragment, action: String? = null, data: Any? = null) {
+        if (activity != null && activity is AppCompatActivity) {
+            (activity as AppCompatActivity).notify(fragment = fragment, action = action, data = data)
+        }
+    }
 
 }

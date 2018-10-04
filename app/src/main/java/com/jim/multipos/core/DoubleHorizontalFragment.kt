@@ -18,7 +18,7 @@ abstract class DoubleHorizontalFragment<T: ViewDataBinding, V: BaseViewModel>: S
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        
         if (getLeftFragment() == null) {
             throw Exception("LEFT Fragment is not set")
         }
