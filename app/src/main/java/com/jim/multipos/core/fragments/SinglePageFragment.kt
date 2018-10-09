@@ -28,7 +28,7 @@ abstract class SinglePageFragment<T: ViewDataBinding, V: BaseViewModel>: SearchH
             activity
                     ?.supportFragmentManager
                     ?.beginTransaction()
-                    ?.add(R.id.flContainer, getFragment(), SINGLE_PAGE_TAG)
+//                    ?.add(R.id.flContainer, getFragment(), SINGLE_PAGE_TAG)
                     ?.commit()
         }
 

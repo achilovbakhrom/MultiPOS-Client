@@ -1,13 +1,5 @@
 package com.jim.multipos.environment.admin.ui.dashboard.adapter
 
-import android.view.LayoutInflater
-import android.view.ViewGroup
-import com.jim.multipos.databinding.AdminItemDashboardOrdersBinding
-import com.jim.multipos.core.adapter.BaseAdapter
-import com.jim.multipos.core.BaseActions
-import com.jim.multipos.core.adapter.BaseViewHolder
-import com.jim.multipos.environment.admin.ui.dashboard.viewmodel.DashboardOrderItemViewModel
-
 
 //class DashboardOrdersAdapter: BaseAdapter<String, BaseActions<String>, DashboardOrdersAdapter.OrderViewHolder>() {
 //

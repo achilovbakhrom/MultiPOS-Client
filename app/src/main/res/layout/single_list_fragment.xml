@@ -5,7 +5,7 @@
         <import type="android.view.View"/>
         <variable
             name="viewModel"
-            type="com.jim.multipos.environment.admin.ui.establishment.right.EstablishmentRightViewModel"/>
+            type="com.jim.multipos.core.EmptyViewModel"/>
     </data>
 
     <android.support.design.widget.CoordinatorLayout

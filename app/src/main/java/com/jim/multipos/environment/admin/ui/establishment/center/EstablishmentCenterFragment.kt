@@ -1,17 +1,13 @@
 package com.jim.multipos.environment.admin.ui.establishment.center
 
-import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.jim.multipos.BR
 import com.jim.multipos.R
-import com.jim.multipos.core.BaseActions
 import com.jim.multipos.core.fragments.BaseFragment
 import com.jim.multipos.databinding.EstablishmentCenterFragmentBinding
-import kotlinx.android.synthetic.main.establishment_center_fragment.*
 import javax.inject.Inject
 
 class EstablishmentCenterFragment: BaseFragment<EstablishmentCenterFragmentBinding, EstablishmentCenterViewModel>(){

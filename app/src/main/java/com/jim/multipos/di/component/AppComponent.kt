@@ -4,10 +4,6 @@ import android.app.Application
 import com.jim.multipos.MultiPosApp
 import com.jim.multipos.di.builder.ActivityBuilder
 import com.jim.multipos.di.module.AppModule
-import com.jim.multipos.di.module.SignUpActivityFragmentBuildersModule
-import com.jim.multipos.environment.admin.ui.MainPageModule
-import com.jim.multipos.environment.admin.ui.signin.SignInModule
-import com.jim.multipos.environment.admin.ui.signup.SignUpModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule

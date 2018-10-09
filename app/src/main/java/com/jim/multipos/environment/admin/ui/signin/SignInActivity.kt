@@ -7,8 +7,8 @@ import android.os.Bundle
 import android.view.View
 import com.jim.multipos.BR
 import com.jim.multipos.R
-import com.jim.multipos.databinding.AdminSigninLayoutBinding
 import com.jim.multipos.core.BaseActivity
+import com.jim.multipos.databinding.AdminSigninLayoutBinding
 import com.jim.multipos.environment.admin.ui.MainPageActivity
 import com.jim.multipos.environment.admin.ui.signup.SignUpActivity
 import javax.inject.Inject

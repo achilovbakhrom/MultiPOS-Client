@@ -7,8 +7,8 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import com.jim.multipos.BR
 import com.jim.multipos.R
-import com.jim.multipos.databinding.AdminSignupLayoutBinding
 import com.jim.multipos.core.BaseActivity
+import com.jim.multipos.databinding.AdminSignupLayoutBinding
 import com.jim.multipos.environment.admin.ui.signup.fragment.confirmation.ConfirmationFragment
 import com.jim.multipos.environment.admin.ui.signup.fragment.general.GeneralFragment
 import com.jim.multipos.environment.admin.ui.signup.fragment.info.InfoFragment

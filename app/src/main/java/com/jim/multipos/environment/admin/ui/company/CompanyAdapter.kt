@@ -1,13 +1,5 @@
 package com.jim.multipos.environment.admin.ui.company
 
-import android.content.Context
-import android.view.LayoutInflater
-import android.view.ViewGroup
-import com.jim.multipos.databinding.AdminItemCompanyBinding
-import com.jim.multipos.core.adapter.BaseAdapter
-import com.jim.multipos.core.BaseActions
-import com.jim.multipos.core.adapter.BaseViewHolder
-
 
 //class CompanyAdapter(var context: Context):
 //        BaseAdapter<String, CompanyAdapter.CompanyViewHolder>(){

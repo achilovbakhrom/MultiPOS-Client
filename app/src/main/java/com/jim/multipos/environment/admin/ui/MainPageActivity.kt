@@ -26,8 +26,6 @@ class MainPageActivity: BaseActivity<AdminMainpageLayoutBinding, MainPageViewMod
     }
 
 
-
-
     @Inject
     lateinit var fragmentDispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
 
@@ -65,6 +63,7 @@ class MainPageActivity: BaseActivity<AdminMainpageLayoutBinding, MainPageViewMod
             }
 
             override fun onDashboard() {
+
             }
 
             override fun onEstablishment() {
