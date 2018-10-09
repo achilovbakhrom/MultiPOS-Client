@@ -9,9 +9,8 @@ import android.view.View
 import com.jim.multipos.BR
 import com.jim.multipos.R
 import com.jim.multipos.databinding.AdminDashboardOrdersLayoutBinding
-import com.jim.multipos.core.BaseClickListener
-import com.jim.multipos.core.BaseFragment
-import com.jim.multipos.environment.admin.ui.dashboard.adapter.DashboardOrdersAdapter
+import com.jim.multipos.core.BaseActions
+import com.jim.multipos.core.fragments.BaseFragment
 import com.jim.multipos.environment.admin.ui.dashboard.viewmodel.DashboardViewModel
 import kotlinx.android.synthetic.main.admin_dashboard_orders_layout.*
 import javax.inject.Inject
@@ -22,7 +21,7 @@ class DashboardOrdersFragment: BaseFragment<AdminDashboardOrdersLayoutBinding, D
     lateinit var mViewModelFactory: ViewModelProvider.Factory
     private var mViewModel: DashboardViewModel?=null
     private var mViewDataBinding: AdminDashboardOrdersLayoutBinding?=null
-    private var adapter: DashboardOrdersAdapter?=null
+//    private var adapter: DashboardOrdersAdapter?=null
 
     override fun getBindingVariable(): Int {
         return BR.viewModel
@@ -44,15 +43,15 @@ class DashboardOrdersFragment: BaseFragment<AdminDashboardOrdersLayoutBinding, D
     }
 
     fun setUpRV(){
-        adapter = DashboardOrdersAdapter()
-        adapter?.listener = object : BaseClickListener<String> {
-            override fun onItemClick(item: String) {
-
-            }
-        }
-
-        rvOrders.layoutManager = GridLayoutManager(context, 2)
-        rvOrders.adapter = adapter
-        mViewModel?.getOrdersItem()?.observe(this, Observer { adapter?.setItems(it!!) })
+//        adapter = DashboardOrdersAdapter()
+//        adapter?.listener = object : BaseActions<String> {
+//            override fun onItemClick(item: String) {
+//
+//            }
+//        }
+//
+//        rvOrders.layoutManager = GridLayoutManager(context, 2)
+//        rvOrders.adapter = adapter
+//        mViewModel?.getOrdersItem()?.observe(this, Observer { adapter?.setItems(it!!) })
     }
 }

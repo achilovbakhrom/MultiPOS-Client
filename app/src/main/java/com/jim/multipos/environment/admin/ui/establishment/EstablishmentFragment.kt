@@ -5,8 +5,8 @@ import android.arch.lifecycle.ViewModelProviders
 import android.support.v4.app.Fragment
 import com.jim.multipos.BR
 import com.jim.multipos.R
-import com.jim.multipos.core.DoubleHorizontalFragment
-import com.jim.multipos.core.TrippleHorizontalFragment
+import com.jim.multipos.core.fragments.DoubleHorizontalFragment
+import com.jim.multipos.core.fragments.TrippleHorizontalFragment
 import com.jim.multipos.databinding.SearchHeaderFragmentBinding
 import com.jim.multipos.environment.admin.ui.SearchViewModel
 import com.jim.multipos.environment.admin.ui.establishment.center.EstablishmentCenterFragment
@@ -49,7 +49,7 @@ import javax.inject.Inject
 //
 //    private fun setUpEstablishmentRV(){
 //        adapter = EstablishmentAdapter()
-//        adapter!!.listener = object : BaseClickListener<String> {
+//        adapter!!.listener = object : BaseActions<String> {
 //            override fun onItemClick(item: String) {
 //                tvEstablishmentName.text = item
 //                posAdapter?.lastPos = -1
@@ -67,7 +67,7 @@ import javax.inject.Inject
 //
 //    private fun setUpPosRV(){
 //        posAdapter = EstablishmentPosAdapter()
-//        posAdapter?.listener = object : BaseClickListener<String> {
+//        posAdapter?.listener = object : BaseActions<String> {
 //            override fun onItemClick(item: String) {
 //                tvPosName.text = item
 //                mViewModel?.isPosMode?.set(true)

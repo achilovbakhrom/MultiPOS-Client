@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.View
 import com.jim.multipos.BR
 import com.jim.multipos.R
-import com.jim.multipos.core.BaseFragment
+import com.jim.multipos.core.fragments.BaseFragment
 import com.jim.multipos.databinding.EstablishmentRightFragmentBinding
 import javax.inject.Inject
 

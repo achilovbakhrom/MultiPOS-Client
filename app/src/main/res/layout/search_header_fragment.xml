@@ -11,6 +11,7 @@
             type="com.jim.multipos.environment.admin.ui.SearchViewModel"/>
 
     </data>
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -21,11 +22,10 @@
             android:layout_height="wrap_content"
             android:id="@+id/llHeader"
             android:orientation="horizontal" />
-
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/flContainer" />
-
     </LinearLayout>
+
 </layout>

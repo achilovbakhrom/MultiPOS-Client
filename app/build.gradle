@@ -1,7 +1,5 @@
 apply plugin: 'com.android.application'
 
-apply plugin: 'realm-android'
-
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
@@ -42,9 +40,6 @@ android {
 }
 
 
-realm {
-    syncEnabled = true;
-}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -90,5 +85,8 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    // recycler view
+    implementation 'com.jcodecraeer:xrecyclerview:1.5.9'
 
 }

@@ -9,8 +9,8 @@ import com.jim.multipos.BR
 import com.jim.multipos.R
 import com.jim.multipos.customView.MpCheckbox
 import com.jim.multipos.databinding.AdminSignupInfoFragmentLayoutBinding
-import com.jim.multipos.core.BaseFragment
-import com.jim.multipos.environment.admin.ui.signup.AdminSignUpViewModel
+import com.jim.multipos.core.fragments.BaseFragment
+import com.jim.multipos.environment.admin.ui.signup.SignUpViewModel
 import com.jim.multipos.environment.admin.ui.signup.model.SignUpModel
 import kotlinx.android.synthetic.main.admin_signup_info_fragment_layout.*
 import java.text.SimpleDateFormat
@@ -18,12 +18,12 @@ import java.util.*
 import javax.inject.Inject
 
 
-class InfoFragment: BaseFragment<AdminSignupInfoFragmentLayoutBinding, AdminSignUpViewModel>() {
+class InfoFragment: BaseFragment<AdminSignupInfoFragmentLayoutBinding, SignUpViewModel>() {
 
     @Inject
     lateinit var mViewModelFactory: ViewModelProvider.Factory
 
-    private var mViewModel: AdminSignUpViewModel? = null
+    private var mViewModel: SignUpViewModel? = null
     private var mViewDataBinding: AdminSignupInfoFragmentLayoutBinding? = null
     var myCalendar = Calendar.getInstance()
     private var country: String?=null
@@ -36,9 +36,9 @@ class InfoFragment: BaseFragment<AdminSignupInfoFragmentLayoutBinding, AdminSign
         return R.layout.admin_signup_info_fragment_layout
     }
 
-    override fun getViewModel(): AdminSignUpViewModel {
-        mViewModel = ViewModelProviders.of(activity!!, mViewModelFactory).get(AdminSignUpViewModel::class.java)
-        return mViewModel as AdminSignUpViewModel
+    override fun getViewModel(): SignUpViewModel {
+        mViewModel = ViewModelProviders.of(activity!!, mViewModelFactory).get(SignUpViewModel::class.java)
+        return mViewModel as SignUpViewModel
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

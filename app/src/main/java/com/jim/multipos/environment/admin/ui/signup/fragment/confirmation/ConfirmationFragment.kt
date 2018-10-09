@@ -7,17 +7,17 @@ import android.view.View
 import com.jim.multipos.BR
 import com.jim.multipos.R
 import com.jim.multipos.databinding.AdminSignupConfirmationLayoutBinding
-import com.jim.multipos.environment.admin.ui.signup.AdminSignUpViewModel
-import com.jim.multipos.core.BaseFragment
+import com.jim.multipos.environment.admin.ui.signup.SignUpViewModel
+import com.jim.multipos.core.fragments.BaseFragment
 import kotlinx.android.synthetic.main.admin_signup_info_fragment_layout.*
 import javax.inject.Inject
 
-class ConfirmationFragment: BaseFragment<AdminSignupConfirmationLayoutBinding, AdminSignUpViewModel>(){
+class ConfirmationFragment: BaseFragment<AdminSignupConfirmationLayoutBinding, SignUpViewModel>(){
 
     @Inject
     lateinit var mViewModelFactory: ViewModelProvider.Factory
 
-    private var mViewModel: AdminSignUpViewModel? = null
+    private var mViewModel: SignUpViewModel? = null
     private var mViewDataBinding: AdminSignupConfirmationLayoutBinding? = null
 
     override fun getBindingVariable(): Int {
@@ -28,9 +28,9 @@ class ConfirmationFragment: BaseFragment<AdminSignupConfirmationLayoutBinding, A
         return R.layout.admin_signup_confirmation_layout
     }
 
-    override fun getViewModel(): AdminSignUpViewModel {
-        mViewModel = ViewModelProviders.of(activity!!, mViewModelFactory).get(AdminSignUpViewModel::class.java)
-        return mViewModel as AdminSignUpViewModel
+    override fun getViewModel(): SignUpViewModel {
+        mViewModel = ViewModelProviders.of(activity!!, mViewModelFactory).get(SignUpViewModel::class.java)
+        return mViewModel as SignUpViewModel
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

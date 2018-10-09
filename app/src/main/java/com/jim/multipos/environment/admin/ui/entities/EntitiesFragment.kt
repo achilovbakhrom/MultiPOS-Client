@@ -3,7 +3,7 @@ package com.jim.multipos.environment.admin.ui.entities
 import android.support.v4.app.Fragment
 import com.jim.multipos.BR
 import com.jim.multipos.core.EmptyViewModel
-import com.jim.multipos.core.TabbedFragment
+import com.jim.multipos.core.fragments.TabbedFragment
 import com.jim.multipos.databinding.TabbedFragmentBinding
 import com.jim.multipos.environment.admin.ui.entities.productclass.ProductClassFragment
 import com.jim.multipos.environment.admin.ui.entities.products.ProductFragment
@@ -24,8 +24,6 @@ class EntitiesFragment : TabbedFragment<TabbedFragmentBinding, EmptyViewModel>()
             "Import" to ProductClassFragment(),
             "Export" to ProductClassFragment()
     )
-
-
 
     override fun getBindingVariable(): Int = BR.viewModel
     override fun getViewModel(): EmptyViewModel = emptyViewModel

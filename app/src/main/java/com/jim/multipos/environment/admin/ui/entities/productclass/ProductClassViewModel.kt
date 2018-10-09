@@ -6,8 +6,9 @@ import android.databinding.ObservableBoolean
 import android.databinding.ObservableField
 import com.jim.multipos.core.managers.DataManager
 import com.jim.multipos.core.BaseViewModel
+import javax.inject.Inject
 
-class ProductClassViewModel(appDataManager: DataManager): BaseViewModel(appDataManager) {
+class ProductClassViewModel @Inject constructor(appDataManager: DataManager): BaseViewModel(appDataManager) {
 
     private val productClassItems = MutableLiveData<List<String>>()
     val productClassName = ObservableField<String>()

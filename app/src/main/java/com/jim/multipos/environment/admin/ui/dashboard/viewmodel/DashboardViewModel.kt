@@ -4,8 +4,9 @@ import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import com.jim.multipos.core.managers.DataManager
 import com.jim.multipos.core.BaseViewModel
+import javax.inject.Inject
 
-class DashboardViewModel(appDataManager: DataManager): BaseViewModel(appDataManager) {
+class DashboardViewModel @Inject constructor(appDataManager: DataManager): BaseViewModel(appDataManager) {
 
     var posItems = MutableLiveData<List<String>>()
     var ordersItem = MutableLiveData<List<String>>()

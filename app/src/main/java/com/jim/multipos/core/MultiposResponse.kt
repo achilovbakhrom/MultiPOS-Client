@@ -1,6 +1,6 @@
 package com.jim.multipos.core
 
-import com.jim.multipos.utils.Status
 import java.io.Serializable
 
-data class MultiposResponse<T: Serializable>(val status: Status, val data: T?, val error: Throwable?)
+data class MultiposResponseSingle<T: Serializable>(val status: String?, val data: T?, val code: Int?)
+data class MultiposResponseList<T:Serializable>(val status: String?, val data: List<T>?, val code: Int?)

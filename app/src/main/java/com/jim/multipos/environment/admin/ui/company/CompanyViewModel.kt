@@ -8,7 +8,7 @@ import com.jim.multipos.core.managers.DataManager
 import com.jim.multipos.core.BaseViewModel
 
 
-class CompanyViewModel(dataManager: DataManager): BaseViewModel(dataManager) {
+class CompanyViewModel (dataManager: DataManager): BaseViewModel(dataManager) {
 
     private val companyItems = MutableLiveData<List<String>>()
 

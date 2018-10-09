@@ -11,4 +11,10 @@
     <style name="MyCustomTabText" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">12sp</item>
     </style>
+
+    <style name="CircularProgress" parent="Theme.AppCompat.Light">
+        <item name="colorAccent">@color/colorDarkBlue</item>
+    </style>
+
+
 </resources>

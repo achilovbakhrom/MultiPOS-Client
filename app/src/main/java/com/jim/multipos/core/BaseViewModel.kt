@@ -1,6 +1,7 @@
 package com.jim.multipos.core
 
 import android.arch.lifecycle.ViewModel
+import android.os.Bundle
 import com.jim.multipos.core.managers.DataManager
 import io.reactivex.disposables.CompositeDisposable
 
@@ -13,5 +14,7 @@ abstract class BaseViewModel(val mDataManager: DataManager) : ViewModel() {
     }
 
     fun getDataManager(): DataManager = mDataManager
+
+    fun onSaveInstanceState(outState: Bundle) {}
 
 }

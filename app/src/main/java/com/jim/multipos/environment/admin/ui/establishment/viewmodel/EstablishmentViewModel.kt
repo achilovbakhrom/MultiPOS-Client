@@ -6,8 +6,9 @@ import android.databinding.ObservableBoolean
 import android.databinding.ObservableField
 import com.jim.multipos.core.managers.DataManager
 import com.jim.multipos.core.BaseViewModel
+import javax.inject.Inject
 
-class EstablishmentViewModel(appDataManager: DataManager): BaseViewModel(appDataManager) {
+class EstablishmentViewModel @Inject constructor(appDataManager: DataManager): BaseViewModel(appDataManager) {
 
     private val establishmentItems = MutableLiveData<List<String>>()
     private val establishmentPosItems = MutableLiveData<List<String>>()

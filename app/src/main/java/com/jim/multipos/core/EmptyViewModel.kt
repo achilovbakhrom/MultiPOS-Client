@@ -1,5 +1,6 @@
 package com.jim.multipos.core
 
 import com.jim.multipos.core.managers.DataManager
+import javax.inject.Inject
 
-class EmptyViewModel(dataManager: DataManager): BaseViewModel(dataManager)
+class EmptyViewModel @Inject constructor(dataManager: DataManager): BaseViewModel(dataManager)

@@ -8,10 +8,9 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.jim.multipos.BR
 import com.jim.multipos.R
-import com.jim.multipos.core.BaseClickListener
-import com.jim.multipos.core.BaseFragment
+import com.jim.multipos.core.BaseActions
+import com.jim.multipos.core.fragments.BaseFragment
 import com.jim.multipos.databinding.EstablishmentCenterFragmentBinding
-import com.jim.multipos.environment.admin.ui.establishment.adapter.EstablishmentPosAdapter
 import kotlinx.android.synthetic.main.establishment_center_fragment.*
 import javax.inject.Inject
 
@@ -22,7 +21,7 @@ class EstablishmentCenterFragment: BaseFragment<EstablishmentCenterFragmentBindi
 
     private var mViewModel: EstablishmentCenterViewModel? = null
     private var mViewDataBinding: EstablishmentCenterFragmentBinding? = null
-    private var adapter: EstablishmentPosAdapter?=null
+//    private var adapter: EstablishmentPosAdapter?=null
 
     override fun getBindingVariable(): Int {
         return BR.viewModel
@@ -44,21 +43,21 @@ class EstablishmentCenterFragment: BaseFragment<EstablishmentCenterFragmentBindi
     }
 
     private fun setUp() {
-        adapter = EstablishmentPosAdapter()
-        adapter?.listener = object : BaseClickListener<String>{
-            override fun onItemClick(item: String) {
-
-            }
-        }
-        rvEstablishmentPos.itemAnimator.changeDuration = 0
-        rvEstablishmentPos.layoutManager = LinearLayoutManager(context)
-        rvEstablishmentPos.adapter = adapter
-        fetchData()
+//        adapter = EstablishmentPosAdapter()
+//        adapter?.listener = object : BaseActions<String>{
+//            override fun onItemClick(item: String) {
+//
+//            }
+//        }
+//        rvEstablishmentPos.itemAnimator.changeDuration = 0
+//        rvEstablishmentPos.layoutManager = LinearLayoutManager(context)
+//        rvEstablishmentPos.adapter = adapter
+//        fetchData()
     }
 
     fun fetchData(){
-        mViewModel?.fetch()
-        mViewModel?.getEstablishmentItems()?.observe(this, Observer { adapter?.setItems(it!!) })
+//        mViewModel?.fetch()
+//        mViewModel?.getEstablishmentItems()?.observe(this, Observer { adapter?.setItems(it!!) })
     }
 
 }

@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.jim.multipos.environment.admin.ui.signin.AdminSignInViewModel"/>
+            type="com.jim.multipos.environment.admin.ui.signin.SignInViewModel"/>
     </data>
 
     <LinearLayout

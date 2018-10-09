@@ -79,4 +79,6 @@
     <string name="add_establishment">Add Establishment</string>
     <string name="warehouses">Warehouses</string>
     <string name="main_warehouse">Main Warehouse</string>
+    <string name="product_class_list_is_empty">Product Class list is empty</string>
+    <string name="the_list_is_empty">The list is empty!</string>
 </resources>

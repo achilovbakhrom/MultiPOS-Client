@@ -13,7 +13,7 @@ import com.jim.multipos.core.managers.DataManager
 import com.jim.multipos.utils.BASE_URL
 
 
-@Module
+@Module(includes = [ViewModelModule::class])
 class AppModule{
 
     @Provides
@@ -33,19 +33,11 @@ class AppModule{
         return retrofit.create(NetworkService::class.java)
     }
 
-
-//    @Provides
-//    @Singleton
-//    fun provideCalligraphyDefaultConfig(): CalligraphyConfig {
-//        return CalligraphyConfig.Builder()
-//                .setDefaultFontPath("fonts/source-sans-pro/SourceSansPro-Regular.ttf")
-//                .setFontAttrId(R.attr.fontPath)
-//                .build()
-//    }
-
     @Provides
     @Singleton
     fun provideDataManager(appDataManager: AppDataManager): DataManager {
         return appDataManager
     }
+
+
 }

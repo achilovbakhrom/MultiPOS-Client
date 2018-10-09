@@ -11,9 +11,8 @@ import android.widget.LinearLayout.VERTICAL
 import com.jim.multipos.BR
 import com.jim.multipos.R
 import com.jim.multipos.databinding.AdminDashboardPosLayoutBinding
-import com.jim.multipos.core.BaseClickListener
-import com.jim.multipos.core.BaseFragment
-import com.jim.multipos.environment.admin.ui.dashboard.adapter.DashboardPosAdapter
+import com.jim.multipos.core.BaseActions
+import com.jim.multipos.core.fragments.BaseFragment
 import com.jim.multipos.environment.admin.ui.dashboard.viewmodel.DashboardViewModel
 import kotlinx.android.synthetic.main.admin_dashboard_pos_layout.*
 import javax.inject.Inject
@@ -24,7 +23,7 @@ class DashboardPosFragment: BaseFragment<AdminDashboardPosLayoutBinding, Dashboa
     lateinit var mViewModelFactory: ViewModelProvider.Factory
     private var mViewModel: DashboardViewModel? = null
     private var mViewDataBinding: AdminDashboardPosLayoutBinding? = null
-    private var adapter: DashboardPosAdapter? = null
+//    private var adapter: DashboardPosAdapter? = null
 
 
     override fun getBindingVariable(): Int {
@@ -47,18 +46,18 @@ class DashboardPosFragment: BaseFragment<AdminDashboardPosLayoutBinding, Dashboa
     }
 
     fun setUpRV(){
-
-        adapter = DashboardPosAdapter(context!!)
-        adapter?.listener = object : BaseClickListener<String> {
-            override fun onItemClick(item: String) {
-                mViewModel?.fetchOrders(item)
-            }
-        }
-        rvPos.itemAnimator.changeDuration = 0
-        rvPos.layoutManager = LinearLayoutManager(context)
-        rvPos.addItemDecoration(DividerItemDecoration(context, VERTICAL))
-        rvPos.adapter = adapter
-        mViewModel?.getPosData()?.observe(this, Observer { adapter?.setItems(it!!) })
+//
+//        adapter = DashboardPosAdapter(context!!)
+//        adapter?.listener = object : BaseActions<String> {
+//            override fun onItemClick(item: String) {
+//                mViewModel?.fetchOrders(item)
+//            }
+//        }
+//        rvPos.itemAnimator.changeDuration = 0
+//        rvPos.layoutManager = LinearLayoutManager(context)
+//        rvPos.addItemDecoration(DividerItemDecoration(context, VERTICAL))
+//        rvPos.adapter = adapter
+//        mViewModel?.getPosData()?.observe(this, Observer { adapter?.setItems(it!!) })
 
     }
 }

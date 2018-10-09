@@ -1,20 +1,13 @@
 package com.jim.multipos.environment.admin.ui.company.left
 
-import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v7.widget.GridLayoutManager
 import android.view.View
 import com.jim.multipos.BR
 import com.jim.multipos.R
-import com.jim.multipos.core.BaseClickListener
-import com.jim.multipos.core.BaseFragment
-import com.jim.multipos.core.DoubleHorizontalFragment
-import com.jim.multipos.core.NotificationActions
+import com.jim.multipos.core.fragments.BaseFragment
 import com.jim.multipos.databinding.CompanyLeftFragmentBinding
-import com.jim.multipos.environment.admin.ui.company.CompanyAdapter
-import kotlinx.android.synthetic.main.company_left_fragment.*
 import javax.inject.Inject
 
 class CompanyLeftFragment: BaseFragment<CompanyLeftFragmentBinding, CompanyLeftViewModel>() {
@@ -24,7 +17,7 @@ class CompanyLeftFragment: BaseFragment<CompanyLeftFragmentBinding, CompanyLeftV
 
     private var mViewModel: CompanyLeftViewModel? = null
     private var mViewDataBinding: CompanyLeftFragmentBinding? = null
-    private var adapter: CompanyAdapter?=null
+//    private var adapter: CompanyAdapter?=null
 
     override fun getBindingVariable(): Int {
         return BR.viewModel
@@ -47,18 +40,18 @@ class CompanyLeftFragment: BaseFragment<CompanyLeftFragmentBinding, CompanyLeftV
     }
 
     private fun setUp() {
-        adapter = CompanyAdapter(context!!)
-        adapter?.listener = object : BaseClickListener<String>{
-            override fun onItemClick(item: String) {
-                sendNotification(DoubleHorizontalFragment.RIGHT_FRAGMENT_TAG, NotificationActions.POPULATE.value(), item)
-            }
-        }
-        rvCompanies.itemAnimator.changeDuration = 0
-        rvCompanies.layoutManager = GridLayoutManager(context, 2)
-        rvCompanies.adapter = adapter
-        mViewModel?.getLiveData()?.observe(this, Observer {
-            adapter?.setItems(it!!)
-        })
+//        adapter = CompanyAdapter(context!!)
+//        adapter?.listener = object : BaseActions<String>{
+//            override fun onItemClick(item: String) {
+//
+//            }
+//        }
+//        rvCompanies.itemAnimator.changeDuration = 0
+//        rvCompanies.layoutManager = GridLayoutManager(context, 2)
+//        rvCompanies.adapter = adapter
+//        mViewModel?.getLiveData()?.observe(this, Observer {
+//            adapter?.setItems(it!!)
+//        })
 
     }
 

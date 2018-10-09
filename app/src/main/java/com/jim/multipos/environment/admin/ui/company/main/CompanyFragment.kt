@@ -5,7 +5,7 @@ import android.arch.lifecycle.ViewModelProviders
 import android.support.v4.app.Fragment
 import com.jim.multipos.BR
 import com.jim.multipos.R
-import com.jim.multipos.core.DoubleHorizontalFragment
+import com.jim.multipos.core.fragments.DoubleHorizontalFragment
 import com.jim.multipos.databinding.SearchHeaderFragmentBinding
 import com.jim.multipos.environment.admin.ui.SearchViewModel
 import com.jim.multipos.environment.admin.ui.company.left.CompanyLeftFragment
@@ -64,7 +64,7 @@ import javax.inject.Inject
 //            }
 //        }
 //        adapter = CompanyAdapter(context!!)
-//        adapter?.listener = object : BaseClickListener<String> {
+//        adapter?.listener = object : BaseActions<String> {
 //            override fun onItemClick(item: String) {
 //                mViewModel?.companyName?.set(item)
 //                lastItem = item

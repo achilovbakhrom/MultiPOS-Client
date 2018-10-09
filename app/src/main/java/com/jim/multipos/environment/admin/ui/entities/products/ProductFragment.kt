@@ -9,8 +9,8 @@ import android.view.View
 import com.jim.multipos.BR
 import com.jim.multipos.R
 import com.jim.multipos.databinding.AdminProductLayoutBinding
-import com.jim.multipos.core.BaseClickListener
-import com.jim.multipos.core.BaseFragment
+import com.jim.multipos.core.BaseActions
+import com.jim.multipos.core.fragments.BaseFragment
 import kotlinx.android.synthetic.main.admin_product_layout.*
 import javax.inject.Inject
 
@@ -22,7 +22,7 @@ class ProductFragment: BaseFragment<AdminProductLayoutBinding, ProductViewModel>
     private var mViewModel: ProductViewModel? = null
     private var mViewDataBinding: AdminProductLayoutBinding? = null
 
-    private var adapter: ProductsAdapter?=null
+//    private var adapter: ProductsAdapter?=null
     private var lastItem: String?=null
 
     override fun getBindingVariable(): Int {
@@ -54,19 +54,19 @@ class ProductFragment: BaseFragment<AdminProductLayoutBinding, ProductViewModel>
         spinnerProductClass.setItems(arrayOf("poret", "llol", "00923"))
         spinnerProductClass.setItemSelected {  }
 
-        adapter = ProductsAdapter()
-        adapter?.listener = object : BaseClickListener<String> {
-            override fun onItemClick(item: String) {
-                mViewModel?.productName?.set(item)
-                lastItem = item
-            }
-
-        }
-
-        rvProducts.itemAnimator.changeDuration = 0
-        rvProducts.layoutManager = GridLayoutManager(context, 2)
-        rvProducts.adapter = adapter
-        mViewModel?.getProductItems()?.observe(this, Observer { adapter?.setItems(it!!) })
+//        adapter = ProductsAdapter()
+//        adapter?.listener = object : BaseActions<String> {
+//            override fun onItemClick(item: String) {
+//                mViewModel?.productName?.set(item)
+//                lastItem = item
+//            }
+//
+//        }
+//
+//        rvProducts.itemAnimator.changeDuration = 0
+//        rvProducts.layoutManager = GridLayoutManager(context, 2)
+//        rvProducts.adapter = adapter
+//        mViewModel?.getProductItems()?.observe(this, Observer { adapter?.setItems(it!!) })
     }
 
     private fun setUpEditor(){

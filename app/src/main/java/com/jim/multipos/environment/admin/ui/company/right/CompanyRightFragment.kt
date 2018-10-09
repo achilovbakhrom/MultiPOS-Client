@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.FrameLayout
 import com.android.databinding.library.baseAdapters.BR
 import com.jim.multipos.R
-import com.jim.multipos.core.BaseFragment
+import com.jim.multipos.core.fragments.BaseFragment
 import com.jim.multipos.core.Notifiable
 import com.jim.multipos.core.NotificationActions
 import com.jim.multipos.customView.CustomMpDialog

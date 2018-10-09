@@ -1,14 +1,13 @@
 package com.jim.multipos.environment.admin.ui
 
-import com.jim.multipos.core.managers.DataManager
+import com.jim.multipos.di.module.MainActivityFragmentBuildersModule
 import dagger.Module
-import dagger.Provides
+import dagger.android.ContributesAndroidInjector
 
 @Module
-class MainPageModule {
+abstract class MainPageModule {
 
-    @Provides
-    fun provideViewModel(dataManager: DataManager): MainPageViewModel {
-        return MainPageViewModel(dataManager)
-    }
+    @ContributesAndroidInjector(modules = [MainActivityFragmentBuildersModule::class])
+    abstract fun contributeMainActivity(): MainPageActivity
+
 }

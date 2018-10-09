@@ -7,7 +7,7 @@ import android.view.View
 import com.jim.multipos.BR
 import com.jim.multipos.R
 import com.jim.multipos.databinding.AdminDashboardEstablishmentLayoutBinding
-import com.jim.multipos.core.BaseFragment
+import com.jim.multipos.core.fragments.BaseFragment
 import com.jim.multipos.environment.admin.ui.dashboard.viewmodel.DashboardViewModel
 import kotlinx.android.synthetic.main.admin_dashboard_establishment_layout.*
 import javax.inject.Inject

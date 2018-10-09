@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import com.jim.multipos.R
+import com.jim.multipos.core.fragments.BaseFragment
 import kotlinx.android.synthetic.main.search_header_fragment.*
 
 abstract class SearchHeaderFragment<T: ViewDataBinding, V: BaseViewModel>: BaseFragment<T, V>() {
