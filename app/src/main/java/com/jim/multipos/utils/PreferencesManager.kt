@@ -2,8 +2,11 @@ package com.jim.multipos.utils
 
 import android.content.Context
 import android.preference.PreferenceManager
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class PrefsManager(context: Context) {
+@Singleton
+class PrefsManager @Inject constructor(context: Context) {
 
     var context: Context? = context
 

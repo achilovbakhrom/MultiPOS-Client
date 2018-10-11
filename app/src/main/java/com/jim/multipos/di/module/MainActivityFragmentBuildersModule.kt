@@ -3,6 +3,7 @@ package com.jim.multipos.di.module
 import com.jim.multipos.environment.admin.ui.company.left.CompanyLeftFragment
 import com.jim.multipos.environment.admin.ui.company.main.CompanyFragment
 import com.jim.multipos.environment.admin.ui.company.right.CompanyRightFragment
+import com.jim.multipos.environment.admin.ui.entities.EntitiesFragment
 import com.jim.multipos.environment.admin.ui.entities.productclass.ProductClassFragment
 import com.jim.multipos.environment.admin.ui.entities.productclass.productClassAddEdit.ProductClassAddEditFragment
 import com.jim.multipos.environment.admin.ui.entities.productclass.productClassList.ProductClassListFragment
@@ -58,4 +59,7 @@ abstract class MainActivityFragmentBuildersModule {
     @ContributesAndroidInjector
     abstract fun contributeEstablishmentRightFragment(): EstablishmentRightFragment
 
+    @NotNull
+    @ContributesAndroidInjector
+    abstract fun contirbuteEntityFragment(): EntitiesFragment
 }

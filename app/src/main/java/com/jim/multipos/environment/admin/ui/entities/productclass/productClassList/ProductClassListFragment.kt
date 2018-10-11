@@ -4,7 +4,7 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.View
 import com.jcodecraeer.xrecyclerview.XRecyclerView
 import com.jim.multipos.BR
@@ -27,6 +27,7 @@ class ProductClassListFragment: SingleListFragment<ProductClassListFragmentBindi
         if (savedInstanceState?.getInt("page") != null) {
             mViewModel.page.set(savedInstanceState.getInt("page"))
         }
+        mViewModel.onViewCreated()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -35,6 +36,7 @@ class ProductClassListFragment: SingleListFragment<ProductClassListFragmentBindi
     }
 
     override fun getBindingVariable(): Int = BR.viewModel
+
     override fun getViewModel(): ProductClassListViewModel {
         mViewModel = ViewModelProviders.of(this, mViewModelFactory).get(ProductClassListViewModel::class.java)
         return mViewModel
@@ -59,7 +61,8 @@ class ProductClassListFragment: SingleListFragment<ProductClassListFragmentBindi
     }
 
     override fun buttonAction() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
+
     }
 
 

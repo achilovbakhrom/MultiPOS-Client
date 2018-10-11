@@ -15,6 +15,9 @@ abstract class BaseViewModel(val mDataManager: DataManager) : ViewModel() {
 
     fun getDataManager(): DataManager = mDataManager
 
-    fun onSaveInstanceState(outState: Bundle) {}
+    open fun onSaveInstanceState(outState: Bundle) {}
+
+    open fun onViewCreated() {}
+
 
 }

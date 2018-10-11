@@ -52,7 +52,4 @@ abstract class DoubleHorizontalFragment<T: ViewDataBinding, V: BaseViewModel>: S
     override fun getLayoutId(): Int = R.layout.search_header_fragment
 
 
-    override fun isCustomTopBar(): Boolean = true
-
-
 }

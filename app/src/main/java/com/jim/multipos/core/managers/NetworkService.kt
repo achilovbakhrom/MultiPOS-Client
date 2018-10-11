@@ -5,10 +5,7 @@ import com.jim.multipos.core.MultiposResponseSingle
 import com.jim.multipos.environment.admin.model.ProductClass
 import com.jim.multipos.environment.admin.model.SignUp
 import io.reactivex.Single
-import retrofit2.http.DELETE
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.PUT
+import retrofit2.http.*
 
 interface NetworkService {
 
@@ -18,7 +15,10 @@ interface NetworkService {
 
     // Product class api
     @GET("/api/v1/product-class-list")
-    fun getProductClassList(page: Int = 0): Single<MultiposResponseList<ProductClass>>
+    fun getProductClassList(@Query("page") page: Int = 0,
+                            @Query("page_size") pageSize: Int = 20,
+                            @Header("Authorization") token: String,
+                            @Header("X-TENANT-ID") tenantId: String): Single<MultiposResponseList<ProductClass>>
 
     @GET("/api/v1/product-class/id")
     fun getProductClassById(): Single<MultiposResponseSingle<ProductClass>>
