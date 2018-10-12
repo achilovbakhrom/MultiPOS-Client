@@ -1,6 +1,5 @@
 package com.jim.multipos.core
 
-import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.os.Bundle
@@ -9,7 +8,7 @@ import io.reactivex.disposables.CompositeDisposable
 
 abstract class BaseViewModel(val mDataManager: DataManager) : ViewModel() {
     val compositeDisposable: CompositeDisposable = CompositeDisposable()
-    val isError = MutableLiveData<Boolean>()
+    val errorMessage = MutableLiveData<String>()
     val isLoading = MutableLiveData<Boolean>()
 
     override fun onCleared() {

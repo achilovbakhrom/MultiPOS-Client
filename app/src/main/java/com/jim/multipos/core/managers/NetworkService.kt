@@ -16,9 +16,8 @@ interface NetworkService {
     // Product class api
     @GET("/api/v1/product-class-list")
     fun getProductClassList(@Query("page") page: Int = 0,
-                            @Query("page_size") pageSize: Int = 20,
-                            @Header("Authorization") token: String,
-                            @Header("X-TENANT-ID") tenantId: String): Single<MultiposResponseList<ProductClass>>
+                            @Query("page_size") pageSize: Int = 20
+                            ): Single<MultiposResponseList<ProductClass>>
 
     @GET("/api/v1/product-class/id")
     fun getProductClassById(): Single<MultiposResponseSingle<ProductClass>>

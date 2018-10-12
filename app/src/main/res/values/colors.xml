@@ -9,5 +9,6 @@
     <color name="colorGray">#B9D5E6</color>
     <color name="colorLightGray">#EBF4FB</color>
     <color name="colorTitle">#205374</color>
+    <color name="colorAddEditBg">#F3F8FC</color>
     <color name="colorDarkTitle">@android:color/background_dark</color>
 </resources>

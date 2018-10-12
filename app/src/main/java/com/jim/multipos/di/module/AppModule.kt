@@ -1,5 +1,6 @@
 package com.jim.multipos.di.module
 
+
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import com.jim.multipos.core.managers.AppDataManager
 import com.jim.multipos.core.managers.AuthService
@@ -16,7 +17,7 @@ import javax.inject.Named
 import javax.inject.Singleton
 
 
-@Module(includes = [ViewModelModule::class])
+@Module(includes = [ContextModule::class, ViewModelModule::class])
 class AppModule{
 
     @Provides
@@ -39,7 +40,7 @@ class AppModule{
             val original = chain.request()
             val request = original.newBuilder().addHeader(
                     "Authorization",
-                    "Bearer ${prefManager.getValue("access_token", "")}"
+                    "Bearer ${prefManager.getValue("accessToken", "")}"
             ).addHeader("X-TENANT-ID", prefManager.getValue("tenant_id", ""))
                     .build()
             chain.proceed(request)

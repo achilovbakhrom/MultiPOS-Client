@@ -14,25 +14,22 @@ import javax.inject.Singleton
 @Singleton
 class AppDataManager @Inject constructor(var service: NetworkService, var authService: AuthService) : DataManager {
 
-    override fun signIn(username: String, password: String, grant_type: String, client_id: String, client_secret: String): Single<MultiposResponseSingle<SignIn>> {
-        return authService.signIn(username, password, grant_type, client_id, client_secret)
+    override fun signIn(singInRequest: SignInRequest): Single<MultiposResponseSingle<SignIn>> {
+        return authService.signIn(singInRequest)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
+                .subscribeOn(Schedulers.newThread())
     }
 
 
     override fun signUp(signUp: SignUp): Single<MultiposResponseSingle<SignUp>> {
         return authService.signUp(signUp)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-
+                .subscribeOn(Schedulers.newThread())
     }
 
-    override fun getProductClassList(page: Int, pageSize: Int, token: String, tenantId: String): Single<MultiposResponseList<ProductClass>> {
-
-        val a = 5
+    override fun getProductClassList(page: Int, pageSize: Int): Single<MultiposResponseList<ProductClass>> {
         return service
-                .getProductClassList(page = page, pageSize = pageSize, token = token, tenantId = tenantId)
+                .getProductClassList(page = page, pageSize = pageSize)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.newThread())
     }

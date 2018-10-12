@@ -6,9 +6,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class PrefsManager @Inject constructor(context: Context) {
-
-    var context: Context? = context
+class PrefsManager @Inject constructor(val context: Context?) {
 
     inline fun <reified T> getValue(key: String, defaultValue: T): T {
         val manager = PreferenceManager.getDefaultSharedPreferences(this.context)

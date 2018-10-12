@@ -1,5 +1,5 @@
 package com.jim.multipos.core.managers
 
-interface DataManager: NetworkService, AuthService{
+interface DataManager: NetworkService, AuthService {
 
 }

@@ -2,6 +2,7 @@ package com.jim.multipos.core.managers
 
 import com.jim.multipos.core.MultiposResponseSingle
 import com.jim.multipos.environment.admin.model.SignIn
+import com.jim.multipos.environment.admin.model.SignInRequest
 import com.jim.multipos.environment.admin.model.SignUp
 import io.reactivex.Single
 import retrofit2.http.Body
@@ -14,10 +15,6 @@ interface AuthService {
     fun signUp(@Body signUp: SignUp): Single<MultiposResponseSingle<SignUp>>
 
     @POST("/api/v1/sign-in")
-    fun signIn(@Field("username") username: String,
-               @Field("password") password: String,
-               @Field("grant_type") grant_type: String,
-               @Field("client_id") client_id: String,
-               @Field("client_secret") client_secret: String): Single<MultiposResponseSingle<SignIn>>
+    fun signIn(@Body request: SignInRequest): Single<MultiposResponseSingle<SignIn>>
 
 }

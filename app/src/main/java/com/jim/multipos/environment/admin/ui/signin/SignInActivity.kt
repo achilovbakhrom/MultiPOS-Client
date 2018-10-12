@@ -20,8 +20,7 @@ class SignInActivity: BaseActivity<AdminSigninLayoutBinding, SignInViewModel>(){
     @Inject
     lateinit var mViewModelFactory: ViewModelProvider.Factory
 
-    @Inject
-    lateinit var prefsManager: PrefsManager
+
 
     private var mSignInViewModel: SignInViewModel?=null
 
@@ -45,11 +44,25 @@ class SignInActivity: BaseActivity<AdminSigninLayoutBinding, SignInViewModel>(){
         super.onCreate(savedInstanceState)
         mSingInActivityDataBinding = getViewDataBinding()
         mSingInActivityDataBinding?.toolbar?.setOnBackButtonClick { onBackPressed() }
-        mSignInViewModel?.signInLiveData?.observe(this, Observer {
-            prefsManager.putValue("access_token", it?.data?.access_token)
-            prefsManager.putValue("refresh_token", it?.data?.refresh_token)
-            prefsManager.putValue("refresh_expires_in", it?.data?.refresh_expires_in)
+        mSignInViewModel?.isLoading?.observe(this, Observer {
+
+            if (it == true) {
+
+            } else {
+
+            }
+
         })
+
+        mSignInViewModel?.errorMessage?.observe(this, Observer {
+            if (it == null || it.isEmpty()) {
+
+            } else {
+
+            }
+        })
+
+
     }
 
     fun signIn(view: View){
@@ -57,7 +70,7 @@ class SignInActivity: BaseActivity<AdminSigninLayoutBinding, SignInViewModel>(){
         mSignInViewModel?.signIn(etUsername.text.toString(), etPassword.text.toString(),
                 "password",
                 "token-client",
-                "bf9f3da-8357-40b9-a2a9-ef9c875394a0")
+                "a680957e-ca57-4c40-aa9a-08157c5bae2c")
     }
 
     fun SignUp(view: View){
