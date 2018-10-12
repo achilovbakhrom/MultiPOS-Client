@@ -10,6 +10,7 @@ import com.jim.multipos.R
 import com.jim.multipos.customView.MpCheckbox
 import com.jim.multipos.databinding.AdminSignupInfoFragmentLayoutBinding
 import com.jim.multipos.core.fragments.BaseFragment
+import com.jim.multipos.environment.admin.model.SignUp
 import com.jim.multipos.environment.admin.ui.signup.SignUpViewModel
 import com.jim.multipos.environment.admin.ui.signup.model.SignUpModel
 import kotlinx.android.synthetic.main.admin_signup_info_fragment_layout.*
@@ -27,6 +28,8 @@ class InfoFragment: BaseFragment<AdminSignupInfoFragmentLayoutBinding, SignUpVie
     private var mViewDataBinding: AdminSignupInfoFragmentLayoutBinding? = null
     var myCalendar = Calendar.getInstance()
     private var country: String?=null
+    var pass: String?=null
+    var mail: String?=null
 
     override fun getBindingVariable(): Int {
         return BR.viewModel
@@ -44,8 +47,8 @@ class InfoFragment: BaseFragment<AdminSignupInfoFragmentLayoutBinding, SignUpVie
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mViewDataBinding = getViewDataBinding()
-
-        nextBtn.setOnClickListener { mViewModel!!.setInfoData(SignUpModel("","")) }
+        mail = arguments?.getString("email")
+        pass = arguments?.getString("pass")
         setUp()
     }
 
@@ -54,17 +57,6 @@ class InfoFragment: BaseFragment<AdminSignupInfoFragmentLayoutBinding, SignUpVie
         country = spinnerArray[0]
         spinnerCountry.setItems(spinnerArray)
         spinnerCountry.setItemSelected { country = spinnerArray[it] }
-//        spinnerCountry.adapter = SpinnerAdapter(context!!, spinnerArray)
-//        spinnerCountry.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-//
-//            override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, i: Int, l: Long) {
-//                spinnerCountry.setSelection(i)
-//            }
-//
-//            override fun onNothingSelected(adapterView: AdapterView<*>) {
-//
-//            }
-//        }
 
         maleCheckBox.listener = object : MpCheckbox.CheckedChangeListener{
             override fun onCheckedChange(isChecked: Boolean) {
@@ -97,12 +89,18 @@ class InfoFragment: BaseFragment<AdminSignupInfoFragmentLayoutBinding, SignUpVie
         }
 
         backBtn.setOnClickListener { activity!!.onBackPressed() }
+
+        nextBtn.setOnClickListener { mViewModel!!.sendInfo(SignUp(mail!!, pass!!,
+                etFirstName.text.toString(), etLastName.text.toString()))}
+
+
+
     }
 
     private fun updateLabel() {
         val myFormat = "MM/dd/yy"
         val sdf = SimpleDateFormat(myFormat, Locale.US)
 
-        etDatePicker.setText(sdf.format(myCalendar.getTime()))
+        etDatePicker.setText(sdf.format(myCalendar.time))
     }
 }

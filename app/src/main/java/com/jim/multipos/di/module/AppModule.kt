@@ -2,6 +2,7 @@ package com.jim.multipos.di.module
 
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import com.jim.multipos.core.managers.AppDataManager
+import com.jim.multipos.core.managers.AuthService
 import com.jim.multipos.core.managers.DataManager
 import com.jim.multipos.core.managers.NetworkService
 import com.jim.multipos.utils.BASE_URL
@@ -31,7 +32,6 @@ class AppModule{
     }
 
     @Provides
-    @Named("token")
     @Singleton
     fun provideOkHTTPClient(prefManager: PrefsManager) : OkHttpClient {
         val client = OkHttpClient.Builder()
@@ -61,8 +61,14 @@ class AppModule{
 
     @Provides
     @Singleton
-    fun provideNetworkService(retrofit: Retrofit): NetworkService {
+    fun provideNetworkService(@Named("token") retrofit: Retrofit): NetworkService {
         return retrofit.create(NetworkService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideAuthService(@Named("simple") retrofit: Retrofit): AuthService {
+        return retrofit.create(AuthService::class.java)
     }
 
     @Provides

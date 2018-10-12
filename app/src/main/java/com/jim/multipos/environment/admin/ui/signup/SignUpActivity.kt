@@ -58,9 +58,13 @@ class SignUpActivity : BaseActivity<AdminSignupLayoutBinding, SignUpViewModel>()
         mSignUpViewModel!!.getInfoData().observe(this, Observer {
             openConfirmationFragment()
         })
+
+        mSignUpViewModel?.response?.observe(this, Observer {
+            it
+        })
     }
 
-    fun openInfoFragment(email: String?, pass: String?){
+    private fun openInfoFragment(email: String?, pass: String?){
         val fragment = InfoFragment()
         val args = Bundle()
         args.putString("email", email)
@@ -84,7 +88,7 @@ class SignUpActivity : BaseActivity<AdminSignupLayoutBinding, SignUpViewModel>()
         }
         super.onBackPressed()
     }
-    fun openConfirmationFragment(){
+    private fun openConfirmationFragment(){
         addFragment(ConfirmationFragment(), R.id.container)
         infoCircle.background = getDrawable(R.drawable.reg_completed_circle)
         completeCircle.background = getDrawable(R.drawable.reg_current_circle)

@@ -33,8 +33,4 @@ interface NetworkService {
     fun createProductClass(): Single<MultiposResponseSingle<ProductClass>>
 
 
-
-
-
-
 }

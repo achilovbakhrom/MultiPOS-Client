@@ -1,12 +1,16 @@
 package com.jim.multipos.core
 
+import android.arch.lifecycle.LiveData
+import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.os.Bundle
 import com.jim.multipos.core.managers.DataManager
 import io.reactivex.disposables.CompositeDisposable
 
 abstract class BaseViewModel(val mDataManager: DataManager) : ViewModel() {
-    var compositeDisposable: CompositeDisposable = CompositeDisposable()
+    val compositeDisposable: CompositeDisposable = CompositeDisposable()
+    val isError = MutableLiveData<Boolean>()
+    val isLoading = MutableLiveData<Boolean>()
 
     override fun onCleared() {
         compositeDisposable.dispose()
