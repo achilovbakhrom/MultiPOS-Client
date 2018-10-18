@@ -1,27 +1,24 @@
 package com.jim.multipos.environment.admin.ui.entities.productclass.productClassAddEdit
 
-import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.View
-import com.jcodecraeer.xrecyclerview.XRecyclerView
 import com.jim.multipos.BR
-import com.jim.multipos.core.fragments.SingleListFragment
+import com.jim.multipos.R
+import com.jim.multipos.core.fragments.BaseAddEditFragment
 import com.jim.multipos.databinding.ProductClassListFragmentBinding
 import com.jim.multipos.environment.admin.ui.entities.productclass.productClassList.ProductClassListViewModel
-import kotlinx.android.synthetic.main.single_list_fragment.*
 import javax.inject.Inject
 
-class ProductClassAddEditFragment: SingleListFragment<ProductClassListFragmentBinding, ProductClassListViewModel>() {
+class ProductClassAddEditFragment: BaseAddEditFragment<ProductClassListFragmentBinding, ProductClassListViewModel>() {
+
 
     @Inject
     lateinit var mViewModelFactory: ViewModelProvider.Factory
 
     lateinit var mViewModel: ProductClassListViewModel
-
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -30,39 +27,51 @@ class ProductClassAddEditFragment: SingleListFragment<ProductClassListFragmentBi
         }
     }
 
+    override fun getContentLayoutId(): Int = R.layout.product_class_add_edit_fragment
+
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putInt("page", mViewModel.page.get()!!)
     }
 
     override fun getBindingVariable(): Int = BR.viewModel
+
     override fun getViewModel(): ProductClassListViewModel {
         mViewModel = ViewModelProviders.of(this, mViewModelFactory).get(ProductClassListViewModel::class.java)
         return mViewModel
     }
 
-    override fun initRV() {
-        rvSingle.setLoadingMoreEnabled(true)
-        rvSingle.setLoadingListener(object : XRecyclerView.LoadingListener {
-            override fun onLoadMore() {
-                mViewModel.loadMore()
-            }
-            override fun onRefresh() {
-                mViewModel.refresh()
-            }
-        })
-    }
-
     override fun initObservers() {
-        mViewModel.data.observe(this, Observer {
 
-        })
     }
 
-    override fun buttonAction() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun delete() {
+        Log.d("sss", "delete")
     }
 
+    override fun editModeCanceled() {
+        Log.d("sss", "editModeCanceled")
+    }
 
+    override fun newAddModeCanceled() {
+        Log.d("sss", "newAddModeCanceled")
+    }
+
+    override fun newItemAddClicked() {
+        Log.d("sss", "newItemAddClicked")
+    }
+
+    override fun onAddMode() {
+        Log.d("sss", "onAddMode")
+
+    }
+
+    override fun editItemSaveClicked() {
+        Log.d("sss", "editItemSaveClicked")
+    }
+
+    override fun onEditMode() {
+        Log.d("sss", "onEditMode")
+    }
 
 }

@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".environment.admin.ui.signin.SignInActivity">
+        <activity android:name=".environment.admin.ui.MainPageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".environment.admin.ui.signup.SignUpActivity"/>
-        <activity android:name=".environment.admin.ui.MainPageActivity"/>
+        <activity android:name=".environment.admin.ui.signin.SignInActivity"/>
     </application>
 
 </manifest>

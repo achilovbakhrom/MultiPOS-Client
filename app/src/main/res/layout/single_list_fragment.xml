@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
+
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/list_fragment_bg">
+
+
+
 
         <ProgressBar
             android:layout_width="wrap_content"
@@ -15,15 +20,26 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/the_list_is_empty"
-            android:textColor="@color/colorDarkBlue"
+            android:textColor="@color/colorWhite"
             android:layout_gravity="center"
-            android:visibility="gone" />
+            android:text="@string/add_product_class"
+            android:id="@+id/tvEmpty"
+            android:textAlignment="center"
+            />
 
         <com.jcodecraeer.xrecyclerview.XRecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/rvSingle"
+            android:visibility="gone"
+            />
+
+        <ImageView
+            android:layout_width="@dimen/three_hundred_dp"
+            android:layout_height="@dimen/three_hundred_dp"
+            android:background="@drawable/left_panel_bg"
+            android:tint="@color/colorGray"
+            android:layout_gravity="center"
             />
 
         <android.support.design.widget.FloatingActionButton

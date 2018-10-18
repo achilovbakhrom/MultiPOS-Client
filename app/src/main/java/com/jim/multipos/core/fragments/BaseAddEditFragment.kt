@@ -17,7 +17,8 @@ abstract class BaseAddEditFragment<V: ViewDataBinding, T: BaseViewModel>: BaseFr
             field = value
             changeMode()
         }
-    var isNewAdd = false
+    var isNewAdd = true
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -26,6 +27,8 @@ abstract class BaseAddEditFragment<V: ViewDataBinding, T: BaseViewModel>: BaseFr
             mode = savedInstanceState.getSerializable("mode") as AddEditModes
             isNewAdd = savedInstanceState.getSerializable("isNewAdd") as Boolean
         }
+
+
 
         btnLeft.setOnClickListener {
             if (mode == AddEditModes.ADD) {
@@ -54,7 +57,11 @@ abstract class BaseAddEditFragment<V: ViewDataBinding, T: BaseViewModel>: BaseFr
                 mode = AddEditModes.ADD
             }
         }
+        initObservers()
     }
+
+    abstract fun initObservers()
+
 
     internal open fun <M: Serializable> setModel(mModel: M?) {
         isNewAdd = mModel == null

@@ -39,7 +39,7 @@ class SignUpViewModel @Inject constructor(mDataManager: DataManager) : BaseViewM
                         isLoading.value = false
                     }, {
                         isLoading.value = false
-                        isError.value = false
+                        errorMessage.value = it.localizedMessage
                     }))
     }
 

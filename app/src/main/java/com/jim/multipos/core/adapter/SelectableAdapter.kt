@@ -1,9 +1,10 @@
 package com.jim.multipos.core.adapter
 
 import com.jim.multipos.core.BaseActions
+import java.io.Serializable
 
 
-abstract class SelectableAdapter<T, VH: BaseViewHolder<T>>: BaseAdapter<T, VH>() {
+abstract class SelectableAdapter<T: Serializable, VH: BaseViewHolder<T>>: BaseAdapter<T, VH>() {
 
     var listener: BaseActions<T>? = null
 

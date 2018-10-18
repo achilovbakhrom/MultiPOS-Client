@@ -11,4 +11,5 @@
     <color name="colorTitle">#205374</color>
     <color name="colorAddEditBg">#F3F8FC</color>
     <color name="colorDarkTitle">@android:color/background_dark</color>
+    <color name="list_fragment_bg">#44718E</color>
 </resources>

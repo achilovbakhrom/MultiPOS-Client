@@ -64,8 +64,6 @@ class CompanyRightFragment: BaseFragment<CompanyRightFragmentBinding, CompanyRig
             }
         }
 
-
-
         btnEdit.setOnClickListener {
                         if(btnEdit.text == getString(R.string.edit))
                             mViewModel?.isEditable?.set(true)

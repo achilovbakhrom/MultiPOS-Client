@@ -4,23 +4,29 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import com.jcodecraeer.xrecyclerview.XRecyclerView
 import com.jim.multipos.BR
+import com.jim.multipos.R
 import com.jim.multipos.core.fragments.SingleListFragment
 import com.jim.multipos.databinding.ProductClassListFragmentBinding
+import com.jim.multipos.environment.admin.model.ProductClass
+import com.jim.multipos.environment.admin.ui.entities.productclass.productClassList.adapter.ProductClassListAdapter
 import kotlinx.android.synthetic.main.single_list_fragment.*
 import javax.inject.Inject
 
-class ProductClassListFragment: SingleListFragment<ProductClassListFragmentBinding, ProductClassListViewModel>() {
+class ProductClassListFragment: SingleListFragment<
+        ProductClass,
+        ProductClassListAdapter.ProductClassViewHolder,
+        ProductClassListAdapter,
+        ProductClassListFragmentBinding,
+        ProductClassListViewModel
+        >() {
 
     @Inject
     lateinit var mViewModelFactory: ViewModelProvider.Factory
 
     lateinit var mViewModel: ProductClassListViewModel
-
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -56,15 +62,18 @@ class ProductClassListFragment: SingleListFragment<ProductClassListFragmentBindi
 
     override fun initObservers() {
         mViewModel.data.observe(this, Observer {
+            if (it == null || it.isEmpty()) {
 
+            } else {
+
+            }
         })
     }
 
     override fun buttonAction() {
 
-
     }
 
-
+    override fun emptyText(): String = getString(R.string.add_product_class)
 
 }

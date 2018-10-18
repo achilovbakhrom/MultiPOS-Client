@@ -18,13 +18,9 @@ class ProductClassListAdapter(val context: Context): SelectableAdapter<ProductCl
     }
 
     inner class ProductClassViewHolder(view: View?): BaseViewHolder<ProductClass>(view) {
-        var productClassName: TextView
-        var productClassDescription: TextView
 
-        init {
-            productClassName = itemView.findViewById(R.id.tvProductClassName)
-            productClassDescription = itemView.findViewById(R.id.tvProductClassDescription)
-        }
+        var productClassName: TextView = itemView.findViewById(R.id.tvProductClassName)
+        var productClassDescription: TextView = itemView.findViewById(R.id.tvProductClassDescription)
 
         override fun onBind(item: ProductClass, position: Int, isSelected: Boolean) {
             productClassName.text = item.name
@@ -36,6 +32,4 @@ class ProductClassListAdapter(val context: Context): SelectableAdapter<ProductCl
             }
         }
     }
-
-
 }

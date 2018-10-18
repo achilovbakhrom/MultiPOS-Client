@@ -7,37 +7,44 @@ import android.view.View
 import com.jim.multipos.BR
 import com.jim.multipos.R
 import com.jim.multipos.core.fragments.BaseFragment
+import com.jim.multipos.core.fragments.SingleListFragment
 import com.jim.multipos.databinding.CompanyLeftFragmentBinding
 import javax.inject.Inject
 
-class CompanyLeftFragment: BaseFragment<CompanyLeftFragmentBinding, CompanyLeftViewModel>() {
+class CompanyLeftFragment: SingleListFragment<CompanyLeftFragmentBinding, CompanyLeftViewModel>() {
+
+
 
     @Inject
     lateinit var mViewModelFactory: ViewModelProvider.Factory
 
     private var mViewModel: CompanyLeftViewModel? = null
-    private var mViewDataBinding: CompanyLeftFragmentBinding? = null
+
 //    private var adapter: CompanyAdapter?=null
 
     override fun getBindingVariable(): Int {
         return BR.viewModel
     }
 
-    override fun getLayoutId(): Int {
-        return R.layout.company_left_fragment
-    }
 
     override fun getViewModel(): CompanyLeftViewModel {
         mViewModel = ViewModelProviders.of(this, mViewModelFactory).get(CompanyLeftViewModel::class.java)
         return mViewModel as CompanyLeftViewModel
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        mViewDataBinding = getViewDataBinding()
-        setUp()
+    override fun initRV() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
+
+    override fun initObservers() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun buttonAction() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+
 
     private fun setUp() {
 //        adapter = CompanyAdapter(context!!)

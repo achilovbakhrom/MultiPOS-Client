@@ -5,14 +5,13 @@ import android.arch.lifecycle.ViewModelProviders
 import android.support.v4.app.Fragment
 import com.jim.multipos.BR
 import com.jim.multipos.core.fragments.DoubleHorizontalFragment
-import com.jim.multipos.core.EmptyViewModel
 import com.jim.multipos.databinding.TabbedFragmentBinding
 import com.jim.multipos.environment.admin.ui.SearchViewModel
+import com.jim.multipos.environment.admin.ui.entities.productclass.productClassAddEdit.ProductClassAddEditFragment
 import com.jim.multipos.environment.admin.ui.entities.productclass.productClassList.ProductClassListFragment
 import javax.inject.Inject
 
 class ProductClassFragment: DoubleHorizontalFragment<TabbedFragmentBinding, SearchViewModel>() {
-
 
     @Inject
     lateinit var mViewModelFactory: ViewModelProvider.Factory
@@ -24,7 +23,7 @@ class ProductClassFragment: DoubleHorizontalFragment<TabbedFragmentBinding, Sear
     }
 
     override fun getRightFragment(): Fragment? {
-        return Fragment()
+        return ProductClassAddEditFragment()
     }
 
     override fun getBindingVariable(): Int = BR.viewModel

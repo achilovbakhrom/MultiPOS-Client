@@ -73,7 +73,6 @@
     <string name="name">Name</string>
     <string name="barcode">Barcode</string>
     <string name="sku">SKU</string>
-    <string name="add_product_class">Add Product Class</string>
     <string name="warehouse">Warehouse</string>
     <string name="business_occupation">Business Occupation</string>
     <string name="add_establishment">Add Establishment</string>
@@ -81,4 +80,5 @@
     <string name="main_warehouse">Main Warehouse</string>
     <string name="product_class_list_is_empty">Product Class list is empty</string>
     <string name="the_list_is_empty">The list is empty!</string>
+    <string name="add_product_class">Add \n Product Class</string>
 </resources>

@@ -8,7 +8,6 @@ import javax.inject.Inject
 
 class SignInViewModel @Inject constructor(mDataManager: DataManager, val prefsManager: PrefsManager) : BaseViewModel(mDataManager){
 
-
     fun signIn(username: String, password: String, grantType: String, clientId: String, clientSecret: String){
         isLoading.value = true
         compositeDisposable

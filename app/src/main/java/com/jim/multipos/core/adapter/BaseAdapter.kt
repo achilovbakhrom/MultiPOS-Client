@@ -1,12 +1,11 @@
 package com.jim.multipos.core.adapter
 
 import android.support.v7.widget.RecyclerView
+import java.io.Serializable
 
-abstract class BaseAdapter<T, VH: BaseViewHolder<T>>: RecyclerView.Adapter<VH>() {
+abstract class BaseAdapter<T: Serializable, VH: BaseViewHolder<T>>: RecyclerView.Adapter<VH>() {
 
     internal var items = mutableListOf<T>()
-
-
 
     override fun getItemCount(): Int {
         return items.size
@@ -21,9 +20,6 @@ abstract class BaseAdapter<T, VH: BaseViewHolder<T>>: RecyclerView.Adapter<VH>()
         items.addAll(list)
         notifyDataSetChanged()
     }
-
-
-
 
 }
 

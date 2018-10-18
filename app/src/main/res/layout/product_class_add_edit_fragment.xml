@@ -18,22 +18,22 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/twenty_five_dp">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="@dimen/hundred_forty_dp"
             android:layout_height="wrap_content"
             android:text="@string/name"
             android:layout_marginStart="@dimen/twenty_dp"
             android:textColor="@color/colorTitle"
             android:textSize="@dimen/sixteen_dp"
-            android:layout_weight="0.4"
+
             />
 
         <com.jim.multipos.customView.MpEditText
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.6"
             android:layout_marginStart="@dimen/ten_dp"
             android:layout_marginEnd="@dimen/ten_dp"
             />
@@ -48,44 +48,48 @@
         android:layout_marginRight="@dimen/ten_dp">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="@dimen/hundred_forty_dp"
             android:layout_height="wrap_content"
             android:text="@string/is_active"
             android:layout_marginStart="@dimen/twenty_dp"
             android:textColor="@color/colorTitle"
-            android:textSize="@dimen/sixteen_dp"
-            android:layout_weight="1" />
+            android:textSize="@dimen/sixteen_dp"/>
 
         <Switch
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true" />
+            android:checked="true"
+            android:layout_weight="1"/>
 
     </LinearLayout>
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/ten_dp">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="@dimen/hundred_forty_dp"
             android:layout_height="wrap_content"
             android:text="@string/description"
             android:layout_marginStart="@dimen/twenty_dp"
             android:textColor="@color/colorTitle"
             android:textSize="@dimen/sixteen_dp"
-            android:layout_weight="0.4"
             />
 
-        <com.jim.multipos.customView.MpEditText
-            android:layout_width="wrap_content"
+        <com.jim.multipos.customView.MpEditTextMultiline
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.6"
             android:layout_marginStart="@dimen/ten_dp"
             android:layout_marginEnd="@dimen/ten_dp"
-            android:minLines="4"
-            />
+            android:inputType="textCapSentences|textNoSuggestions|textMultiLine"
+            android:minLines="3"
+            android:maxLines="6"
+            android:gravity="top"
+            android:layout_weight="1"
+            android:ems="10" />
+
 
     </LinearLayout>
 

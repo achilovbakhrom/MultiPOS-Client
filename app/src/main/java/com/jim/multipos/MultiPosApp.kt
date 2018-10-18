@@ -8,7 +8,6 @@ import dagger.android.HasActivityInjector
 import javax.inject.Inject
 
 
-
 class MultiPosApp : Application(), HasActivityInjector{
 
     @Inject
