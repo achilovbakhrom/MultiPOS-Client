@@ -4,9 +4,9 @@
 //import android.view.ViewGroup
 //import com.jim.multipos.databinding.AdminItemEstablishmentBinding
 //import com.jim.multipos.environment.admin.ui.establishment.viewmodel.EstablishmentItemViewModel
-//import com.jim.multipos.core.adapter.BaseAdapter
+//import com.jim.multipos.customView.recyclerView.adapter.BaseAdapter
 //import com.jim.multipos.core.BaseActions
-//import com.jim.multipos.core.adapter.BaseViewHolder
+//import com.jim.multipos.customView.recyclerView.adapter.BaseViewHolder
 //
 //class EstablishmentAdapter: BaseAdapter<String, BaseActions<String>, EstablishmentAdapter.EstablishmentViewHolder>() {
 //

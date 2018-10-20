@@ -1,12 +1,5 @@
 package com.jim.multipos.environment.admin.ui.entities.products
 
-import android.view.LayoutInflater
-import android.view.ViewGroup
-import com.jim.multipos.databinding.AdminItemProductsBinding
-import com.jim.multipos.core.adapter.BaseAdapter
-import com.jim.multipos.core.BaseActions
-import com.jim.multipos.core.adapter.BaseViewHolder
-
 //class ProductsAdapter: BaseAdapter<String, BaseActions<String>, ProductsAdapter.ProductViewHolder>() {
 //
 //    var lastPos = -1

@@ -21,8 +21,6 @@ class DashboardPosFragment: BaseFragment<AdminDashboardPosLayoutBinding, Dashboa
 
     @Inject
     lateinit var mViewModelFactory: ViewModelProvider.Factory
-    private var mViewModel: DashboardViewModel? = null
-    private var mViewDataBinding: AdminDashboardPosLayoutBinding? = null
 //    private var adapter: DashboardPosAdapter? = null
 
 

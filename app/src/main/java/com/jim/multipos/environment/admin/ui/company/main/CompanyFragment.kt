@@ -118,7 +118,6 @@ class CompanyFragment: DoubleHorizontalFragment<SearchHeaderFragmentBinding, Sea
 
     @Inject
     lateinit var mViewModelFactory: ViewModelProvider.Factory
-    var mViewModel: SearchViewModel? = null
 
     override fun getBindingVariable(): Int {
         return BR.viewModel

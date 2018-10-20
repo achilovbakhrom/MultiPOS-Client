@@ -16,8 +16,6 @@ class DashboardEstablishmentFragment: BaseFragment<AdminDashboardEstablishmentLa
 
     @Inject
     lateinit var mViewModelFactory: ViewModelProvider.Factory
-    private var mViewModel: DashboardViewModel?=null
-    private var mViewDataBinding: AdminDashboardEstablishmentLayoutBinding?=null
 
 
     override fun getBindingVariable(): Int {

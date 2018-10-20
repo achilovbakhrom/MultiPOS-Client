@@ -19,9 +19,6 @@ class ProductFragment: BaseFragment<AdminProductLayoutBinding, ProductViewModel>
     @Inject
     lateinit var mViewModelFactory: ViewModelProvider.Factory
 
-    private var mViewModel: ProductViewModel? = null
-    private var mViewDataBinding: AdminProductLayoutBinding? = null
-
 //    private var adapter: ProductsAdapter?=null
     private var lastItem: String?=null
 

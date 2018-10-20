@@ -15,23 +15,17 @@
             android:layout_height="wrap_content"
             android:theme = "@style/CircularProgress"
             android:layout_gravity="center"
-            android:visibility="gone" />
+            android:visibility="gone"
+            android:id="@+id/pbProgress"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorWhite"
             android:layout_gravity="center"
-            android:text="@string/add_product_class"
+            android:text="@string/add_product_class_nl"
             android:id="@+id/tvEmpty"
             android:textAlignment="center"
-            />
-
-        <com.jcodecraeer.xrecyclerview.XRecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/rvSingle"
-            android:visibility="gone"
             />
 
         <ImageView
@@ -40,7 +34,18 @@
             android:background="@drawable/left_panel_bg"
             android:tint="@color/colorGray"
             android:layout_gravity="center"
+            android:visibility="gone"
+            android:id="@+id/ivEmpty"
             />
+
+        <com.jim.multipos.customView.recyclerView.MPRecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/rvSingle"
+            android:visibility="gone"
+            />
+
+
 
         <android.support.design.widget.FloatingActionButton
             android:layout_width="wrap_content"

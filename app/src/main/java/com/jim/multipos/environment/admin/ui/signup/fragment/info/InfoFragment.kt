@@ -24,8 +24,6 @@ class InfoFragment: BaseFragment<AdminSignupInfoFragmentLayoutBinding, SignUpVie
     @Inject
     lateinit var mViewModelFactory: ViewModelProvider.Factory
 
-    private var mViewModel: SignUpViewModel? = null
-    private var mViewDataBinding: AdminSignupInfoFragmentLayoutBinding? = null
     var myCalendar = Calendar.getInstance()
     private var country: String?=null
     var pass: String?=null

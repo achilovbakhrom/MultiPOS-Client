@@ -23,8 +23,6 @@ class CompanyRightFragment: BaseFragment<CompanyRightFragmentBinding, CompanyRig
     @Inject
     lateinit var mViewModelFactory: ViewModelProvider.Factory
 
-    private var mViewModel: CompanyRightViewModel? = null
-    private var mViewDataBinding: CompanyRightFragmentBinding? = null
     private var lastItem: String?=null
 
 

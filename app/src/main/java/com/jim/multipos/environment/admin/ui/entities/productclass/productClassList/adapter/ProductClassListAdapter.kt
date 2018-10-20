@@ -6,11 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.jim.multipos.R
-import com.jim.multipos.core.adapter.BaseViewHolder
-import com.jim.multipos.core.adapter.SelectableAdapter
+import com.jim.multipos.customView.recyclerView.adapter.BaseSelectableAdapter
+import com.jim.multipos.customView.recyclerView.adapter.BaseViewHolder
 import com.jim.multipos.environment.admin.model.ProductClass
+import com.jim.multipos.test.ProdTestViewHolder
 
-class ProductClassListAdapter(val context: Context): SelectableAdapter<ProductClass, ProductClassListAdapter.ProductClassViewHolder>() {
+
+class ProductClassListAdapter(val context: Context, viewHolder: ProdTestViewHolder): BaseSelectableAdapter<ProductClass>(viewHolder = viewHolder) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductClassViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.product_class_list_item, parent, false)
@@ -18,13 +20,16 @@ class ProductClassListAdapter(val context: Context): SelectableAdapter<ProductCl
     }
 
     inner class ProductClassViewHolder(view: View?): BaseViewHolder<ProductClass>(view) {
+        override fun newInstance(context: Context): BaseViewHolder<ProductClass> {
+            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        }
 
         var productClassName: TextView = itemView.findViewById(R.id.tvProductClassName)
         var productClassDescription: TextView = itemView.findViewById(R.id.tvProductClassDescription)
 
-        override fun onBind(item: ProductClass, position: Int, isSelected: Boolean) {
-            productClassName.text = item.name
-            productClassName.text = item.description
+        override fun onBind(item: ProductClass?, position: Int, isSelected: Boolean) {
+            productClassName.text = item?.name ?: ""
+            productClassName.text = item?.description ?: ""
             if (isSelected) {
                 itemView.setBackgroundResource(R.color.colorDarkBlue)
             } else {

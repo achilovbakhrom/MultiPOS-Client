@@ -15,9 +15,6 @@ class EstablishmentCenterFragment: BaseFragment<EstablishmentCenterFragmentBindi
     @Inject
     lateinit var mViewModelFactory: ViewModelProvider.Factory
 
-    private var mViewModel: EstablishmentCenterViewModel? = null
-    private var mViewDataBinding: EstablishmentCenterFragmentBinding? = null
-//    private var adapter: EstablishmentPosAdapter?=null
 
     override fun getBindingVariable(): Int {
         return BR.viewModel

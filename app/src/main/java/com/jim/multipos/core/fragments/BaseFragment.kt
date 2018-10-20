@@ -16,8 +16,8 @@ import dagger.android.support.AndroidSupportInjection
 
 abstract class BaseFragment<T: ViewDataBinding, V: BaseViewModel> : Fragment(), BackPressable {
 
-    private var mViewDataBinding: T? = null
-    private var mViewModel: V? = null
+    internal var mViewDataBinding: T? = null
+    internal var mViewModel: V? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidSupportInjection.inject(this)

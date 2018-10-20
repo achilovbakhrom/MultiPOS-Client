@@ -16,7 +16,6 @@ class ProductClassFragment: DoubleHorizontalFragment<TabbedFragmentBinding, Sear
     @Inject
     lateinit var mViewModelFactory: ViewModelProvider.Factory
 
-    var mViewModel: SearchViewModel? = null
 
     override fun getLeftFragment(): Fragment? {
         return ProductClassListFragment()

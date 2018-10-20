@@ -18,12 +18,10 @@ class ProductClassAddEditFragment: BaseAddEditFragment<ProductClassListFragmentB
     @Inject
     lateinit var mViewModelFactory: ViewModelProvider.Factory
 
-    lateinit var mViewModel: ProductClassListViewModel
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (savedInstanceState?.getInt("page") != null) {
-            mViewModel.page.set(savedInstanceState.getInt("page"))
+            mViewModel?.page?.set(savedInstanceState.getInt("page"))
         }
     }
 
@@ -31,14 +29,14 @@ class ProductClassAddEditFragment: BaseAddEditFragment<ProductClassListFragmentB
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putInt("page", mViewModel.page.get()!!)
+        outState.putInt("page", mViewModel?.page?.get()!!)
     }
 
     override fun getBindingVariable(): Int = BR.viewModel
 
     override fun getViewModel(): ProductClassListViewModel {
         mViewModel = ViewModelProviders.of(this, mViewModelFactory).get(ProductClassListViewModel::class.java)
-        return mViewModel
+        return mViewModel as ProductClassListViewModel
     }
 
     override fun initObservers() {

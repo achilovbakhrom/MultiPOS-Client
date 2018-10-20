@@ -15,9 +15,6 @@ class EstablishmentLeftFragment: BaseFragment<EstablishmentLeftFragmentBinding, 
     @Inject
     lateinit var mViewModelFactory: ViewModelProvider.Factory
 
-    private var mViewModel: EstablishmentLeftViewModel? = null
-    private var mViewDataBinding: EstablishmentLeftFragmentBinding? = null
-//    private var adapter: EstablishmentAdapter?=null
 
 
     override fun getBindingVariable(): Int {

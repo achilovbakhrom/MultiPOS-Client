@@ -1,6 +1,11 @@
 package com.jim.multipos.utils
 
 import android.content.Context
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.LinearLayout
+import com.jim.multipos.customView.recyclerView.adapter.BaseViewHolder
+import java.io.Serializable
 import java.util.regex.Pattern
 
 
@@ -18,3 +23,5 @@ fun isEmailValid(email: String): Boolean {
     val matcher = pattern.matcher(email)
     return matcher.matches()
 }
+
+

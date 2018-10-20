@@ -19,8 +19,6 @@ class GeneralFragment: BaseFragment<AdminSignupGeneralFragmentLayoutBinding, Sig
     @Inject
     lateinit var mViewModelFactory: ViewModelProvider.Factory
 
-    private var mViewModel: SignUpViewModel? = null
-    private var mViewDataBinding: AdminSignupGeneralFragmentLayoutBinding? = null
 
     override fun getBindingVariable(): Int {
         return BR.viewModel

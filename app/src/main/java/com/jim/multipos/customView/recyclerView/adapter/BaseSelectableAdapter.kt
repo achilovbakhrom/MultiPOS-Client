@@ -1,10 +1,10 @@
-package com.jim.multipos.core.adapter
+package com.jim.multipos.customView.recyclerView.adapter
 
 import com.jim.multipos.core.BaseActions
 import java.io.Serializable
 
 
-abstract class SelectableAdapter<T: Serializable, VH: BaseViewHolder<T>>: BaseAdapter<T, VH>() {
+abstract class BaseSelectableAdapter<T: Serializable>(viewHolder: BaseViewHolder<T>): BaseAdapter<T>(viewHolder) {
 
     var listener: BaseActions<T>? = null
 
@@ -21,9 +21,10 @@ abstract class SelectableAdapter<T: Serializable, VH: BaseViewHolder<T>>: BaseAd
             }
         }
 
-    override fun onBindViewHolder(holder: VH, position: Int) {
+
+    override fun onBindViewHolder(holder: BaseViewHolder<T>, position: Int) {
         holder.itemView?.setOnClickListener {
-            onBeginingSelection(viewHodler = holder, lastSelection = selectedPosition)
+            holder.onBeginSelection(lastSelection = selectedPosition)
             if (getMode() == SelectionMode.MULTIPLE) {
                 if (selectedPositions.contains(position)) {
                     selectedPositions.remove(position)
@@ -37,20 +38,24 @@ abstract class SelectableAdapter<T: Serializable, VH: BaseViewHolder<T>>: BaseAd
             if (position < items.size) {
                 when(getMode()) {
                     SelectionMode.SINGLE -> {
-                        onSingleModeItemSelected(item = items[position], position = selectedPosition, viewHodler = holder)
+                        holder.onSingleModeItemSelected(item = items[position], position = selectedPosition)
+                        listener?.onItemClick(item = items[position], position = selectedPosition)
                     }
                     SelectionMode.MULTIPLE -> {
-                        onMultipleModeitemSelected(selecteditems, selectedPositions, viewHodler = holder)
+                        holder.onMultipleModeItemSelected(selectedItems, selectedPositions)
                     }
                 }
             }
-
+            notifyDataSetChanged()
         }
         holder.itemView?.setOnLongClickListener {
             if (position < items.size) {
-                onItemLongClicked(items[position], position, holder)
+                holder.onItemLongClicked(items[position], position)
+                listener?.onItemLongClick(items[position], position)
             }
+            notifyDataSetChanged()
             true
+
         }
         if (getMode() == SelectionMode.SINGLE) {
             holder.onBind(item = items[position], position = position, isSelected = selectedPosition == position)
@@ -60,16 +65,17 @@ abstract class SelectableAdapter<T: Serializable, VH: BaseViewHolder<T>>: BaseAd
     }
 
 
+
     var selectedPositions = mutableListOf<Int>()
-    var selecteditems = mutableListOf<T>()
+    var selectedItems = mutableListOf<T?>()
         get() {
             if (getMode() == SelectionMode.SINGLE) {
-                throw Exception("Mode is SINGLE, but you are trying to get MULTIPLE mode elements")
+                throw Exception("Mode is SINGLE, but you are trying to get MULTIPLE MODE SELECTION elements")
             }
             return if (selectedPositions.isEmpty())
                 mutableListOf()
             else {
-                val temp = mutableListOf<T>()
+                val temp = mutableListOf<T?>()
                 for (position in selectedPositions) {
                     temp.add(items[position])
                 }
@@ -77,55 +83,9 @@ abstract class SelectableAdapter<T: Serializable, VH: BaseViewHolder<T>>: BaseAd
             }
         }
 
-    open internal fun onBeginingSelection(viewHodler: VH, lastSelection: Int) {}
-    open internal fun onSingleModeItemSelected(item: T, position: Int, viewHodler: VH) {
-        listener?.onItemClick(item, position)
-    }
-    open internal fun onMultipleModeitemSelected(items: List<T>, positions: List<Int>, viewHodler: VH) {}
-    open internal fun onItemLongClicked(item: T, position: Int, viewHodler: VH) {
-        listener?.onItemLongClick(item, position)
-    }
+    var mode: SelectionMode = SelectionMode.SINGLE
 
-    open internal fun getMode(): SelectionMode = SelectionMode.SINGLE
-
-    /**
-     *  Removing by position
-     */
-    fun removeByPosition(position: Int) {
-        if (getMode() == SelectionMode.SINGLE) {
-            selectedPosition = if (selectedPosition == position) {
-                -1
-            }  else {
-                selectedPosition
-            }
-
-        } else {
-            selectedPositions.remove(position)
-        }
-        items.removeAt(position)
-        notifyItemRemoved(position)
-    }
-
-    /**
-     *  Removing by item
-     */
-    fun removeItem(item: T) {
-        val removingPosition = items.indexOf(item)
-        if (removingPosition >= 0) {
-            if (getMode() == SelectionMode.SINGLE) {
-                selectedPosition = if (selectedPosition == removingPosition) {
-                    -1
-                } else {
-                    selectedPosition
-                }
-            } else {
-                selectedPositions.remove(removingPosition)
-            }
-            items.remove(item)
-            notifyItemRemoved(removingPosition)
-        }
-    }
-
+    internal open fun getMode(): SelectionMode = mode
 
     /**
      *  Remove all selected position items
@@ -136,10 +96,10 @@ abstract class SelectableAdapter<T: Serializable, VH: BaseViewHolder<T>>: BaseAd
     fun removeBySelectedPosition() {
         if (getMode() == SelectionMode.SINGLE) {
             if (selectedPosition != -1) {
-                selectedPosition = -1
                 items.removeAt(selectedPosition)
+                notifyItemRemoved(selectedPosition)
+                selectedPosition = -1
             }
-            notifyItemRemoved(selectedPosition)
         } else {
             if (!selectedPositions.isEmpty()) {
                 for (position in selectedPositions) {

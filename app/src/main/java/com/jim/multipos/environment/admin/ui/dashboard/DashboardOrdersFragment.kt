@@ -19,8 +19,6 @@ class DashboardOrdersFragment: BaseFragment<AdminDashboardOrdersLayoutBinding, D
 
     @Inject
     lateinit var mViewModelFactory: ViewModelProvider.Factory
-    private var mViewModel: DashboardViewModel?=null
-    private var mViewDataBinding: AdminDashboardOrdersLayoutBinding?=null
 //    private var adapter: DashboardOrdersAdapter?=null
 
     override fun getBindingVariable(): Int {

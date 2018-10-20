@@ -99,7 +99,6 @@ class EstablishmentFragment: TrippleHorizontalFragment<SearchHeaderFragmentBindi
 
     @Inject
     lateinit var mViewModelFactory: ViewModelProvider.Factory
-    private var mViewModel: SearchViewModel? = null
 
     override fun getLeftFragment(): Fragment? {
         return EstablishmentLeftFragment()

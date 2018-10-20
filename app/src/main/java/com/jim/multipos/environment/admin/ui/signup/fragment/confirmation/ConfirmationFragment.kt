@@ -17,9 +17,6 @@ class ConfirmationFragment: BaseFragment<AdminSignupConfirmationLayoutBinding, S
     @Inject
     lateinit var mViewModelFactory: ViewModelProvider.Factory
 
-    private var mViewModel: SignUpViewModel? = null
-    private var mViewDataBinding: AdminSignupConfirmationLayoutBinding? = null
-
     override fun getBindingVariable(): Int {
         return BR.viewModel
     }

@@ -9,10 +9,11 @@ abstract class SingleListViewModel<T: Serializable>(dataManager: DataManager): B
 
     internal var page = ObservableField(0)
 
-    var data: MutableLiveData<List<T>> = MutableLiveData()
+    var data: MutableLiveData<MutableList<T>> = MutableLiveData()
 
     fun refresh() {
         page.set(0)
+        data.value?.clear()
         load()
     }
 

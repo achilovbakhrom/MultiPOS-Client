@@ -1,13 +1,5 @@
 package com.jim.multipos.environment.admin.ui.establishment.adapter
 
-import android.view.LayoutInflater
-import android.view.ViewGroup
-import com.jim.multipos.databinding.AdminItemEstablishmentPosBinding
-import com.jim.multipos.environment.admin.ui.establishment.viewmodel.EstablishmentPosItemViewModel
-import com.jim.multipos.core.adapter.BaseAdapter
-import com.jim.multipos.core.BaseActions
-import com.jim.multipos.core.adapter.BaseViewHolder
-
 //class EstablishmentPosAdapter: BaseAdapter<String, BaseActions<String>, EstablishmentPosAdapter.ViewHolder>() {
 //
 //    var lastPos = -1
