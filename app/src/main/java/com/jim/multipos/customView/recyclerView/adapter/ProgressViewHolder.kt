@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.PorterDuff
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ProgressBar
 import com.jim.multipos.R
 import java.io.Serializable
@@ -20,7 +21,7 @@ class ProgressViewHolder<T: Serializable>(itemView: View): BaseViewHolder<T>(ite
     }
 
     @SuppressLint("InflateParams")
-    override fun newInstance(context: Context): BaseViewHolder<T> {
+    override fun newInstance(context: Context, parent: ViewGroup): BaseViewHolder<T> {
         val view = LayoutInflater.from(context).inflate(R.layout.loading_progress_layout, null, false)
         return ProgressViewHolder(view)
     }

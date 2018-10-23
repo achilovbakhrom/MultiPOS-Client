@@ -117,60 +117,6 @@ class MpTextEditList @JvmOverloads constructor(
         }
     }
 
-//    override fun onSaveInstanceState(): Parcelable {
-//        val superState = super.onSaveInstanceState()
-//        val ss = SavedState(superState)
-//        //end
-//        ss.list= this.data.v
-//        ss.rowCount = this.rowCount
-//        return ss
-//    }
-//
-//    override fun onRestoreInstanceState(state: Parcelable?) {
-//        if (state !is SavedState) {
-//            super.onRestoreInstanceState(state)
-//            return
-//        }
-//        super.onRestoreInstanceState(state.superState)
-//        this.data = state.list
-//        this.rowCount = state.rowCount
-//    }
-//
-//
-//
-//    internal class SavedState : View.BaseSavedState {
-//
-//        var list = mutableMapOf<Int, String>()
-//        var rowCount = 0
-//
-//        constructor(superState: Parcelable) : super(superState)
-//
-//        private constructor(`in`: Parcel) : super(`in`) {
-//            list = `in`.readSerializable()
-//            rowCount = `in`.readInt()
-//        }
-//
-//        override fun writeToParcel(out: Parcel, flags: Int) {
-//            super.writeToParcel(out, flags)
-//            out.writeStringList(list)
-//            out.writeInt(rowCount)
-//        }
-//
-//        companion object {
-//            @SuppressLint("ParcelCreator")
-//            //required field that makes Parcelables from a Parcel
-//            val CREATOR: Parcelable.Creator<SavedState> = object : Parcelable.Creator<SavedState> {
-//                override fun createFromParcel(`in`: Parcel): SavedState {
-//                    return SavedState(`in`)
-//                }
-//                override fun newArray(size: Int): Array<SavedState?> {
-//                    return arrayOfNulls(size)
-//                }
-//            }
-//        }
-//
-//    }
-
 }
 
 class MpTextEditListRow @JvmOverloads constructor(

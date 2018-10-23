@@ -10,6 +10,7 @@ import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
 import com.jim.multipos.BR
 import com.jim.multipos.R
@@ -96,8 +97,8 @@ class ProductClassViewHolder(itemView: View): BaseViewHolder<ProductClass>(itemV
     }
 
     @SuppressLint("InflateParams")
-    override fun newInstance(context: Context): BaseViewHolder<ProductClass> {
-        val view = LayoutInflater.from(context).inflate(R.layout.product_class_list_item, null, false)
+    override fun newInstance(context: Context, parent: ViewGroup): BaseViewHolder<ProductClass> {
+        val view = LayoutInflater.from(context).inflate(R.layout.product_class_list_item, parent, false)
         return ProductClassViewHolder(view)
     }
 

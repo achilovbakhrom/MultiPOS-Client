@@ -25,7 +25,6 @@ class CompanyRightFragment: BaseFragment<CompanyRightFragmentBinding, CompanyRig
 
     private var lastItem: String?=null
 
-
     override fun getBindingVariable(): Int {
         return BR.viewModel
     }
@@ -78,6 +77,8 @@ class CompanyRightFragment: BaseFragment<CompanyRightFragmentBinding, CompanyRig
                 mViewModel?.companyName?.set(lastItem)
             }//delete request
         }
+
+        mpRadioButton.textList = mutableListOf("Male", "Female")
     }
 
     override fun onBackPressed() {

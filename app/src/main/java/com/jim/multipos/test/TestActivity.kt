@@ -5,16 +5,14 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
 import com.jim.multipos.R
-import com.jim.multipos.customView.recyclerView.adapter.BaseViewHolder
 import com.jim.multipos.customView.recyclerView.MPRecyclerView
+import com.jim.multipos.customView.recyclerView.adapter.BaseViewHolder
 import com.jim.multipos.customView.recyclerView.provideViewHolder
-import com.jim.multipos.environment.admin.model.ProductClass
-
 import io.reactivex.Observable
 import java.util.concurrent.TimeUnit
 
@@ -73,8 +71,8 @@ class TestActivity: AppCompatActivity() {
 
 class TestViewHolder(itemView: View): BaseViewHolder<String>(itemView) {
 
-    override fun newInstance(context: Context): BaseViewHolder<String> {
-        val view = LayoutInflater.from(context).inflate(R.layout.test_adapter, null, false)
+    override fun newInstance(context: Context, parent: ViewGroup): BaseViewHolder<String> {
+        val view = LayoutInflater.from(context).inflate(R.layout.test_adapter, parent, false)
         return TestViewHolder(view)
     }
 
@@ -84,14 +82,14 @@ class TestViewHolder(itemView: View): BaseViewHolder<String>(itemView) {
     }
 }
 
-class ProdTestViewHolder(itemView: View): BaseViewHolder<ProductClass>(itemView) {
-    override fun newInstance(context: Context): BaseViewHolder<ProductClass> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    val tvTest: TextView? = itemView.findViewById(R.id.tvTest)
-    override fun onBind(item: ProductClass?, position: Int, isSelected: Boolean) {
-        Log.d("sss", "Pos: $position")
-        tvTest?.text = item?.name ?: "Progress $position"
-    }
-}
+//class ProdTestViewHolder(itemView: View): BaseViewHolder<ProductClass>(itemView) {
+//    override fun newInstance(context: Context): BaseViewHolder<ProductClass> {
+//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+//    }
+//
+//    val tvTest: TextView? = itemView.findViewById(R.id.tvTest)
+//    override fun onBind(item: ProductClass?, position: Int, isSelected: Boolean) {
+//        Log.d("sss", "Pos: $position")
+//        tvTest?.text = item?.name ?: "Progress $position"
+//    }
+//}

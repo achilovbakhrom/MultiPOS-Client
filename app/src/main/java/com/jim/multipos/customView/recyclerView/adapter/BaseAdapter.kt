@@ -22,9 +22,9 @@ abstract class BaseAdapter<T: Serializable>(private val viewHolder: BaseViewHold
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<T> {
         return if (viewType == 0) {
-            viewHolder.newInstance(parent.context)
+            viewHolder.newInstance(parent.context, parent)
         } else {
-            ProgressViewHolder<T>(View(parent.context)).newInstance(parent.context)
+            ProgressViewHolder<T>(View(parent.context)).newInstance(parent.context, parent)
         }
     }
 

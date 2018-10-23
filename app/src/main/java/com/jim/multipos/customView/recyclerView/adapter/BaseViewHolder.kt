@@ -4,6 +4,7 @@ import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.ContextMenu
 import android.view.View
+import android.view.ViewGroup
 import java.io.Serializable
 
 abstract class BaseViewHolder<T: Serializable>(itemView: View?) : RecyclerView.ViewHolder(itemView) {
@@ -12,7 +13,7 @@ abstract class BaseViewHolder<T: Serializable>(itemView: View?) : RecyclerView.V
 
     abstract fun onBind(item: T?, position: Int, isSelected: Boolean = false)
 
-    abstract fun newInstance(context: Context): BaseViewHolder<T>
+    abstract fun newInstance(context: Context, parent: ViewGroup): BaseViewHolder<T>
 
     internal open fun onBeginSelection(lastSelection: Int) {}
     internal open fun onSingleModeItemSelected(item: T?, position: Int) {}
