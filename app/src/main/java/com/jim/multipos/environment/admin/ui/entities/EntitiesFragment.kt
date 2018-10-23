@@ -7,9 +7,7 @@ import com.jim.multipos.BR
 import com.jim.multipos.core.EmptyViewModel
 import com.jim.multipos.core.fragments.TabbedFragment
 import com.jim.multipos.databinding.TabbedFragmentBinding
-import com.jim.multipos.environment.admin.ui.SearchViewModel
-import com.jim.multipos.environment.admin.ui.entities.productclass.ProductClassFragment
-import com.jim.multipos.environment.admin.ui.entities.products.ProductFragment
+import com.jim.multipos.environment.admin.ui.entities.productClass.ProductClassFragment
 import javax.inject.Inject
 
 class EntitiesFragment : TabbedFragment<TabbedFragmentBinding, EmptyViewModel>() {

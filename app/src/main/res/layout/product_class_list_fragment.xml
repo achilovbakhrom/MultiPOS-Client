@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.jim.multipos.environment.admin.ui.entities.productclass.productClassList.ProductClassListViewModel"/>
+            type="com.jim.multipos.environment.admin.ui.entities.productClass.productClassList.ProductClassListViewModel"/>
     </data>
 
     <android.support.design.widget.CoordinatorLayout

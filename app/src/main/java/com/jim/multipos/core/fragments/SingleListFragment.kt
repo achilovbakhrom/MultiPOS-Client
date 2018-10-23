@@ -16,11 +16,9 @@ import com.jim.multipos.customView.recyclerView.adapter.SelectableAdapter
 import kotlinx.android.synthetic.main.single_list_fragment.*
 import java.io.Serializable
 
-abstract class SingleListFragment<X: Serializable, VH: BaseViewHolder<X>, Y: BaseSelectableAdapter<X>, T: ViewDataBinding, V: SingleListViewModel<X>>: BaseFragment<T, V>() {
+abstract class SingleListFragment<X: Serializable, T: ViewDataBinding, V: SingleListViewModel<X>>: BaseFragment<T, V>() {
 
     override fun getLayoutId(): Int = R.layout.single_list_fragment
-
-    internal lateinit var adapter: Y
 
     internal var empty: Boolean = false
         set(value) {
@@ -53,20 +51,21 @@ abstract class SingleListFragment<X: Serializable, VH: BaseViewHolder<X>, Y: Bas
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         this.initRV()
+
         if (buttonClickDefaultAction()) {
             fab.setOnClickListener {
                 this.buttonAction()
             }
         }
+
         tvEmpty.text = emptyText()
 
         mViewModel?.isLoading?.observe(this, Observer {
             loading = it ?: false
         })
 
-        val header = CustomRefreshHeader(context!!)
-        header.setArrowImageView(R.drawable.ic_iconmonstr_arrow)
     }
 
     internal abstract fun initRV()

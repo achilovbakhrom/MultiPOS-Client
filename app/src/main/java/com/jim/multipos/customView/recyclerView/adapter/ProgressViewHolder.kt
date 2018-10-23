@@ -10,6 +10,7 @@ import android.widget.ProgressBar
 import com.jim.multipos.R
 import java.io.Serializable
 
+@SuppressLint("StaticFieldLeak")
 class ProgressViewHolder<T: Serializable>(itemView: View): BaseViewHolder<T>(itemView) {
 
     private val progressBar = itemView.findViewById<ProgressBar>(R.id.progressBar)

@@ -22,5 +22,6 @@ abstract class BaseViewModel(val mDataManager: DataManager) : ViewModel() {
 
     open fun onViewCreated() {}
 
+    open fun onCreate(savedInstanceState: Bundle?) {}
 
 }

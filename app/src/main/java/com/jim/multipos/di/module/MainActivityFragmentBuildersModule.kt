@@ -4,9 +4,9 @@ import com.jim.multipos.environment.admin.ui.company.left.CompanyLeftFragment
 import com.jim.multipos.environment.admin.ui.company.main.CompanyFragment
 import com.jim.multipos.environment.admin.ui.company.right.CompanyRightFragment
 import com.jim.multipos.environment.admin.ui.entities.EntitiesFragment
-import com.jim.multipos.environment.admin.ui.entities.productclass.ProductClassFragment
-import com.jim.multipos.environment.admin.ui.entities.productclass.productClassAddEdit.ProductClassAddEditFragment
-import com.jim.multipos.environment.admin.ui.entities.productclass.productClassList.ProductClassListFragment
+import com.jim.multipos.environment.admin.ui.entities.productClass.ProductClassFragment
+import com.jim.multipos.environment.admin.ui.entities.productClass.productClassAddEdit.ProductClassAddEditFragment
+import com.jim.multipos.environment.admin.ui.entities.productClass.productClassList.ProductClassListFragment
 import com.jim.multipos.environment.admin.ui.establishment.EstablishmentFragment
 import com.jim.multipos.environment.admin.ui.establishment.center.EstablishmentCenterFragment
 import com.jim.multipos.environment.admin.ui.establishment.left.EstablishmentLeftFragment

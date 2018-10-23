@@ -1,4 +1,4 @@
-package com.jim.multipos.environment.admin.ui.entities.productclass
+package com.jim.multipos.environment.admin.ui.entities.productClass
 
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
@@ -7,8 +7,8 @@ import com.jim.multipos.BR
 import com.jim.multipos.core.fragments.DoubleHorizontalFragment
 import com.jim.multipos.databinding.TabbedFragmentBinding
 import com.jim.multipos.environment.admin.ui.SearchViewModel
-import com.jim.multipos.environment.admin.ui.entities.productclass.productClassAddEdit.ProductClassAddEditFragment
-import com.jim.multipos.environment.admin.ui.entities.productclass.productClassList.ProductClassListFragment
+import com.jim.multipos.environment.admin.ui.entities.productClass.productClassAddEdit.ProductClassAddEditFragment
+import com.jim.multipos.environment.admin.ui.entities.productClass.productClassList.ProductClassListFragment
 import javax.inject.Inject
 
 class ProductClassFragment: DoubleHorizontalFragment<TabbedFragmentBinding, SearchViewModel>() {

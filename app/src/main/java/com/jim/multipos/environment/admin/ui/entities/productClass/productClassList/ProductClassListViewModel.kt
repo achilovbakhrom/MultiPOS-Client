@@ -1,4 +1,4 @@
-package com.jim.multipos.environment.admin.ui.entities.productclass.productClassList
+package com.jim.multipos.environment.admin.ui.entities.productClass.productClassList
 
 
 import com.jim.multipos.core.SingleListViewModel

@@ -1,4 +1,4 @@
-package com.jim.multipos.environment.admin.ui.entities.productclass
+package com.jim.multipos.environment.admin.ui.entities.productClass
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData

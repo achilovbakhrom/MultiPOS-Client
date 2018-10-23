@@ -1,10 +1,4 @@
-package com.jim.multipos.environment.admin.ui.entities.productclass.productClassList
-
-import android.arch.lifecycle.ViewModelProvider
-import com.jim.multipos.core.ViewModelProviderFactory
-import com.jim.multipos.core.managers.DataManager
-import dagger.Module
-import dagger.Provides
+package com.jim.multipos.environment.admin.ui.entities.productClass.productClassList
 
 //@Module
 //class ProductClassListModule {

@@ -7,9 +7,6 @@
         android:layout_height="match_parent"
         android:background="@color/list_fragment_bg">
 
-
-
-
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -26,16 +23,17 @@
             android:text="@string/add_product_class_nl"
             android:id="@+id/tvEmpty"
             android:textAlignment="center"
+            android:visibility="gone"
             />
 
         <ImageView
             android:layout_width="@dimen/three_hundred_dp"
             android:layout_height="@dimen/three_hundred_dp"
-            android:background="@drawable/left_panel_bg"
-            android:tint="@color/colorGray"
+            android:tint="@color/colorWhite"
             android:layout_gravity="center"
-            android:visibility="gone"
             android:id="@+id/ivEmpty"
+            android:visibility="gone"
+            android:src="@drawable/left_panel_bg"
             />
 
         <com.jim.multipos.customView.recyclerView.MPRecyclerView
@@ -44,8 +42,6 @@
             android:id="@+id/rvSingle"
             android:visibility="gone"
             />
-
-
 
         <android.support.design.widget.FloatingActionButton
             android:layout_width="wrap_content"

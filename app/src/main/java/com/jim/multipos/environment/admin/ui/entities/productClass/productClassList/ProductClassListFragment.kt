@@ -1,5 +1,6 @@
-package com.jim.multipos.environment.admin.ui.entities.productclass.productClassList
+package com.jim.multipos.environment.admin.ui.entities.productClass.productClassList
 
+import android.annotation.SuppressLint
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
@@ -18,16 +19,12 @@ import com.jim.multipos.customView.recyclerView.adapter.BaseViewHolder
 import com.jim.multipos.customView.recyclerView.provideViewHolder
 import com.jim.multipos.databinding.ProductClassListFragmentBinding
 import com.jim.multipos.environment.admin.model.ProductClass
-import com.jim.multipos.environment.admin.ui.entities.productclass.productClassList.adapter.ProductClassListAdapter
-import com.jim.multipos.test.ProdTestViewHolder
 import kotlinx.android.synthetic.main.single_list_fragment.*
 import javax.inject.Inject
 
 @Suppress("UNCHECKED_CAST")
 class ProductClassListFragment: SingleListFragment<
         ProductClass,
-        ProductClassListAdapter.ProductClassViewHolder,
-        ProductClassListAdapter,
         ProductClassListFragmentBinding,
         ProductClassListViewModel
         >() {
@@ -37,9 +34,11 @@ class ProductClassListFragment: SingleListFragment<
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         if (savedInstanceState?.getInt("page") != null) {
             mViewModel?.page?.set(savedInstanceState.getInt("page"))
         }
+
         mViewModel?.onViewCreated()
 
         mViewModel?.data?.observe(this, Observer {
@@ -51,13 +50,13 @@ class ProductClassListFragment: SingleListFragment<
             rvSingle.loadMoreComplete()
             rvSingle.refreshComplete()
         })
+
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putInt("page", mViewModel?.page?.get()!!)
     }
-
 
     override fun getBindingVariable(): Int = BR.viewModel
 
@@ -67,10 +66,8 @@ class ProductClassListFragment: SingleListFragment<
     }
 
     override fun initRV() {
-        adapter = ProductClassListAdapter(context!!, ProdTestViewHolder(View(activity)))
         (rvSingle as MPRecyclerView<ProductClass>).viewHolder = provideViewHolder<ProductClass, ProductClassViewHolder>(context!!)
         rvSingle.layoutManager = GridLayoutManager(context!!, 2)
-
         rvSingle.listener = object : MPRecyclerView.OnLoadMoreListener {
             override fun onLoadMore(recyclerView: RecyclerView) {
                 mViewModel?.loadMore()
@@ -78,16 +75,11 @@ class ProductClassListFragment: SingleListFragment<
             }
             override fun onRefresh(recyclerView: RecyclerView) {
                 mViewModel?.refresh()
-
             }
-
         }
     }
 
-    override fun buttonAction() {
-
-
-    }
+    override fun buttonAction() {}
 
     override fun emptyText(): String = getString(R.string.add_product_class_nl)
 
@@ -103,6 +95,7 @@ class ProductClassViewHolder(itemView: View): BaseViewHolder<ProductClass>(itemV
         productClassDescription.text = item?.description
     }
 
+    @SuppressLint("InflateParams")
     override fun newInstance(context: Context): BaseViewHolder<ProductClass> {
         val view = LayoutInflater.from(context).inflate(R.layout.product_class_list_item, null, false)
         return ProductClassViewHolder(view)

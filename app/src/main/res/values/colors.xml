@@ -12,4 +12,8 @@
     <color name="colorAddEditBg">#F3F8FC</color>
     <color name="colorDarkTitle">@android:color/background_dark</color>
     <color name="list_fragment_bg">#44718E</color>
+    <color name="remove_red">#C75959</color>
+    <color name="edit_blue">#5990C7</color>
+    <color name="cancel_gray">#999999</color>
+    <color name="save_green">#68AC7A</color>
 </resources>

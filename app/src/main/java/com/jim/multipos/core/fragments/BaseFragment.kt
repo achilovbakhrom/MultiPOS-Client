@@ -23,6 +23,7 @@ abstract class BaseFragment<T: ViewDataBinding, V: BaseViewModel> : Fragment(), 
         AndroidSupportInjection.inject(this)
         super.onCreate(savedInstanceState)
         mViewModel = if (mViewModel == null) getViewModel() else mViewModel
+        mViewModel?.onCreate(savedInstanceState)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

@@ -8,12 +8,10 @@ import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
-
 import android.widget.FrameLayout
 import com.jim.multipos.R
 import com.jim.multipos.customView.recyclerView.adapter.*
 import java.io.Serializable
-import kotlin.Exception
 
 class MPRecyclerView<T: Serializable>: FrameLayout {
 
@@ -23,13 +21,10 @@ class MPRecyclerView<T: Serializable>: FrameLayout {
     var adapter: BaseAdapter<T>? = null
         set(value) {
             field = value
-
             if (viewHolder == null) {
                 throw Exception("Please setup view holder")
             }
-
             val items = adapter?.items
-
             if (selectionMode == SelectionModes.NONE) {
                 field = SimpleAdapter(viewHolder!!)
             } else {
@@ -44,7 +39,6 @@ class MPRecyclerView<T: Serializable>: FrameLayout {
                 field?.setItems(list = items)
             }
             recyclerView?.adapter = field
-
             field = value
         }
 
@@ -53,7 +47,7 @@ class MPRecyclerView<T: Serializable>: FrameLayout {
     var firstVisibleItem = 0
     var visibleItemCount = 0
     var totalItemCount = 0
-    var visibleThreshold = 2
+    var visibleThreshold = 4
     var isLoading = false
 
     private var addingItems: List<T>? = null
@@ -91,15 +85,13 @@ class MPRecyclerView<T: Serializable>: FrameLayout {
     var layoutManager: RecyclerView.LayoutManager? = null
         set(value) {
             recyclerView?.layoutManager = value
-
             this.selectionMode = SelectionModes.SINGLE
-
             if (value is GridLayoutManager) {
                 value.spanSizeLookup = object: GridLayoutManager.SpanSizeLookup() {
                     override fun getSpanSize(position: Int): Int {
                         val item = adapter?.items?.get(position)
                         return if (item == null) {
-                            2
+                            value.spanCount
                         } else {
                             1
                         }
@@ -223,13 +215,13 @@ class MPRecyclerView<T: Serializable>: FrameLayout {
         adapter?.clear()
     }
 
-
 }
 
 enum class SelectionModes {
     NONE, SINGLE, MULTIPLE
 }
 
+@Suppress("UNCHECKED_CAST")
 inline fun <T: Serializable, reified VH: BaseViewHolder<T>> provideViewHolder(context: Context) : BaseViewHolder<T>? {
     val clazz = Class.forName(VH::class.java.canonicalName)
     val constructor = clazz.getConstructor(View::class.java)

@@ -11,8 +11,8 @@ import com.jim.multipos.environment.admin.ui.SearchViewModel
 import com.jim.multipos.environment.admin.ui.company.left.CompanyLeftViewModel
 import com.jim.multipos.environment.admin.ui.company.right.CompanyRightViewModel
 import com.jim.multipos.environment.admin.ui.dashboard.viewmodel.DashboardViewModel
-import com.jim.multipos.environment.admin.ui.entities.productclass.productClassAddEdit.ProductClassAddEditViewModel
-import com.jim.multipos.environment.admin.ui.entities.productclass.productClassList.ProductClassListViewModel
+import com.jim.multipos.environment.admin.ui.entities.productClass.productClassAddEdit.ProductClassAddEditViewModel
+import com.jim.multipos.environment.admin.ui.entities.productClass.productClassList.ProductClassListViewModel
 import com.jim.multipos.environment.admin.ui.establishment.center.EstablishmentCenterViewModel
 import com.jim.multipos.environment.admin.ui.establishment.left.EstablishmentLeftViewModel
 import com.jim.multipos.environment.admin.ui.establishment.right.EstablishmentRightViewModel
