@@ -4,6 +4,8 @@ import android.databinding.ViewDataBinding
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.Button
+import android.widget.TextView
 import com.jim.multipos.R
 import com.jim.multipos.core.BaseViewModel
 import com.jim.multipos.core.fragments.BaseFragment
@@ -19,6 +21,7 @@ abstract class BaseAddEditFragment<M: Serializable, V: ViewDataBinding, T: BaseV
 
     var mode: AddEditModes = AddEditModes.EMPTY
         set(value) {
+            flAddEditContent.removeAllViews()
             field = value
             changeMode()
         }
@@ -30,6 +33,18 @@ abstract class BaseAddEditFragment<M: Serializable, V: ViewDataBinding, T: BaseV
         }
 
     var listener: AddEditModeButtonsClickListener? = null
+
+    var isLoading = false
+        set(value) {
+            if (value) {
+                svAddEditContent.visibility = View.GONE
+                flAddEditProgress.visibility = View.VISIBLE
+            } else {
+                svAddEditContent.visibility = View.VISIBLE
+                flAddEditProgress.visibility = View.GONE
+            }
+            field = value
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,6 +81,8 @@ abstract class BaseAddEditFragment<M: Serializable, V: ViewDataBinding, T: BaseV
         outState.putSerializable("mode", mode)
     }
 
+
+
     private fun changeMode() {
         when (mode) {
             AddEditModes.EMPTY -> setEmptyMode()
@@ -76,21 +93,19 @@ abstract class BaseAddEditFragment<M: Serializable, V: ViewDataBinding, T: BaseV
 
     private fun setEmptyMode() {
         LayoutInflater.from(context).inflate(R.layout.base_empty_layout, flAddEditContent, true)
-        tvEmptyBottom.text = getEmptyString()
+        flAddEditContent.findViewById<TextView>(R.id.tvEmptyBottom).text = getEmptyString()
         item = null
     }
 
     private fun setInfoMode() {
         if (item != null) {
             LayoutInflater.from(context).inflate(R.layout.base_info_layout, flAddEditContent, true)
-            LayoutInflater.from(context).inflate(infoModeLayoutId(), flInfoContent, true)
+            LayoutInflater.from(context).inflate(infoModeLayoutId(), flAddEditContent.findViewById(R.id.flInfoContent), true)
             fillInfoMode(item!!)
-
-            btnEdit.setOnClickListener {
+            flAddEditContent.findViewById<Button>(R.id.btnEdit).setOnClickListener {
                 listener?.onEditClick()
             }
-
-            btnDelete.setOnClickListener {
+            flAddEditContent.findViewById<Button>(R.id.btnDelete).setOnClickListener {
                 listener?.onDeleteClick()
             }
         } else {
@@ -99,17 +114,20 @@ abstract class BaseAddEditFragment<M: Serializable, V: ViewDataBinding, T: BaseV
     }
 
     private fun setAddEditMode() {
+        LayoutInflater.from(context).inflate(R.layout.base_add_edit_layout, flAddEditContent, true)
+        LayoutInflater.from(context).inflate(addEditModeLayoutId(), flAddEditContent.findViewById(R.id.flAddEditLayoutContent), true)
         fillAddEditMode(item)
-        LayoutInflater.from(context).inflate(R.layout.base_add_edit_layout, flAddEditLayoutContent, true)
-
-        btnCancel.setOnClickListener {
+        flAddEditContent.findViewById<Button>(R.id.btnCancel).setOnClickListener {
             listener?.onCancelAddEditClick()
         }
 
-        btnSave.setOnClickListener {
+        flAddEditContent.findViewById<Button>(R.id.btnSave).setOnClickListener {
             listener?.onSaveClick()
         }
+
     }
+
+
 }
 
 interface AddEditModeButtonsClickListener {

@@ -37,5 +37,15 @@ public class MpEditText extends AppCompatEditText {
         setHintTextColor(ContextCompat.getColor(context, R.color.colorGray));
     }
 
+    public void setError(boolean isError) {
+        if (isError) {
+            setBackgroundResource(R.drawable.edit_text_error_bg);
+            setTextColor(ContextCompat.getColor(getContext(), R.color.remove_red));
+        } else {
+            setBackgroundResource(R.drawable.edit_text_bg);
+            setTextColor(ContextCompat.getColor(getContext(), R.color.mp_edittext_color));
+        }
+    }
+
 
 }

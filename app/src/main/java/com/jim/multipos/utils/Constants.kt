@@ -8,3 +8,13 @@ enum class Status {
     SUCCESS,
     ERROR
 }
+
+
+enum class FragmentCommunicationOperations(val operation: String) {
+    ITEM_SELECTED("ITEM_SELECTED"),
+    REFRESH_LIST("REFRESH_LIST"),
+    ADD_NEW_ITEM("ADD_NEW_ITEM"),
+    CANCEL("CANCEL"),
+    ITEM_DELETED("ITEM_DELETED"),
+    ITEM_EDITED("ITEM_EDITED")
+}

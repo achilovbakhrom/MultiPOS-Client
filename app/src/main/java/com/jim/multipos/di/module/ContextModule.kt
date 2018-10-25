@@ -6,9 +6,9 @@ import dagger.Binds
 import dagger.Module
 import javax.inject.Singleton
 
+@Suppress("unused")
 @Module
 abstract class ContextModule {
-
     @Binds
     @Singleton
     abstract fun provideContext(app: Application): Context

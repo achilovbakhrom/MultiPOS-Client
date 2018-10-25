@@ -1,6 +1,9 @@
 package com.jim.multipos.di.module
 
 
+import android.content.Context
+import android.content.res.Resources
+import android.util.Log
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import com.jim.multipos.core.managers.AppDataManager
 import com.jim.multipos.core.managers.AuthService
@@ -24,6 +27,8 @@ class AppModule{
     @Named("simple")
     @Singleton
     fun provideSimpleRetrofit():Retrofit{
+        print("google1")
+        Log.d("sss", "test1")
         return Retrofit.Builder()
                 .client(OkHttpClient())
                 .baseUrl(BASE_URL)
@@ -78,5 +83,8 @@ class AppModule{
         return appDataManager
     }
 
+    @Provides
+    @Singleton
+    fun provideResources(context: Context): Resources = context.resources
 
 }

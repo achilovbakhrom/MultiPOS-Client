@@ -2,17 +2,10 @@ package com.jim.multipos.core.fragments
 
 import android.arch.lifecycle.Observer
 import android.databinding.ViewDataBinding
-import android.graphics.PorterDuff
 import android.os.Bundle
 import android.view.View
-import android.widget.ProgressBar
-import android.widget.TextView
-import com.jcodecraeer.xrecyclerview.SimpleViewSwitcher
 import com.jim.multipos.R
 import com.jim.multipos.core.SingleListViewModel
-import com.jim.multipos.customView.recyclerView.adapter.BaseSelectableAdapter
-import com.jim.multipos.customView.recyclerView.adapter.BaseViewHolder
-import com.jim.multipos.customView.recyclerView.adapter.SelectableAdapter
 import kotlinx.android.synthetic.main.single_list_fragment.*
 import java.io.Serializable
 
@@ -25,17 +18,19 @@ abstract class SingleListFragment<X: Serializable, T: ViewDataBinding, V: Single
             if (value) {
                 tvEmpty.visibility = View.VISIBLE
                 ivEmpty.visibility = View.VISIBLE
+                pbProgress.visibility = View.GONE
                 rvSingle.visibility = View.GONE
             } else {
                 tvEmpty.visibility = View.GONE
                 ivEmpty.visibility = View.GONE
                 rvSingle.visibility = View.VISIBLE
+                pbProgress.visibility = View.GONE
             }
 
             field = value
         }
 
-    internal var loading: Boolean = false
+    internal var isLoading: Boolean = false
         set(value) {
             if (value) {
                 tvEmpty.visibility = View.GONE
@@ -63,7 +58,7 @@ abstract class SingleListFragment<X: Serializable, T: ViewDataBinding, V: Single
         tvEmpty.text = emptyText()
 
         mViewModel?.isLoading?.observe(this, Observer {
-            loading = it ?: false
+            isLoading = it ?: false
         })
 
     }

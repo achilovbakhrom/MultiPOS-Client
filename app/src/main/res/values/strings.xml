@@ -91,5 +91,9 @@
     <string name="select_to_view_info">Select %1$s to view information</string>
 
     <string name="name_required">Name*</string>
+    <string name="no">NO</string>
+    <string name="yes">YES</string>
+    <string name="product_class_name_error">Product Class name can\'t be empty!</string>
+    <string name="unknown_error">Unknown error!</string>
 
 </resources>

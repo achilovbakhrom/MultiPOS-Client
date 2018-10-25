@@ -61,5 +61,5 @@ abstract class MainActivityFragmentBuildersModule {
 
     @NotNull
     @ContributesAndroidInjector
-    abstract fun contirbuteEntityFragment(): EntitiesFragment
+    abstract fun contributeEntityFragment(): EntitiesFragment
 }

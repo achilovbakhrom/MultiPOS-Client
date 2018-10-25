@@ -17,7 +17,8 @@ abstract class ActivityBuilder {
     @ContributesAndroidInjector
     abstract fun bindSignInActivity(): SignInActivity
 
+
     @ContributesAndroidInjector(modules = [MainActivityFragmentBuildersModule::class])
-    abstract fun bindAdminMainPageActivity(): MainPageActivity
+    abstract fun bindMainPageActivity(): MainPageActivity
 
 }

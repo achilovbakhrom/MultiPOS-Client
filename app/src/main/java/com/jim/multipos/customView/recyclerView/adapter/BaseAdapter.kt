@@ -64,6 +64,14 @@ abstract class BaseAdapter<T: Serializable>(private val viewHolder: BaseViewHold
         notifyDataSetChanged()
     }
 
+    fun addItemAt(item: T?, at: Int) {
+        if (at > items.size - 1) {
+            throw Exception("Inserting position is greater than items last position!!!")
+        }
+        items.add(at, item)
+        notifyDataSetChanged()
+    }
+
     /**
      *  Adds an item at the end of items list
      */

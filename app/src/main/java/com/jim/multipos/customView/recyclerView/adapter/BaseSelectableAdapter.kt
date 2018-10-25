@@ -6,9 +6,10 @@ import java.io.Serializable
 
 abstract class BaseSelectableAdapter<T: Serializable>(viewHolder: BaseViewHolder<T>): BaseAdapter<T>(viewHolder) {
 
-    var listener: BaseActions<T>? = null
+    var listener: BaseActions<in T>? = null
 
     var selectedPosition = -1
+
     var selectedItem: T? = null
         get() {
             if (getMode() == SelectionMode.MULTIPLE) {
@@ -64,7 +65,16 @@ abstract class BaseSelectableAdapter<T: Serializable>(viewHolder: BaseViewHolder
         }
     }
 
-
+    fun unselect() {
+        if (getMode() == SelectionMode.SINGLE) {
+            selectedPosition = -1
+            selectedItem = null
+        } else {
+            selectedPositions.clear()
+            selectedItems.clear()
+        }
+        notifyDataSetChanged()
+    }
 
     var selectedPositions = mutableListOf<Int>()
     var selectedItems = mutableListOf<T?>()

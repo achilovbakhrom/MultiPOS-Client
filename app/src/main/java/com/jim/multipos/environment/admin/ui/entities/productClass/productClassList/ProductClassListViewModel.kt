@@ -20,7 +20,6 @@ class ProductClassListViewModel @Inject constructor(dataManager: DataManager): S
     }
 
     override fun load() {
-
         // mock
         isLoading.value = true
         compositeDisposable.add(
@@ -28,7 +27,7 @@ class ProductClassListViewModel @Inject constructor(dataManager: DataManager): S
                         .timer(2, TimeUnit.SECONDS)
                         .map {
                             val list = mutableListOf<ProductClass>()
-                            for (i in 0..10) {
+                            for (i in 0..20) {
                                 val productClass = ProductClass()
                                 productClass.active = true
                                 productClass.name = "Product class $i"

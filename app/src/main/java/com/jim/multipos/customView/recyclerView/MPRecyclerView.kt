@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
 import com.jim.multipos.R
+import com.jim.multipos.core.BaseActions
 import com.jim.multipos.customView.recyclerView.adapter.*
 import java.io.Serializable
 
@@ -38,16 +39,32 @@ class MPRecyclerView<T: Serializable>: FrameLayout {
             if (items != null && !items.isEmpty()) {
                 field?.setItems(list = items)
             }
+            if (itemSelectionListener != null) {
+                (field as SelectableAdapter).listener = itemSelectionListener
+            }
             recyclerView?.adapter = field
             field = value
         }
 
-    lateinit var listener: OnLoadMoreListener
+    var listener: OnLoadMoreListener? = null
+
+    var itemSelectionListener: BaseActions<in T>? = null
+        set(value) {
+
+            if (selectionMode == SelectionModes.NONE) {
+                throw Exception("This mode is not selectable, change mode to Selectable mode")
+            }
+
+            if (adapter != null) {
+                (adapter as SelectableAdapter).listener = value
+            }
+            field = value
+        }
 
     var firstVisibleItem = 0
     var visibleItemCount = 0
     var totalItemCount = 0
-    var visibleThreshold = 4
+    var visibleThreshold = 2
     var isLoading = false
 
     private var addingItems: List<T>? = null
@@ -122,7 +139,7 @@ class MPRecyclerView<T: Serializable>: FrameLayout {
 
         swipeRefreshLayout = findViewById(R.id.srSwipeRefresh)
         swipeRefreshLayout?.setOnRefreshListener {
-            listener.onRefresh(recyclerView!!)
+            listener?.onRefresh(recyclerView!!)
             isLoading = true
         }
 
@@ -138,7 +155,7 @@ class MPRecyclerView<T: Serializable>: FrameLayout {
                     totalItemCount = lm.itemCount
                     firstVisibleItem = lm.findFirstVisibleItemPosition()
                     if (!isLoading && (totalItemCount - visibleItemCount) <= (firstVisibleItem + visibleThreshold)) {
-                        listener.onLoadMore(recyclerView)
+                        listener?.onLoadMore(recyclerView)
                         isLoading = true
                         swipeRefreshLayout?.isEnabled = false
                         onLoadMore()
@@ -178,6 +195,10 @@ class MPRecyclerView<T: Serializable>: FrameLayout {
         swipeRefreshLayout?.isEnabled = true
     }
 
+    fun refresh() {
+        swipeRefreshLayout?.isRefreshing = true
+    }
+
     interface OnLoadMoreListener {
         fun onLoadMore(recyclerView: RecyclerView)
         fun onRefresh(recyclerView: RecyclerView)
@@ -199,6 +220,10 @@ class MPRecyclerView<T: Serializable>: FrameLayout {
         adapter?.addItemsAt(list, at)
     }
 
+    fun addItemAt(item: T?, at: Int) {
+        adapter?.addItemAt(item, at)
+    }
+
     fun addItem(item: T?) {
         adapter?.addItem(item)
     }
@@ -213,6 +238,12 @@ class MPRecyclerView<T: Serializable>: FrameLayout {
 
     fun clear() {
         adapter?.clear()
+    }
+
+    fun unselect() {
+        if (selectionMode != SelectionModes.NONE) {
+            (adapter as SelectableAdapter<T>).unselect()
+        }
     }
 
 }
