@@ -117,7 +117,7 @@ class ProductClassListFragment: SingleListFragment<
             FragmentCommunicationOperations.ADD_NEW_ITEM.operation -> {
                 (rvSingle as MPRecyclerView<ProductClass>).addItemAt(data as ProductClass, 0)
             }
-            FragmentCommunicationOperations.ITEM_SELECTED
+            FragmentCommunicationOperations.ITEM_SELECTED.operation -> {}
         }
     }
 
