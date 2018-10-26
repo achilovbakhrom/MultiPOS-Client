@@ -40,7 +40,6 @@ android {
 }
 
 
-
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -79,14 +78,15 @@ dependencies {
     annotationProcessor "android.arch.lifecycle:compiler:$rootProject.lifecycle"
 
     //data binding
-//    kapt 'com.android.databinding:compiler:3.1.4'
     kapt "androidx.databinding:databinding-compiler:3.2.0"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    // recycler view
-    implementation 'com.jcodecraeer:xrecyclerview:1.5.9'
+    // flexbox from google
+    implementation 'com.google.android:flexbox:1.1.0'
 
+    // chip
+    implementation 'com.github.fiskurgit:ChipCloud:3.0.5'
 }

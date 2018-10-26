@@ -62,20 +62,20 @@ class CompanyRightFragment: BaseFragment<CompanyRightFragmentBinding, CompanyRig
         }
 
         btnEdit.setOnClickListener {
-                        if(btnEdit.text == getString(R.string.edit))
-                            mViewModel?.isEditable?.set(true)
-                        else {
-                            val fragment = activity?.supportFragmentManager?.findFragmentByTag(COMPANY_FRAGMENT)
-                            (fragment as? CompanyFragment)?.updateRV()
-                        }
+            if (btnEdit.text == getString(R.string.edit))
+                mViewModel?.isEditable?.set(true)
+            else {
+                val fragment = activity?.supportFragmentManager?.findFragmentByTag(COMPANY_FRAGMENT)
+                (fragment as? CompanyFragment)?.updateRV()
+            }
         }
 
         btnDelete.setOnClickListener {
-            if(btnDelete.text == getString(R.string.cancel)) {
+            if (btnDelete.text == getString(R.string.cancel)) {
                 mViewModel?.isEditable?.set(false)
                 mViewModel?.companyName?.set("")
                 mViewModel?.companyName?.set(lastItem)
-            }//delete request
+            } //delete request
         }
 
         mpRadioButton.textList = mutableListOf("Male", "Female")

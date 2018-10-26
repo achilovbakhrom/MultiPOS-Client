@@ -95,5 +95,30 @@
     <string name="yes">YES</string>
     <string name="product_class_name_error">Product Class name can\'t be empty!</string>
     <string name="unknown_error">Unknown error!</string>
+    <string name="company_photo">Company Photo</string>
+    <string name="company_name_required">Company Name*</string>
+    <string name="business_occupation_required">Business occupation*</string>
+    <string name="contact_data">Contact Data</string>
+    <string name="address_type">Address Type</string>
+    <string name="street_address_1_required">Street Address 1*</string>
+    <string name="street_address_2">Street Address 2</string>
+    <string name="country_required">Country*</string>
+    <string name="city_required">City*</string>
+    <string name="state">State</string>
+    <string name="post_code">Post Code</string>
+    <string name="photo">Photo</string>
+    <string name="first_name_required">First Name*</string>
+    <string name="last_name_required">Last Name*</string>
+    <string name="position_required">Position*</string>
+    <string name="gender">Gender</string>
+    <string name="marital_status">Marital Status</string>
+    <string name="nationality">Nationality</string>
+    <string name="language">Language</string>
+    <string name="phones">Phones</string>
+    <string name="phones_with_two_dots">Phones:</string>
+    <string name="email_required">Email*</string>
+    <string name="mobile">Mobile</string>
+    <string name="personal">Personal</string>
+    <string name="birth_date">Birth Date</string>
 
 </resources>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/ten_dp">
+                <TextView
+                    android:layout_width="@dimen/hundred_eighty_dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/company_photo"
+                    android:textColor="@color/colorTitle"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/twenty_dp" />
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <RelativeLayout
+                        android:layout_width="@dimen/seventy_dp"
+                        android:layout_height="@dimen/seventy_dp"
+                        android:layout_gravity="center_horizontal">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_company_photo"
+                            android:layout_centerInParent="true" />
+                        <ImageView
+                            android:layout_width="@dimen/twenty_two_dp"
+                            android:layout_height="@dimen/twenty_two_dp"
+                            android:src="@drawable/ic_company_photo_plus_button"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true" />
+                    </RelativeLayout>
+                </FrameLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/ten_dp">
+                <TextView
+                    android:layout_width="@dimen/hundred_eighty_dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/company_name_required"
+                    android:textColor="@color/colorTitle"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/twenty_dp" />
+                <com.jim.multipos.customView.MpEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/twenty_dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/ten_dp">
+                <TextView
+                    android:layout_width="@dimen/hundred_eighty_dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/business_occupation_required"
+                    android:textColor="@color/colorTitle"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/twenty_dp" />
+
+                <com.jim.multipos.customView.MpEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/twenty_dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ten_dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="@dimen/hundred_eighty_dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/twenty_dp"
+                    android:text="@string/contact_data"
+                    android:textColor="@color/colorTitle" />
+                <ImageView
+                    android:layout_width="@dimen/sixty_dp"
+                    android:layout_height="@dimen/thirty_dp"
+                    android:background="@drawable/plus_button_bg"
+                    android:baselineAligned="false"
+                    android:src="@drawable/plus"
+                    android:padding="@dimen/four_dp"
+                    android:translationZ="@dimen/three_dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ten_dp"
+                android:orientation="horizontal"
+                android:layout_marginEnd="@dimen/twenty_dp"
+                android:layout_marginStart="@dimen/twenty_dp"
+                android:id="@+id/llContactDataContainer" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/ten_dp"
+                android:layout_marginBottom="@dimen/twenty_dp">
+                <TextView
+                    android:layout_width="@dimen/hundred_eighty_dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/description"
+                    android:textColor="@color/colorTitle"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/twenty_dp" />
+                <com.jim.multipos.customView.MpEditTextMultiline
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/twenty_dp"
+                    android:minLines="3"
+                    android:maxLines="6" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cancel"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/twenty_dp"
+                    android:layout_marginEnd="@dimen/five_dp"
+                    android:textColor="@color/colorWhite"
+                    android:background="@drawable/cancel_bg"
+                    android:layout_marginBottom="@dimen/five_dp" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/next"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="@dimen/twenty_dp"
+                    android:layout_marginStart="@dimen/five_dp"
+                    android:textColor="@color/colorWhite"
+                    android:background="@drawable/save_bg"
+                    android:layout_marginBottom="@dimen/five_dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</layout>

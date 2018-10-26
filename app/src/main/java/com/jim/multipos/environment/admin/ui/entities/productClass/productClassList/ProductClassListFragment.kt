@@ -120,7 +120,6 @@ class ProductClassListFragment: SingleListFragment<
             FragmentCommunicationOperations.ITEM_SELECTED.operation -> {}
         }
     }
-
 }
 
 class ProductClassViewHolder(itemView: View): BaseViewHolder<ProductClass>(itemView) {
@@ -145,4 +144,5 @@ class ProductClassViewHolder(itemView: View): BaseViewHolder<ProductClass>(itemV
         val view = LayoutInflater.from(context).inflate(R.layout.product_class_list_item, parent, false)
         return ProductClassViewHolder(view)
     }
+
 }

@@ -12,8 +12,8 @@ import com.jim.multipos.databinding.CompanyLeftFragmentBinding
 import javax.inject.Inject
 
 class CompanyLeftFragment: BaseFragment<CompanyLeftFragmentBinding, CompanyLeftViewModel>() {
-    override fun getLayoutId(): Int = R.layout.company_left_fragment
 
+    override fun getLayoutId(): Int = R.layout.company_left_fragment
 
     @Inject
     lateinit var mViewModelFactory: ViewModelProvider.Factory
@@ -21,7 +21,6 @@ class CompanyLeftFragment: BaseFragment<CompanyLeftFragmentBinding, CompanyLeftV
     override fun getBindingVariable(): Int {
         return BR.viewModel
     }
-
 
     override fun getViewModel(): CompanyLeftViewModel {
         mViewModel = ViewModelProviders.of(this, mViewModelFactory).get(CompanyLeftViewModel::class.java)
