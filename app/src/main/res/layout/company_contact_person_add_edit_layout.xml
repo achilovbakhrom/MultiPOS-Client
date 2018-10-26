@@ -263,7 +263,9 @@
         <com.jim.multipos.customView.MpEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/twenty_dp"/>
+            android:layout_marginEnd="@dimen/twenty_dp"
+            android:minLines="3"
+            android:maxLines="6" />
     </LinearLayout>
 
 </LinearLayout>
