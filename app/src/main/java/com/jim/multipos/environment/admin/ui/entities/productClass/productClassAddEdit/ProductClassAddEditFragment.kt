@@ -5,7 +5,10 @@ import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.design.widget.Snackbar
+import android.support.v7.app.AlertDialog
+import android.support.v7.app.AppCompatDialog
 import android.view.View
+import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.EditText
 import android.widget.Switch
 import android.widget.TextView
@@ -22,6 +25,7 @@ import com.jim.multipos.databinding.ProductClassListFragmentBinding
 import com.jim.multipos.environment.admin.model.ProductClass
 import com.jim.multipos.utils.FragmentCommunicationOperations
 import kotlinx.android.synthetic.main.base_add_edit_fragment.*
+import kotlinx.android.synthetic.main.product_class_add_edit_fragment.*
 import javax.inject.Inject
 
 class ProductClassAddEditFragment:
@@ -35,7 +39,6 @@ class ProductClassAddEditFragment:
         super.onViewCreated(view, savedInstanceState)
         mode = AddEditModes.EMPTY
         listener = this
-
 
 //        flAddEditProgress.findViewById<MpEditText>(R.id.etProductClassName).addTextChangedListener(object: TextWatcher {
 //            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
@@ -91,7 +94,15 @@ class ProductClassAddEditFragment:
     /**
      *  Add edit mode buttons click listener
      */
-    override fun onDeleteClick() {}
+    override fun onDeleteClick() {
+//        val dialog = AppCompatDialog(context)
+//        dialog.setContentView(R.layout.delete_item_dialog)
+//        dialog.show()
+        val dialog = AlertDialog.Builder(context!!, R.style.DeleteDialog)
+        dialog.setView(R.layout.delete_item_dialog)
+        dialog.create().window.setLayout(WRAP_CONTENT, WRAP_CONTENT)
+        dialog.show()
+    }
     override fun onEditClick() {}
     override fun onSaveClick() {
         val productClassName = flAddEditContent.findViewById<EditText>(R.id.etProductClassName).text.toString()

@@ -50,6 +50,14 @@ abstract class BaseFragment<T: ViewDataBinding, V: BaseViewModel> : Fragment(), 
                 ?.commit()
     }
 
+    internal fun replaceFragment(fragment: Fragment?, tag: String, id: Int){
+        activity
+                ?.supportFragmentManager
+                ?.beginTransaction()
+                ?.replace(id, fragment, tag)
+                ?.commit()
+    }
+
     internal fun removeFragment(tag: String) {
         activity
                 ?.supportFragmentManager

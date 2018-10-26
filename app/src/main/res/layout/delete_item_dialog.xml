@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorLightGray"
+        android:padding="@dimen/ten_dp">
+
+        <ImageView
+            android:id="@+id/ivDialogBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/iv_dialog_back"
+            android:layout_margin="@dimen/ten_dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/confirm"
+            android:textColor="@color/colorTitle"
+            android:layout_centerInParent="true"
+            />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/thirty_dp"
+        android:text="@string/are_u_sure"
+        android:textColor="@color/colorTitle"
+        android:gravity="center"
+        android:layout_gravity="center"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnNo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/no"
+            android:background="@drawable/circular_button_green"
+            android:backgroundTint="@color/colorLightGray"
+            android:layout_marginStart="@dimen/thirty_dp"
+            android:layout_marginBottom="@dimen/twenty_dp"
+            android:layout_marginEnd="@dimen/ten_dp"
+            />
+
+        <Button
+            android:id="@+id/btnYes"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/circular_button_green"
+            android:backgroundTint="@color/colorLightGray"
+            android:layout_marginBottom="@dimen/twenty_dp"
+            android:layout_marginEnd="@dimen/thirty_dp"
+            android:layout_marginStart="@dimen/ten_dp"
+            android:text="@string/yes"
+            />
+    </LinearLayout>
+</LinearLayout>

@@ -16,4 +16,5 @@
     <color name="edit_blue">#5990C7</color>
     <color name="cancel_gray">#999999</color>
     <color name="save_green">#68AC7A</color>
+    <color name="colorGrayText">#aaa</color>
 </resources>

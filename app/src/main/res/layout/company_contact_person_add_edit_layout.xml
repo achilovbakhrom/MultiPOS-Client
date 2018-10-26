@@ -27,14 +27,16 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/ic_company_photo"
-                    android:layout_centerInParent="true" />
+                    android:layout_centerInParent="true"
+                    />
+                    <!--android:src="@drawable/ic_company_photo"-->
                 <ImageView
                     android:layout_width="@dimen/twenty_two_dp"
                     android:layout_height="@dimen/twenty_two_dp"
-                    android:src="@drawable/ic_company_photo_plus_button"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true" />
+                    android:layout_alignParentBottom="true"
+                    />
+                    <!--android:src="@drawable/ic_company_photo_plus_button"-->
             </RelativeLayout>
         </FrameLayout>
     </LinearLayout>

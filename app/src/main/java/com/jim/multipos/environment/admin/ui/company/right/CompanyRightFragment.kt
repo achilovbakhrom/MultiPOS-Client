@@ -14,6 +14,7 @@ import com.jim.multipos.customView.CustomMpDialog
 import com.jim.multipos.databinding.CompanyRightFragmentBinding
 import com.jim.multipos.environment.admin.ui.MainPageActivity
 import com.jim.multipos.environment.admin.ui.MainPageActivity.Companion.COMPANY_FRAGMENT
+import com.jim.multipos.environment.admin.ui.company.left.CompanyLeftFragment
 import com.jim.multipos.environment.admin.ui.company.main.CompanyFragment
 import kotlinx.android.synthetic.main.company_right_fragment.*
 import javax.inject.Inject
@@ -42,6 +43,7 @@ class CompanyRightFragment: BaseFragment<CompanyRightFragmentBinding, CompanyRig
         super.onViewCreated(view, savedInstanceState)
         mViewDataBinding = getViewDataBinding()
         setUp()
+
     }
 
     private fun setUp() {
@@ -78,7 +80,6 @@ class CompanyRightFragment: BaseFragment<CompanyRightFragmentBinding, CompanyRig
             } //delete request
         }
 
-        mpRadioButton.textList = mutableListOf("Male", "Female")
     }
 
     override fun onBackPressed() {

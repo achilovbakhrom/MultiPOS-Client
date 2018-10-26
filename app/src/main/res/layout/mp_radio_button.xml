@@ -14,6 +14,7 @@
         android:id="@+id/rbText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/colorNavy"
         android:paddingTop="@dimen/five_dp"
         android:paddingBottom="@dimen/five_dp"
         android:paddingStart="@dimen/ten_dp"

@@ -5,13 +5,12 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
-import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.CardView
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,7 +19,6 @@ import com.jim.multipos.BR
 import com.jim.multipos.R
 import com.jim.multipos.core.BaseActions
 import com.jim.multipos.core.Notifiable
-import com.jim.multipos.core.fragments.DoubleHorizontalFragment
 import com.jim.multipos.core.fragments.DoubleHorizontalFragment.Companion.RIGHT_FRAGMENT_TAG
 import com.jim.multipos.core.fragments.SingleListFragment
 import com.jim.multipos.customView.recyclerView.MPRecyclerView
@@ -36,7 +34,7 @@ import java.io.Serializable
 import javax.inject.Inject
 
 @Suppress("UNCHECKED_CAST")
-class ProductClassListFragment: SingleListFragment<
+class  ProductClassListFragment: SingleListFragment<
         ProductClass,
         ProductClassListFragmentBinding,
         ProductClassListViewModel
@@ -133,9 +131,14 @@ class ProductClassViewHolder(itemView: View): BaseViewHolder<ProductClass>(itemV
         productClassDescription.text = item?.description
         val context = productClassName.context
         if (isSelected) {
-            productClassItemBg.setCardBackgroundColor(context.getColor(R.color.colorPrimary))
+            productClassItemBg.setCardBackgroundColor(context.getColor(R.color.colorNavy))
+            productClassName.setTextColor(ContextCompat.getColor(context,R.color.colorWhite))
+            productClassDescription.setTextColor(ContextCompat.getColor(context,R.color.colorWhite))
+
         } else {
             productClassItemBg.setCardBackgroundColor(Color.WHITE)
+            productClassDescription.setTextColor(ContextCompat.getColor(context, R.color.colorGrayText))
+            productClassName.setTextColor(ContextCompat.getColor(context, R.color.colorTitle))
         }
     }
 

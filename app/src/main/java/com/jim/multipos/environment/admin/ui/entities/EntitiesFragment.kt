@@ -16,9 +16,9 @@ class EntitiesFragment : TabbedFragment<TabbedFragmentBinding, EmptyViewModel>()
     lateinit var mViewModelFactory: ViewModelProvider.Factory
 
 
-    override fun getTabData(): Map<String, Fragment> = mutableMapOf<String, Fragment>(
-            "Product" to ProductClassFragment(),
-            "Product Class" to Fragment(),
+    override fun getTabData(): Map<String, Fragment> = mutableMapOf(
+            "Product" to Fragment(),
+            "Product Class" to ProductClassFragment(),
             "Discount" to Fragment(),
             "Service Fee" to Fragment(),
             "Unit" to Fragment(),

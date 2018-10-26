@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Product class"
-            android:textColor="@color/colorDarkBlue"
+            android:textColor="@color/colorTitle"
             android:textStyle="bold"
             android:id="@+id/tvProductClassName" />
 
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/ten_dp"
             android:id="@+id/tvProductClassDescription"
-            android:textColor="@color/colorGray"
+            android:textColor="@color/colorGrayText"
             android:text="Product Description" />
 
     </LinearLayout>

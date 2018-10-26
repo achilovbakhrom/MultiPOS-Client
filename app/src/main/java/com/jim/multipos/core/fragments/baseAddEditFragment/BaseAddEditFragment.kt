@@ -82,7 +82,6 @@ abstract class BaseAddEditFragment<M: Serializable, V: ViewDataBinding, T: BaseV
     }
 
 
-
     private fun changeMode() {
         when (mode) {
             AddEditModes.EMPTY -> setEmptyMode()

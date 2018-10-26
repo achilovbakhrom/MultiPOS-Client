@@ -19,5 +19,8 @@
     </style>
 
 
+    <style name="DeleteDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowBackground">@drawable/circle_layout</item>
+    </style>
 
 </resources>

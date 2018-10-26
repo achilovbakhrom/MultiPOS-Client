@@ -48,7 +48,7 @@
                     android:text="@string/name_required"
                     android:gravity="center_vertical"
                     android:layout_gravity="center"
-                    android:padding="@dimen/five_dp"
+                    android:layout_margin="@dimen/five_dp"
                     />
 
             </LinearLayout>
@@ -65,7 +65,7 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:layout_gravity="center"
-                    android:padding="@dimen/five_dp"
+                    android:layout_margin="@dimen/five_dp"
                     android:id="@+id/tvProductClassName"
                     />
             </LinearLayout>
@@ -87,7 +87,7 @@
                     android:text="@string/is_active"
                     android:gravity="center_vertical"
                     android:layout_gravity="center"
-                    android:padding="@dimen/five_dp"
+                    android:layout_margin="@dimen/five_dp"
                     />
 
             </LinearLayout>
@@ -103,7 +103,7 @@
                     android:text="Yes"
                     android:gravity="center_vertical"
                     android:layout_gravity="center"
-                    android:padding="@dimen/five_dp"
+                    android:layout_margin="@dimen/five_dp"
                     android:id="@+id/tvProductClassActive"
                     />
             </LinearLayout>
@@ -125,7 +125,7 @@
                     android:text="@string/description"
                     android:gravity="center_vertical"
                     android:layout_gravity="center"
-                    android:padding="@dimen/five_dp"
+                    android:layout_margin="@dimen/five_dp"
                     />
 
             </LinearLayout>
@@ -141,7 +141,7 @@
                     android:text="Product Class Description"
                     android:gravity="center_vertical"
                     android:layout_gravity="center"
-                    android:padding="@dimen/five_dp"
+                    android:layout_margin="@dimen/five_dp"
                     android:id="@+id/tvProductClassDescription"
                     />
 

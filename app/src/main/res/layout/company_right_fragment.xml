@@ -36,11 +36,6 @@
                     android:text="@string/edit_company"
                     android:textColor="@color/colorTitle" />
 
-                <com.jim.multipos.customView.MpRadioButton
-                    android:id="@+id/mpRadioButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
                 <com.jim.multipos.customView.CustomMpDialog
                     android:id="@+id/dialog"
                     android:layout_width="match_parent"
