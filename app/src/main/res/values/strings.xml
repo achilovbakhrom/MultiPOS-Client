@@ -121,6 +121,34 @@
     <string name="mobile">Mobile</string>
     <string name="personal">Personal</string>
     <string name="birth_date">Birth Date</string>
+    <string name="requisite">Requisite</string>
+    <string name="requisite_name_required">Requisite Name*</string>
+    <string name="item_name">Item name</string>
+    <string name="item_value">Item value</string>
+    <string name="about">About</string>
+    <string name="set_to_main">SET TO MAIN</string>
+    <string name="position">Position</string>
+    <string name="office_phone">Office Phone</string>
+    <string name="mobile_phone">Mobile phone</string>
+    <string name="personal_phone">Personal phone</string>
+    <string name="items">Items</string>
+    <string name="requisite_name">Requisite name</string>
+    <string name="snn">SNN</string>
+    <string name="bank_account">Bank Account</string>
+    <string name="add_company">Add Company</string>
+    <string name="select_company_to_view_information">Select Company to view information</string>
 
+    <string-array name="company_add_edit_items">
+        <item>About</item>
+        <item>Address</item>
+        <item>Contact Person</item>
+        <item>Bank Requisites</item>
+    </string-array>
+
+    <string-array name="company_show_items">
+        <item>Company</item>
+        <item>Contact Person</item>
+        <item>Bank Requisites</item>
+    </string-array>
 
 </resources>

@@ -50,25 +50,28 @@ class MPRecyclerView<T: Serializable>: FrameLayout {
 
     var itemSelectionListener: BaseActions<in T>? = null
         set(value) {
-
             if (selectionMode == SelectionModes.NONE) {
                 throw Exception("This mode is not selectable, change mode to Selectable mode")
             }
-
             if (adapter != null) {
                 (adapter as SelectableAdapter).listener = value
             }
             field = value
         }
 
+    var itemsCount = 0
+        get() = adapter?.items?.size ?: 0
+
+
     var firstVisibleItem = 0
     var visibleItemCount = 0
     var totalItemCount = 0
     var visibleThreshold = 2
     var isLoading = false
+    var stopLoading = false
 
-    private var addingItems: List<T>? = null
-    private var loadMorePos = -1
+    private var addingItems: MutableList<T> = mutableListOf()
+//    private var loadMorePos = -1
 
     var viewHolder: BaseViewHolder<T>? = null
 
@@ -81,11 +84,11 @@ class MPRecyclerView<T: Serializable>: FrameLayout {
             }
 
             val items = adapter?.items
-            if (selectionMode == SelectionModes.NONE) {
+            if (value == SelectionModes.NONE) {
                 adapter = SimpleAdapter(viewHolder!!)
             } else {
                 adapter = SelectableAdapter(viewHolder!!)
-                if (selectionMode == SelectionModes.SINGLE) {
+                if (value == SelectionModes.SINGLE) {
                     (adapter as SelectableAdapter).mode = SelectionMode.SINGLE
                 } else {
                     (adapter as SelectableAdapter).mode = SelectionMode.MULTIPLE
@@ -154,7 +157,7 @@ class MPRecyclerView<T: Serializable>: FrameLayout {
                     visibleItemCount = recyclerView.childCount
                     totalItemCount = lm.itemCount
                     firstVisibleItem = lm.findFirstVisibleItemPosition()
-                    if (!isLoading && (totalItemCount - visibleItemCount) <= (firstVisibleItem + visibleThreshold)) {
+                    if (!stopLoading && !isLoading && (totalItemCount - visibleItemCount) <= (firstVisibleItem + visibleThreshold)) {
                         listener?.onLoadMore(recyclerView)
                         isLoading = true
                         swipeRefreshLayout?.isEnabled = false
@@ -171,21 +174,19 @@ class MPRecyclerView<T: Serializable>: FrameLayout {
     private fun onLoadMore() {
         recyclerView?.post {
             adapter?.addItem(null)
-            loadMorePos = adapter?.itemCount!! - 1
+//            loadMorePos = adapter?.itemCount!! - 1
             recyclerView?.smoothScrollToPosition(adapter?.itemCount!! - 1)
         }
     }
 
     fun loadMoreComplete() {
-        if (loadMorePos != -1 && addingItems != null) {
-            recyclerView?.post {
-                adapter?.items?.removeAt(loadMorePos)
-                adapter?.addItems(addingItems!!)
-                isLoading = false
-                swipeRefreshLayout?.isEnabled = true
-                addingItems = null
-                loadMorePos = -1
-            }
+        recyclerView?.post {
+            adapter?.items?.remove(null)
+            adapter?.addItems(addingItems)
+            isLoading = false
+            swipeRefreshLayout?.isEnabled = true
+            addingItems.clear()
+//            loadMorePos = -1
         }
     }
 
@@ -196,6 +197,7 @@ class MPRecyclerView<T: Serializable>: FrameLayout {
     }
 
     fun refresh() {
+        stopLoading = false
         swipeRefreshLayout?.isRefreshing = true
     }
 
@@ -209,8 +211,9 @@ class MPRecyclerView<T: Serializable>: FrameLayout {
     }
 
     fun addItems(list: List<T>) {
+        stopLoading = list.isEmpty()
         if (isLoading) {
-            addingItems = list
+            addingItems = list.toMutableList()
         } else {
             adapter?.addItems(list)
         }

@@ -52,17 +52,12 @@ class  ProductClassListFragment: SingleListFragment<
         mViewModel?.data?.observe(this, Observer {
             val temp= it == null || it.isEmpty()
             if (!temp) {
-                (rvSingle as MPRecyclerView<ProductClass>).setItems(it!!)
+                (rvSingle as MPRecyclerView<ProductClass>).addItems(it!!)
             }
-            empty = temp
-            if (it?.isEmpty() == true) {
-
-            }
+            empty = temp && (rvSingle as MPRecyclerView<ProductClass>).itemsCount == 0
             rvSingle.loadMoreComplete()
             rvSingle.refreshComplete()
-        })
-        mViewModel?.isLoading?.observe(this, Observer {
-            isLoading = it ?: false
+            rvSingle.stopLoading = it?.isEmpty() ?: false
         })
     }
 
@@ -89,6 +84,7 @@ class  ProductClassListFragment: SingleListFragment<
             }
             override fun onRefresh(recyclerView: RecyclerView) {
                 rvSingle.unselect()
+                rvSingle.clear()
                 mViewModel?.refresh()
             }
         }

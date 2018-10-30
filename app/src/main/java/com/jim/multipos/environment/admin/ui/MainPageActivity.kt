@@ -1,5 +1,6 @@
 package com.jim.multipos.environment.admin.ui
 
+
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import com.jim.multipos.BR
@@ -62,9 +63,7 @@ class MainPageActivity: BaseActivity<AdminMainpageLayoutBinding, MainPageViewMod
                 openFragment(CompanyFragment(), COMPANY_FRAGMENT)
             }
 
-            override fun onDashboard() {
-
-            }
+            override fun onDashboard() {}
 
             override fun onEstablishment() {
                 openFragment(EstablishmentFragment(), ESTABLISHMENT_FRAGMENT)
@@ -74,25 +73,15 @@ class MainPageActivity: BaseActivity<AdminMainpageLayoutBinding, MainPageViewMod
                 openFragment(EntitiesFragment(), ENTITIES_FRAGMENT)
             }
 
-            override fun onManagements() {
+            override fun onManagements() {}
 
-            }
+            override fun onInventory() {}
 
-            override fun onInventory() {
+            override fun onCRM() {}
 
-            }
+            override fun onHRM() {}
 
-            override fun onCRM() {
-
-            }
-
-            override fun onHRM() {
-
-            }
-
-            override fun onReports() {
-
-            }
+            override fun onReports() {}
 
         })
 

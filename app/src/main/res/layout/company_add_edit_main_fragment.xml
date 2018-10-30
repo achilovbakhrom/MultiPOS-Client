@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorLightGray">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_company"
+            android:textColor="@color/colorTitle"
+            android:layout_marginLeft="@dimen/twenty_five_dp"
+            android:layout_marginTop="@dimen/twenty_dp"
+            android:layout_marginBottom="@dimen/ten_dp" />
+
+        <com.jim.multipos.customView.MPTabBar
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:items="@array/company_add_edit_items"
+            android:id="@+id/mpTabBar"
+            />
+
+
+    </LinearLayout>
+
+</layout>
+

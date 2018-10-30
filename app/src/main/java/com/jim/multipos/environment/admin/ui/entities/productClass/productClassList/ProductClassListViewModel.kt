@@ -14,9 +14,8 @@ import javax.inject.Inject
 class ProductClassListViewModel @Inject constructor(dataManager: DataManager, val prefsManager: PrefsManager): SingleListViewModel<ProductClass>(dataManager) {
 
 
+
     override fun onViewCreated() {
-        data.value = mutableListOf()
-        page.set(0)
         prefsManager.putValue("tenant_id", "nwFDL83")
         prefsManager.putValue("accessToken", TOKEN)
         load()
@@ -56,9 +55,11 @@ class ProductClassListViewModel @Inject constructor(dataManager: DataManager, va
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     data.value = it.data?.toMutableList()
+                    isLoading.value = false
                 }, {
                     //todo
                     errorMessage.value = it.message
+                    isLoading.value = false
                 }))
     }
 

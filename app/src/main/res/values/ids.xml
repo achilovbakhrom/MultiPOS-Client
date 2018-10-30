@@ -3,4 +3,5 @@
     <item type="id" name="spinner" />
     <item type="id" name="chb_iv" />
     <item type="id" name="chb_tv" />
+    <item type="id" name="tab_frame_layout" />
 </resources>

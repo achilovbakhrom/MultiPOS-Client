@@ -10,6 +10,10 @@ import com.jim.multipos.environment.admin.ui.MainPageViewModel
 import com.jim.multipos.environment.admin.ui.SearchViewModel
 import com.jim.multipos.environment.admin.ui.company.left.CompanyLeftViewModel
 import com.jim.multipos.environment.admin.ui.company.right.CompanyRightViewModel
+import com.jim.multipos.environment.admin.ui.company.right.show.CompanyShowMainViewModel
+import com.jim.multipos.environment.admin.ui.company.right.show.bankRequisites.CompanyShowRequisitesViewModel
+import com.jim.multipos.environment.admin.ui.company.right.show.company.CompanyShowAboutViewModel
+import com.jim.multipos.environment.admin.ui.company.right.show.contactPerson.CompanyShowContactPersonViewModel
 import com.jim.multipos.environment.admin.ui.dashboard.viewmodel.DashboardViewModel
 import com.jim.multipos.environment.admin.ui.entities.productClass.productClassAddEdit.ProductClassAddEditViewModel
 import com.jim.multipos.environment.admin.ui.entities.productClass.productClassList.ProductClassListViewModel
@@ -90,6 +94,26 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(EmptyViewModel::class)
     abstract fun bindEmptyViewModel(emptyViewModel: EmptyViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(CompanyShowMainViewModel::class)
+    abstract fun bindCompanyShowMainViewModel(companyShowMainViewModel: CompanyShowMainViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(CompanyShowContactPersonViewModel::class)
+    abstract fun bindCompanyShowContactPersonViewModel(companyShowContactPersonViewModel: CompanyShowContactPersonViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(CompanyShowAboutViewModel::class)
+    abstract fun bindCompanyShowAboutViewModel(companyShowAboutViewModel: CompanyShowAboutViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(CompanyShowRequisitesViewModel::class)
+    abstract fun bindCompanyShowRequisitesViewModel(companyShowRequisitesViewModel: CompanyShowRequisitesViewModel): ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelProviderFactory): ViewModelProvider.Factory

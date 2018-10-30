@@ -14,19 +14,24 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.jim.multipos.BR
 import com.jim.multipos.R
+import com.jim.multipos.core.BaseActions
 import com.jim.multipos.core.fragments.BaseFragment
+import com.jim.multipos.core.fragments.DoubleHorizontalFragment.Companion.RIGHT_FRAGMENT_TAG
 import com.jim.multipos.core.fragments.SingleListFragment
 import com.jim.multipos.customView.recyclerView.MPRecyclerView
 import com.jim.multipos.customView.recyclerView.adapter.BaseViewHolder
 import com.jim.multipos.customView.recyclerView.provideViewHolder
 import com.jim.multipos.databinding.CompanyLeftFragmentBinding
 import com.jim.multipos.environment.admin.model.Company
+import com.jim.multipos.environment.admin.model.CompanyDTO
 import com.jim.multipos.environment.admin.model.ProductClass
 import com.jim.multipos.environment.admin.ui.entities.productClass.productClassList.ProductClassViewHolder
+import com.jim.multipos.utils.FragmentCommunicationOperations
 import kotlinx.android.synthetic.main.single_list_fragment.*
 import javax.inject.Inject
 
-class CompanyLeftFragment: SingleListFragment<Company, CompanyLeftFragmentBinding, CompanyLeftViewModel>() {
+@Suppress("unchecked_cast")
+class CompanyLeftFragment: SingleListFragment<CompanyDTO, CompanyLeftFragmentBinding, CompanyLeftViewModel>() {
 
     @Inject
     lateinit var mViewModelFactory: ViewModelProvider.Factory
@@ -44,7 +49,7 @@ class CompanyLeftFragment: SingleListFragment<Company, CompanyLeftFragmentBindin
         mViewModel?.data?.observe(this, Observer {
             val temp= it == null || it.isEmpty()
             if (!temp) {
-                (rvSingle as MPRecyclerView<Company>).setItems(it!!)
+                (rvSingle as MPRecyclerView<CompanyDTO>).setItems(it!!)
             }
             empty = temp
             rvSingle.loadMoreComplete()
@@ -59,16 +64,27 @@ class CompanyLeftFragment: SingleListFragment<Company, CompanyLeftFragmentBindin
 
 
     override fun initRV() {
-        (rvSingle as MPRecyclerView<Company>).viewHolder = provideViewHolder<Company, CompanyViewHolder>(context!!)
+        (rvSingle as MPRecyclerView<CompanyDTO>).viewHolder = provideViewHolder<CompanyDTO, CompanyViewHolder>(context!!)
         rvSingle.layoutManager = GridLayoutManager(context!!, 2)
         rvSingle.listener = object : MPRecyclerView.OnLoadMoreListener {
             override fun onLoadMore(recyclerView: RecyclerView) {
                 mViewModel?.loadMore()
-
             }
             override fun onRefresh(recyclerView: RecyclerView) {
                 mViewModel?.refresh()
             }
+        }
+
+        (rvSingle as MPRecyclerView<CompanyDTO>).itemSelectionListener = object : BaseActions<CompanyDTO> {
+
+            override fun onItemClick(item: CompanyDTO?, position: Int) {
+                sendNotification(RIGHT_FRAGMENT_TAG, FragmentCommunicationOperations.ITEM_SELECTED.operation, item)
+            }
+
+            override fun onItemLongClick(item: CompanyDTO?, position: Int) {
+
+            }
+
         }
     }
 
@@ -76,7 +92,7 @@ class CompanyLeftFragment: SingleListFragment<Company, CompanyLeftFragmentBindin
     }
 
     override fun emptyText(): String {
-        return "Add Company"
+        return getString(R.string.add_company)
     }
 
     override fun getBindingVariable(): Int = BR.viewModel
@@ -88,18 +104,18 @@ class CompanyLeftFragment: SingleListFragment<Company, CompanyLeftFragmentBindin
 
 }
 
-class CompanyViewHolder(itemView: View): BaseViewHolder<Company>(itemView) {
+class CompanyViewHolder(itemView: View): BaseViewHolder<CompanyDTO>(itemView) {
 
     private val productClassName = itemView.findViewById<TextView>(R.id.tvProductClassName)
     private val productClassDescription = itemView.findViewById<TextView>(R.id.tvProductClassDescription)
 
-    override fun onBind(item: Company?, position: Int, isSelected: Boolean) {
-        productClassName.text = item?.name
-        productClassDescription.text = item?.description
+    override fun onBind(item: CompanyDTO?, position: Int, isSelected: Boolean) {
+//        productClassName.text = item?.name
+//        productClassDescription.text = item?.des
     }
 
     @SuppressLint("InflateParams")
-    override fun newInstance(context: Context, parent: ViewGroup): BaseViewHolder<Company> {
+    override fun newInstance(context: Context, parent: ViewGroup): BaseViewHolder<CompanyDTO> {
         val view = LayoutInflater.from(context).inflate(R.layout.product_class_list_item, parent, false)
         return CompanyViewHolder(view)
     }

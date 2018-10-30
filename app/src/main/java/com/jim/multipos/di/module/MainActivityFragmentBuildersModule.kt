@@ -3,6 +3,10 @@ package com.jim.multipos.di.module
 import com.jim.multipos.environment.admin.ui.company.left.CompanyLeftFragment
 import com.jim.multipos.environment.admin.ui.company.main.CompanyFragment
 import com.jim.multipos.environment.admin.ui.company.right.CompanyRightFragment
+import com.jim.multipos.environment.admin.ui.company.right.show.CompanyShowMainFragment
+import com.jim.multipos.environment.admin.ui.company.right.show.bankRequisites.CompanyShowBankRequisitesFragment
+import com.jim.multipos.environment.admin.ui.company.right.show.company.CompanyShowAboutFragment
+import com.jim.multipos.environment.admin.ui.company.right.show.contactPerson.CompanyShowContactPersonFragment
 import com.jim.multipos.environment.admin.ui.entities.EntitiesFragment
 import com.jim.multipos.environment.admin.ui.entities.productClass.ProductClassFragment
 import com.jim.multipos.environment.admin.ui.entities.productClass.productClassAddEdit.ProductClassAddEditFragment
@@ -30,6 +34,22 @@ abstract class MainActivityFragmentBuildersModule {
     @NotNull
     @ContributesAndroidInjector
     abstract fun contributeProductClassAddEditFragment(): ProductClassAddEditFragment
+
+    @NotNull
+    @ContributesAndroidInjector
+    abstract fun contributeCompanyShowAboutFragment(): CompanyShowAboutFragment
+
+    @NotNull
+    @ContributesAndroidInjector
+    abstract fun contributeCompanyShowContactPersonFragment(): CompanyShowContactPersonFragment
+
+    @NotNull
+    @ContributesAndroidInjector
+    abstract fun contributeCompanyShowBankRequisitesFragment(): CompanyShowBankRequisitesFragment
+
+    @NotNull
+    @ContributesAndroidInjector
+    abstract fun contributeCompanyShowMainFragment(): CompanyShowMainFragment
 
     @NotNull
     @ContributesAndroidInjector

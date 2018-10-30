@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.fiskurgit:ChipCloud-3.0.5">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/ChipCloud-3.0.5.aar/7e6711bc3fd49596bde25bd1bf5d9446/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/ChipCloud-3.0.5.aar/7e6711bc3fd49596bde25bd1bf5d9446/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/ChipCloud-3.0.5.aar/51add15b98d41f31b0196a02b369c6ab/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/ChipCloud-3.0.5.aar/51add15b98d41f31b0196a02b369c6ab/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

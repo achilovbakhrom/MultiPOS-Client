@@ -6,14 +6,16 @@ import android.databinding.ObservableBoolean
 import android.databinding.ObservableField
 import com.jim.multipos.core.SingleListViewModel
 import com.jim.multipos.core.managers.DataManager
+import com.jim.multipos.environment.admin.model.AddressInformation
 import com.jim.multipos.environment.admin.model.Company
+import com.jim.multipos.environment.admin.model.CompanyDTO
 import com.jim.multipos.environment.admin.model.ProductClass
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
-class CompanyLeftViewModel @Inject constructor(dataManager: DataManager): SingleListViewModel<Company>(dataManager) {
+class CompanyLeftViewModel @Inject constructor(dataManager: DataManager): SingleListViewModel<CompanyDTO>(dataManager) {
 
     override fun onViewCreated() {
         data.value = mutableListOf()
@@ -27,15 +29,33 @@ class CompanyLeftViewModel @Inject constructor(dataManager: DataManager): Single
                 Observable
                         .timer(2, TimeUnit.SECONDS)
                         .map {
-                            val list = mutableListOf<Company>()
-                            for (i in 0..10) {
-                                val productClass = Company()
-                                productClass.active = true
-                                productClass.name = "Company $i"
-                                productClass.description = "Description $i"
-                                list.add(productClass)
+                            if (page.get() == 0) {
+                                val list = mutableListOf<CompanyDTO>()
+                                for (i in 0..20) {
+
+                                    val company = Company(
+                                            "Company Name $i",
+                                            "Sale",
+                                            addressInformation = AddressInformation(
+                                                    "HOME",
+                                                    "Buyuk Ipak Yo'li 160d",
+                                                    city = "Tashkent",
+                                                    country = "Uzbekistan"
+                                            ),
+                                            contactData = listOf()
+                                    )
+                                    val companyDTO = CompanyDTO(
+                                            company,
+                                            listOf(),
+                                            listOf()
+                                    )
+                                    list.add(companyDTO)
+                                }
+                                list
+                            } else {
+                                listOf<CompanyDTO>()
                             }
-                            list
+
                         }
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe({

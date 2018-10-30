@@ -1,94 +1,87 @@
 package com.jim.multipos.environment.admin.ui.company.right
 
-import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.support.v4.app.Fragment
+import android.support.v7.app.AppCompatActivity
 import android.view.View
-import android.widget.FrameLayout
 import com.android.databinding.library.baseAdapters.BR
 import com.jim.multipos.R
-import com.jim.multipos.core.fragments.BaseFragment
 import com.jim.multipos.core.Notifiable
-import com.jim.multipos.core.NotificationActions
-import com.jim.multipos.customView.CustomMpDialog
+import com.jim.multipos.core.ViewModelProviderFactory
+import com.jim.multipos.core.fragments.BaseFragment
+import com.jim.multipos.core.fragments.baseAddEditFragment.AddEditModes
 import com.jim.multipos.databinding.CompanyRightFragmentBinding
-import com.jim.multipos.environment.admin.ui.MainPageActivity
-import com.jim.multipos.environment.admin.ui.MainPageActivity.Companion.COMPANY_FRAGMENT
-import com.jim.multipos.environment.admin.ui.company.left.CompanyLeftFragment
-import com.jim.multipos.environment.admin.ui.company.main.CompanyFragment
+import com.jim.multipos.environment.admin.model.CompanyDTO
+import com.jim.multipos.environment.admin.ui.company.right.show.CompanyShowMainFragment
+import com.jim.multipos.utils.FragmentCommunicationOperations
 import kotlinx.android.synthetic.main.company_right_fragment.*
 import javax.inject.Inject
 
-class CompanyRightFragment: BaseFragment<CompanyRightFragmentBinding, CompanyRightViewModel>(), Notifiable{
+class CompanyRightFragment: BaseFragment<CompanyRightFragmentBinding, CompanyRightViewModel>(), Notifiable {
 
     @Inject
-    lateinit var mViewModelFactory: ViewModelProvider.Factory
+    lateinit var factory: ViewModelProviderFactory
 
-    private var lastItem: String?=null
+    private val COMPANY_RIGHT_FRAGMENT_TAG = "COMPANY_RIGHT_FRAGMENT_TAG"
 
-    override fun getBindingVariable(): Int {
-        return BR.viewModel
-    }
+    var companyDTO: CompanyDTO? = null
 
-    override fun getLayoutId(): Int {
-        return R.layout.company_right_fragment
-    }
-
-    override fun getViewModel(): CompanyRightViewModel {
-        mViewModel = ViewModelProviders.of(this, mViewModelFactory).get(CompanyRightViewModel::class.java)
-        return mViewModel as CompanyRightViewModel
-    }
+    var mode: AddEditModes = AddEditModes.EMPTY
+        set(value) {
+            when (value) {
+                AddEditModes.EMPTY -> {
+                    flCompanyMainContent.visibility = View.GONE
+                    flCompanyEmptyLayout.visibility = View.VISIBLE
+                }
+                AddEditModes.INFO -> {
+                    flCompanyMainContent.visibility = View.VISIBLE
+                    flCompanyEmptyLayout.visibility = View.GONE
+                    val fragment = CompanyShowMainFragment()
+                    val bundle = Bundle()
+                    bundle.putSerializable("model", companyDTO)
+                    fragment.arguments = bundle
+                    openFragment(fragment)
+                }
+                AddEditModes.ADD_EDIT -> {
+                    flCompanyMainContent.visibility = View.VISIBLE
+                    flCompanyEmptyLayout.visibility = View.GONE
+                }
+            }
+            field = value
+        }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mViewDataBinding = getViewDataBinding()
-        setUp()
-
+        mode = AddEditModes.ADD_EDIT
     }
 
-    private fun setUp() {
-
-        dialog.listener = object : CustomMpDialog.DialogListener{
-            override fun onBack() {
-                activity?.onBackPressed()
-            }
-
-            override fun onClick() {
-                if(!dialog.isVisible) {
-                    dialog.showDialog(view?.parent as FrameLayout, "MY", listOf("asd", "sad"))
-                    if (activity is MainPageActivity)
-                        (activity as MainPageActivity).isDialogOpened = true
-                    dialog.isVisible = true
-                }
-            }
-        }
-
-        btnEdit.setOnClickListener {
-            if (btnEdit.text == getString(R.string.edit))
-                mViewModel?.isEditable?.set(true)
-            else {
-                val fragment = activity?.supportFragmentManager?.findFragmentByTag(COMPANY_FRAGMENT)
-                (fragment as? CompanyFragment)?.updateRV()
-            }
-        }
-
-        btnDelete.setOnClickListener {
-            if (btnDelete.text == getString(R.string.cancel)) {
-                mViewModel?.isEditable?.set(false)
-                mViewModel?.companyName?.set("")
-                mViewModel?.companyName?.set(lastItem)
-            } //delete request
-        }
-
-    }
-
-    override fun onBackPressed() {
-        dialog.dismiss(view?.parent as FrameLayout)
+    override fun getBindingVariable(): Int = BR.viewModel
+    override fun getLayoutId(): Int = R.layout.company_right_fragment
+    override fun getViewModel(): CompanyRightViewModel {
+        mViewModel = ViewModelProviders.of(this, factory)[CompanyRightViewModel::class.java]
+        return mViewModel as CompanyRightViewModel
     }
 
     override fun notify(action: String?, data: Any?) {
-        when(action){
-            NotificationActions.POPULATE.value()->etCompanyName.setText(data.toString())
+        when(action) {
+            FragmentCommunicationOperations.ITEM_SELECTED.operation -> {
+                val companyDTO = data as CompanyDTO
+                mode = AddEditModes.INFO
+            }
         }
+
     }
+
+
+    private fun openFragment(fragment: Fragment) {
+        var appCompatActivity = context as AppCompatActivity
+        appCompatActivity
+                .supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.flCompanyMainContent, fragment, COMPANY_RIGHT_FRAGMENT_TAG)
+                .commit()
+    }
+
 }
+
