@@ -55,6 +55,9 @@ class  ProductClassListFragment: SingleListFragment<
                 (rvSingle as MPRecyclerView<ProductClass>).setItems(it!!)
             }
             empty = temp
+            if (it?.isEmpty() == true) {
+
+            }
             rvSingle.loadMoreComplete()
             rvSingle.refreshComplete()
         })

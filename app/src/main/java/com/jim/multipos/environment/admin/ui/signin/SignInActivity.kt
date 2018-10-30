@@ -21,7 +21,6 @@ class SignInActivity: BaseActivity<AdminSigninLayoutBinding, SignInViewModel>(){
     lateinit var mViewModelFactory: ViewModelProvider.Factory
 
 
-
     private var mSignInViewModel: SignInViewModel?=null
 
     private var mSingInActivityDataBinding: AdminSigninLayoutBinding? = null
