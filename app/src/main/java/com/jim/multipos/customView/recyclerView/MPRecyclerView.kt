@@ -2,16 +2,19 @@ package com.jim.multipos.customView.recyclerView
 
 import android.content.Context
 import android.support.v4.widget.SwipeRefreshLayout
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
 import com.jim.multipos.R
 import com.jim.multipos.core.BaseActions
 import com.jim.multipos.customView.recyclerView.adapter.*
+import kotlinx.android.synthetic.main.single_list_fragment.*
 import java.io.Serializable
 
 class MPRecyclerView<T: Serializable>: FrameLayout {
@@ -142,6 +145,7 @@ class MPRecyclerView<T: Serializable>: FrameLayout {
 
         swipeRefreshLayout = findViewById(R.id.srSwipeRefresh)
         swipeRefreshLayout?.setOnRefreshListener {
+            adapter?.clear()
             listener?.onRefresh(recyclerView!!)
             isLoading = true
         }
@@ -159,6 +163,7 @@ class MPRecyclerView<T: Serializable>: FrameLayout {
                     firstVisibleItem = lm.findFirstVisibleItemPosition()
                     if (!stopLoading && !isLoading && (totalItemCount - visibleItemCount) <= (firstVisibleItem + visibleThreshold)) {
                         listener?.onLoadMore(recyclerView)
+                        Log.d("sss", "loading zone")
                         isLoading = true
                         swipeRefreshLayout?.isEnabled = false
                         onLoadMore()
@@ -180,23 +185,23 @@ class MPRecyclerView<T: Serializable>: FrameLayout {
     }
 
     fun loadMoreComplete() {
-        recyclerView?.post {
+        (context as AppCompatActivity).runOnUiThread {
             adapter?.items?.remove(null)
             adapter?.addItems(addingItems)
-            isLoading = false
             swipeRefreshLayout?.isEnabled = true
             addingItems.clear()
-//            loadMorePos = -1
+            isLoading = false
         }
     }
 
     fun refreshComplete() {
-        isLoading = false
         swipeRefreshLayout?.isRefreshing = false
         swipeRefreshLayout?.isEnabled = true
+        isLoading = false
     }
 
     fun refresh() {
+        adapter?.clear()
         stopLoading = false
         swipeRefreshLayout?.isRefreshing = true
     }

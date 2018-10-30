@@ -49,11 +49,12 @@ class CompanyLeftFragment: SingleListFragment<CompanyDTO, CompanyLeftFragmentBin
         mViewModel?.data?.observe(this, Observer {
             val temp= it == null || it.isEmpty()
             if (!temp) {
-                (rvSingle as MPRecyclerView<CompanyDTO>).setItems(it!!)
+                (rvSingle as MPRecyclerView<CompanyDTO>).addItems(it!!)
             }
-            empty = temp
+            empty = temp && (rvSingle as MPRecyclerView<ProductClass>).itemsCount == 0
             rvSingle.loadMoreComplete()
             rvSingle.refreshComplete()
+            rvSingle.stopLoading = it?.isEmpty() ?: false
         })
     }
 

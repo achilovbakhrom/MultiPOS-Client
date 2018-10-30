@@ -84,7 +84,6 @@ class  ProductClassListFragment: SingleListFragment<
             }
             override fun onRefresh(recyclerView: RecyclerView) {
                 rvSingle.unselect()
-                rvSingle.clear()
                 mViewModel?.refresh()
             }
         }
