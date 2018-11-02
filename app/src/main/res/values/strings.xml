@@ -137,6 +137,13 @@
     <string name="bank_account">Bank Account</string>
     <string name="add_company">Add Company</string>
     <string name="select_company_to_view_information">Select Company to view information</string>
+    <string name="from_camera">From Camera</string>
+    <string name="from_gallery">From Gallery</string>
+    <string name="office">Office</string>
+    <string name="home">Home</string>
+    <string name="select_your_country">Select your country</string>
+    <string name="select_city">Select city</string>
+    <string name="select_your_country_first">Select your country first</string>
 
     <string-array name="company_add_edit_items">
         <item>About</item>

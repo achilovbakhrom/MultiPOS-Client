@@ -15,7 +15,9 @@ enum class FragmentCommunicationOperations(val operation: String) {
     ITEM_SELECTED("ITEM_SELECTED"),
     REFRESH_LIST("REFRESH_LIST"),
     ADD_NEW_ITEM("ADD_NEW_ITEM"),
+    ITEM_ADDED("ITEM_ADDED"),
     CANCEL("CANCEL"),
     ITEM_DELETED("ITEM_DELETED"),
-    ITEM_EDITED("ITEM_EDITED")
+    ITEM_EDITED("ITEM_EDITED"),
+    DELIVER_DATA("DELIVER_DATA")
 }

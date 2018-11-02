@@ -19,4 +19,6 @@ class ContactPersonFragment: BaseFragment<CompanyContactPersonFragmentBinding, C
         mViewModel = ViewModelProviders.of(this, factory).get(ContactPersonViewModel::class.java)
         return mViewModel as ContactPersonViewModel
     }
+
+    fun deliverDataToMainClass() {}
 }

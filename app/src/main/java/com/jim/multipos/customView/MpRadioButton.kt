@@ -11,6 +11,7 @@ import android.widget.LinearLayout
 import com.google.android.flexbox.*
 import com.jim.multipos.R
 import kotlinx.android.synthetic.main.mp_radio_button.view.*
+import java.text.FieldPosition
 
 class MpRadioButton @JvmOverloads constructor(
         context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0

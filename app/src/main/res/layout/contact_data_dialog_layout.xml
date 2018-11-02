@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/colorWhite">
 
     <Button
@@ -15,7 +15,9 @@
         android:layout_marginTop="@dimen/ten_dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginEnd="@dimen/twenty_dp"
-        android:layout_marginStart="@dimen/twenty_dp" />
+        android:layout_marginStart="@dimen/twenty_dp"
+        android:id="@+id/btnPhone"
+        android:textSize="20sp"/>
 
     <Button
         android:layout_width="match_parent"
@@ -26,6 +28,9 @@
         android:layout_marginTop="@dimen/ten_dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginEnd="@dimen/twenty_dp"
-        android:layout_marginStart="@dimen/twenty_dp" />
+        android:layout_marginStart="@dimen/twenty_dp"
+        android:layout_marginBottom="@dimen/twenty_dp"
+        android:id="@+id/btnEmail"
+        android:textSize="20sp"/>
 
 </LinearLayout>

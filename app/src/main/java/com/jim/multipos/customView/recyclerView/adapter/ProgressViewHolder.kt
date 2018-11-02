@@ -16,7 +16,7 @@ class ProgressViewHolder<T: Serializable>(itemView: View): BaseViewHolder<T>(ite
 
     private val progressBar = itemView.findViewById<ProgressBar>(R.id.progressBar)
 
-    override fun onBind(item: T?, position: Int, isSelected: Boolean) {
+    override fun onBind(item: T?, position: Int, isSelected: Boolean, mode: SelectionMode) {
         progressBar?.indeterminateDrawable?.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN)
     }
 

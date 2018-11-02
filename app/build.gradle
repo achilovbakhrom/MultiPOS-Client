@@ -89,4 +89,9 @@ dependencies {
 
     // chip
     implementation 'com.github.fiskurgit:ChipCloud:3.0.5'
+
+    // image cropper
+    implementation group: 'com.theartofdev.edmodo', name: 'android-image-cropper', version: '2.7.0'
+
+
 }

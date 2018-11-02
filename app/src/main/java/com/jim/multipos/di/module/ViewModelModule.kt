@@ -6,10 +6,17 @@ import android.arch.lifecycle.ViewModelProvider
 import com.jim.multipos.core.EmptyViewModel
 import com.jim.multipos.core.ViewModelProviderFactory
 import com.jim.multipos.di.ViewModelKey
+import com.jim.multipos.environment.admin.model.CompanyDTO
 import com.jim.multipos.environment.admin.ui.MainPageViewModel
 import com.jim.multipos.environment.admin.ui.SearchViewModel
 import com.jim.multipos.environment.admin.ui.company.left.CompanyLeftViewModel
+import com.jim.multipos.environment.admin.ui.company.left.CompanyViewHolder
 import com.jim.multipos.environment.admin.ui.company.right.CompanyRightViewModel
+import com.jim.multipos.environment.admin.ui.company.right.addEdit.CompanyAddEditMainViewModel
+import com.jim.multipos.environment.admin.ui.company.right.addEdit.about.AboutCompanyViewModel
+import com.jim.multipos.environment.admin.ui.company.right.addEdit.address.AddressCompanyViewModel
+import com.jim.multipos.environment.admin.ui.company.right.addEdit.bankRequisites.BankRequisitesViewModel
+import com.jim.multipos.environment.admin.ui.company.right.addEdit.contactPerson.ContactPersonViewModel
 import com.jim.multipos.environment.admin.ui.company.right.show.CompanyShowMainViewModel
 import com.jim.multipos.environment.admin.ui.company.right.show.bankRequisites.CompanyShowRequisitesViewModel
 import com.jim.multipos.environment.admin.ui.company.right.show.company.CompanyShowAboutViewModel
@@ -114,6 +121,32 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(CompanyShowRequisitesViewModel::class)
     abstract fun bindCompanyShowRequisitesViewModel(companyShowRequisitesViewModel: CompanyShowRequisitesViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(AboutCompanyViewModel::class)
+    abstract fun bindAboutCompanyViewModel(aboutCompanyViewModel: AboutCompanyViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(AddressCompanyViewModel::class)
+    abstract fun bindAddressCompanyViewModel(addressCompanyViewModel: AddressCompanyViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ContactPersonViewModel::class)
+    abstract fun bindContactPersonViewModel(contactPersonViewModel: ContactPersonViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(BankRequisitesViewModel::class)
+    abstract fun bindBankRequisitesViewModel(bankRequisitesViewModel: BankRequisitesViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(CompanyAddEditMainViewModel::class)
+    abstract fun bindCompanyAddEditMainViewModel(companyAddEditMainViewModel: CompanyAddEditMainViewModel): ViewModel
+
 
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelProviderFactory): ViewModelProvider.Factory

@@ -1,5 +1,6 @@
 package com.jim.multipos.customView.recyclerView.adapter
 
+import android.view.ViewGroup
 import com.jim.multipos.core.BaseActions
 import java.io.Serializable
 
@@ -23,9 +24,9 @@ abstract class BaseSelectableAdapter<T: Serializable>(viewHolder: BaseViewHolder
         }
 
 
+
     override fun onBindViewHolder(holder: BaseViewHolder<T>, position: Int) {
         holder.itemView?.setOnClickListener {
-            holder.onBeginSelection(lastSelection = selectedPosition)
             if (getMode() == SelectionMode.MULTIPLE) {
                 if (selectedPositions.contains(position)) {
                     selectedPositions.remove(position)
@@ -37,21 +38,14 @@ abstract class BaseSelectableAdapter<T: Serializable>(viewHolder: BaseViewHolder
                 selectedPosition = position
             }
             if (position < items.size) {
-                when(getMode()) {
-                    SelectionMode.SINGLE -> {
-                        holder.onSingleModeItemSelected(item = items[position], position = selectedPosition)
-                        listener?.onItemClick(item = items[position], position = selectedPosition)
-                    }
-                    SelectionMode.MULTIPLE -> {
-                        holder.onMultipleModeItemSelected(selectedItems, selectedPositions)
-                    }
+                if (getMode() == SelectionMode.SINGLE) {
+                    listener?.onItemClick(item = items[position], position = selectedPosition)
                 }
             }
             notifyDataSetChanged()
         }
         holder.itemView?.setOnLongClickListener {
             if (position < items.size) {
-                holder.onItemLongClicked(items[position], position)
                 listener?.onItemLongClick(items[position], position)
             }
             notifyDataSetChanged()
@@ -59,9 +53,9 @@ abstract class BaseSelectableAdapter<T: Serializable>(viewHolder: BaseViewHolder
 
         }
         if (getMode() == SelectionMode.SINGLE) {
-            holder.onBind(item = items[position], position = position, isSelected = selectedPosition == position)
+            holder.onBind(item = items[position], position = position, isSelected = selectedPosition == position, mode = SelectionMode.SINGLE)
         } else {
-            holder.onBind(item = items[position], position = position, isSelected = selectedPositions.contains(position))
+            holder.onBind(item = items[position], position = position, isSelected = selectedPositions.contains(position), mode = SelectionMode.MULTIPLE)
         }
     }
 

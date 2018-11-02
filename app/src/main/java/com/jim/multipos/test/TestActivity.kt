@@ -12,6 +12,7 @@ import android.widget.TextView
 import com.jim.multipos.R
 import com.jim.multipos.customView.recyclerView.MPRecyclerView
 import com.jim.multipos.customView.recyclerView.adapter.BaseViewHolder
+import com.jim.multipos.customView.recyclerView.adapter.SelectionMode
 import com.jim.multipos.customView.recyclerView.provideViewHolder
 import io.reactivex.Observable
 import java.util.concurrent.TimeUnit
@@ -77,7 +78,7 @@ class TestViewHolder(itemView: View): BaseViewHolder<String>(itemView) {
     }
 
     val tvTest: TextView? = itemView.findViewById(R.id.tvTest)
-    override fun onBind(item: String?, position: Int, isSelected: Boolean) {
+    override fun onBind(item: String?, position: Int, isSelected: Boolean, mode: SelectionMode) {
         tvTest?.text = item ?: "Progress $position"
     }
 }

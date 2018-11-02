@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.Spinner;
 
 import com.jim.multipos.R;
 import com.jim.multipos.customView.adapter.SpinnerAdapter;
@@ -53,7 +54,8 @@ public class MpSpinner extends FrameLayout {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 spinner.setSelection(position);
-                itemSelected.onItemSelected(position);
+                if (itemSelected != null)
+                    itemSelected.onItemSelected(position);
             }
 
             @Override
@@ -80,6 +82,19 @@ public class MpSpinner extends FrameLayout {
 
     public void setItemSelected(OnMpSpinnerItemSelected itemSelected) {
         this.itemSelected = itemSelected;
+    }
+
+    public void selectItem(String item) {
+        Spinner spinner = findViewById(R.id.spinner);
+        for (int i = 0; i < items.length; i++) {
+            if (items[i].equals(item)) {
+                spinner.setSelection(i);
+                if (itemSelected != null) {
+                    itemSelected.onItemSelected(i);
+                }
+                break;
+            }
+        }
     }
 
     public interface OnMpSpinnerItemSelected{

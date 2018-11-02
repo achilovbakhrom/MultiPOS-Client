@@ -22,8 +22,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:items="@array/company_add_edit_items"
-            android:id="@+id/mpTabBar"
-            />
+            android:id="@+id/mpCompanyAddEditTabBar" />
+
 
 
     </LinearLayout>

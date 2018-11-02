@@ -42,7 +42,8 @@ class CompanyLeftViewModel @Inject constructor(dataManager: DataManager): Single
                                                     city = "Tashkent",
                                                     country = "Uzbekistan"
                                             ),
-                                            contactData = listOf()
+                                            contactData = listOf(),
+                                            description = ""
                                     )
                                     val companyDTO = CompanyDTO(
                                             company,

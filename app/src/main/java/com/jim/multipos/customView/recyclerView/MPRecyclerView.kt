@@ -14,7 +14,7 @@ import android.widget.FrameLayout
 import com.jim.multipos.R
 import com.jim.multipos.core.BaseActions
 import com.jim.multipos.customView.recyclerView.adapter.*
-import kotlinx.android.synthetic.main.single_list_fragment.*
+import kotlinx.android.synthetic.main.mp_recycler_view.view.*
 import java.io.Serializable
 
 class MPRecyclerView<T: Serializable>: FrameLayout {
@@ -70,18 +70,26 @@ class MPRecyclerView<T: Serializable>: FrameLayout {
     var visibleItemCount = 0
     var totalItemCount = 0
     var visibleThreshold = 2
+
     var isLoading = false
+        set(value) {
+            swipeRefreshLayout?.isEnabled = !value
+            field = value
+        }
+
     var stopLoading = false
+        set(value) {
+            swipeRefreshLayout?.isEnabled = !value
+            field = value
+        }
 
     private var addingItems: MutableList<T> = mutableListOf()
-//    private var loadMorePos = -1
 
     var viewHolder: BaseViewHolder<T>? = null
 
 
     var selectionMode: SelectionModes = SelectionModes.NONE
         set(value) {
-
             if (viewHolder == null) {
                 throw Exception("Please setup view holder first")
             }
@@ -165,7 +173,7 @@ class MPRecyclerView<T: Serializable>: FrameLayout {
                         listener?.onLoadMore(recyclerView)
                         Log.d("sss", "loading zone")
                         isLoading = true
-                        swipeRefreshLayout?.isEnabled = false
+
                         onLoadMore()
                     }
                 }
@@ -179,24 +187,23 @@ class MPRecyclerView<T: Serializable>: FrameLayout {
     private fun onLoadMore() {
         recyclerView?.post {
             adapter?.addItem(null)
-//            loadMorePos = adapter?.itemCount!! - 1
             recyclerView?.smoothScrollToPosition(adapter?.itemCount!! - 1)
         }
     }
 
     fun loadMoreComplete() {
+        if (stopLoading) return
         (context as AppCompatActivity).runOnUiThread {
             adapter?.items?.remove(null)
             adapter?.addItems(addingItems)
-            swipeRefreshLayout?.isEnabled = true
             addingItems.clear()
             isLoading = false
         }
     }
 
     fun refreshComplete() {
+        if (stopLoading) return
         swipeRefreshLayout?.isRefreshing = false
-        swipeRefreshLayout?.isEnabled = true
         isLoading = false
     }
 
@@ -254,7 +261,13 @@ class MPRecyclerView<T: Serializable>: FrameLayout {
         }
     }
 
+    fun setRVBackgroundColor(color: Int) {
+        flMPRecyclerVlew.setBackgroundColor(color)
+    }
+
 }
+
+
 
 enum class SelectionModes {
     NONE, SINGLE, MULTIPLE

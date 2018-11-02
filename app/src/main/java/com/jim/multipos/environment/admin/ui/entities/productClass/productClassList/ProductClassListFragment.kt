@@ -24,6 +24,7 @@ import com.jim.multipos.core.fragments.SingleListFragment
 import com.jim.multipos.customView.recyclerView.MPRecyclerView
 import com.jim.multipos.customView.recyclerView.SelectionModes
 import com.jim.multipos.customView.recyclerView.adapter.BaseViewHolder
+import com.jim.multipos.customView.recyclerView.adapter.SelectionMode
 import com.jim.multipos.customView.recyclerView.provideViewHolder
 import com.jim.multipos.databinding.ProductClassListFragmentBinding
 import com.jim.multipos.environment.admin.model.ProductClass
@@ -89,6 +90,10 @@ class  ProductClassListFragment: SingleListFragment<
         }
         rvSingle.selectionMode = SelectionModes.SINGLE
         rvSingle.itemSelectionListener = object : BaseActions<Serializable> {
+            override fun onItemSelected(items: List<Serializable>?, position: Int) {
+
+            }
+
             override fun onItemClick(item: Serializable?, position: Int) {
                 sendNotification(RIGHT_FRAGMENT_TAG, FragmentCommunicationOperations.ITEM_SELECTED.operation, item as? ProductClass)
             }
@@ -124,7 +129,7 @@ class ProductClassViewHolder(itemView: View): BaseViewHolder<ProductClass>(itemV
     private val productClassDescription = itemView.findViewById<TextView>(R.id.tvProductClassDescription)
     private val productClassItemBg = itemView.findViewById<CardView>(R.id.productClassItemBg)
 
-    override fun onBind(item: ProductClass?, position: Int, isSelected: Boolean) {
+    override fun onBind(item: ProductClass?, position: Int, isSelected: Boolean, mode: SelectionMode) {
         productClassName.text = item?.name
         productClassDescription.text = item?.description
         val context = productClassName.context

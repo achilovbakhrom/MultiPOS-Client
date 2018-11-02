@@ -1,10 +1,12 @@
 package com.jim.multipos.customView
 
 import android.content.Context
+import android.graphics.Color
 import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.util.AttributeSet
+import android.view.Gravity
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
@@ -17,10 +19,10 @@ class MPTabBar: LinearLayout {
 
     var items: MutableList<String> = mutableListOf()
 
-    private var fragments: MutableList<Fragment> = mutableListOf()
 
     private var tabLayout: LinearLayout? = null
     private var frameLayout: FrameLayout? = null
+    private var stripeLayout: FrameLayout? = null
 
     var currentFragment: Fragment? = null
         get() {
@@ -31,36 +33,32 @@ class MPTabBar: LinearLayout {
     var selectedPosition: Int = 0 // Default selected position is 0
         set(value) {
             if (value != field) {
-                if (fragments.size > value) {
-                    findViewWithTag<Button>(field).background = ContextCompat.getDrawable(context, R.drawable.tab_unselected_bg)
-                    findViewWithTag<Button>(field).setTextColor(ContextCompat.getColor(context, R.color.colorTitle))
-                    findViewWithTag<Button>(field).translationZ = 0.0f
-                    findViewWithTag<Button>(field).elevation = 0.0f
-                    findViewWithTag<Button>(value).background = ContextCompat.getDrawable(context, R.drawable.tab_selected_bg)
-                    findViewWithTag<Button>(value).setTextColor(ContextCompat.getColor(context, R.color.colorWhite))
-                    findViewWithTag<Button>(value).translationZ = context.resources.getDimension(R.dimen.ten_dp)
-                    findViewWithTag<Button>(value).elevation = context.resources.getDimension(R.dimen.ten_dp)
-                    val activityCompat = context as AppCompatActivity
-                    activityCompat
-                            .supportFragmentManager
-                            .beginTransaction()
-                            .replace(R.id.tab_frame_layout, fragments[value], "TAB_FRAGMENT")
-                            .commit()
-                }
+
+                findViewWithTag<Button>(field).background = ContextCompat.getDrawable(context, R.drawable.tab_unselected_bg)
+                findViewWithTag<Button>(field).setTextColor(ContextCompat.getColor(context, R.color.colorTitle))
+                findViewWithTag<Button>(field).translationZ = 0.0f
+                findViewWithTag<Button>(field).elevation = 0.0f
+                findViewWithTag<Button>(value).background = ContextCompat.getDrawable(context, R.drawable.tab_selected_bg)
+                findViewWithTag<Button>(value).setTextColor(ContextCompat.getColor(context, R.color.colorWhite))
+                findViewWithTag<Button>(value).translationZ = context.resources.getDimension(R.dimen.six_dp)
+                findViewWithTag<Button>(value).elevation = context.resources.getDimension(R.dimen.two_dp)
+                val activityCompat = context as AppCompatActivity
+                activityCompat
+                        .supportFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.tab_frame_layout, fragmentProtocol?.getFragment(value), "TAB_FRAGMENT")
+                        .commit()
+
                 field = value
             }
         }
 
     var fragmentProtocol: FragmentForTab? = null
         set(value) {
-            if (!items.isEmpty()) {
-                for ((counter, item) in items.withIndex()) {
-                    fragments.add(value?.getFragment(counter)!!)
-                }
-            }
             field = value
             openFragmentForPosition()
         }
+    var selectionListener: FragmentSelectionListener? = null
 
     constructor(context: Context) : super(context) {
         init(context, null, 0)
@@ -85,13 +83,30 @@ class MPTabBar: LinearLayout {
         removeAllViews()
 
 
-        tabLayout = LinearLayout(context)
-        val tabLayoutLayoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, context.resources.getDimension(R.dimen.eighty_dp).toInt())
-        tabLayoutLayoutParams.weight = 1.0f
+        val tabLayoutContainer = FrameLayout(context)
+        val tabLayoutContainerLayoutParams = FrameLayout.LayoutParams(MATCH_PARENT, context.resources.getDimension(R.dimen.seventy_dp).toInt())
+        tabLayoutContainer.layoutParams = tabLayoutContainerLayoutParams
+        tabLayoutContainer.background = ContextCompat.getDrawable(context, R.color.colorGray)
+        addView(tabLayoutContainer)
 
+        stripeLayout = FrameLayout(context)
+
+        val stripeLayoutParams = FrameLayout.LayoutParams(MATCH_PARENT, context.resources.getDimension(R.dimen.fourty_dp).toInt())
+        stripeLayoutParams.gravity = Gravity.BOTTOM
+
+        stripeLayout?.layoutParams = stripeLayoutParams
+        stripeLayout?.setBackgroundColor(ContextCompat.getColor(context, R.color.colorLightGray))
+        tabLayoutContainer.addView(stripeLayout)
+
+
+        tabLayout = LinearLayout(context)
+        val tabLayoutLayoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+        tabLayoutLayoutParams.weight = 1.0f
         tabLayout?.layoutParams = tabLayoutLayoutParams
+
         tabLayout?.orientation = HORIZONTAL
-        addView(tabLayout)
+        tabLayoutContainer.addView(tabLayout)
+
 
         if (!items.isEmpty()) {
             for ((counter, item) in items.withIndex()) {
@@ -99,14 +114,15 @@ class MPTabBar: LinearLayout {
                 val buttonLp = LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
                 button.layoutParams = buttonLp
                 buttonLp.weight = 1.0f
+                buttonLp.bottomMargin = context.resources.getDimension(R.dimen.six_dp).toInt()
                 button.setTextColor(ContextCompat.getColor(context, R.color.colorWhite))
                 button.text = item
                 button.stateListAnimator = null
                 if (selectedPosition == counter) { // selected
                     button.background = ContextCompat.getDrawable(context, R.drawable.tab_selected_bg)
                     button.setTextColor(ContextCompat.getColor(context, R.color.colorWhite))
-                    button.translationZ = context.resources.getDimension(R.dimen.ten_dp)
-                    button.elevation= context.resources.getDimension(R.dimen.ten_dp)
+                    button.translationZ = context.resources.getDimension(R.dimen.six_dp)
+                    button.elevation= context.resources.getDimension(R.dimen.two_dp)
                 } else { // unselected
                     button.background = ContextCompat.getDrawable(context, R.drawable.tab_unselected_bg)
                     button.setTextColor(ContextCompat.getColor(context, R.color.colorTitle))
@@ -116,6 +132,7 @@ class MPTabBar: LinearLayout {
                 button.tag = counter
                 button.setOnClickListener {
                     selectedPosition = it.tag as Int
+                    selectionListener?.fragmentSelected(selectedPosition, currentFragment)
                 }
                 tabLayout?.addView(button)
             }
@@ -129,22 +146,25 @@ class MPTabBar: LinearLayout {
         frameLayout?.layoutParams = frameLayoutLayoutParams
         frameLayout?.id = R.id.tab_frame_layout
         addView(frameLayout)
+    }
 
+    fun setBottomStripeColor(colorId: Int) {
+        stripeLayout?.setBackgroundColor(colorId)
     }
 
     private fun openFragmentForPosition() {
-        if (fragments.size > selectedPosition) {
-            val appCompatActivity = context as AppCompatActivity
-            appCompatActivity
-                    .supportFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.tab_frame_layout, fragments[selectedPosition], "TAB_FRAGMENT")
-                    .commit()
-        }
-
+        val appCompatActivity = context as AppCompatActivity
+        appCompatActivity
+                .supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.tab_frame_layout, fragmentProtocol?.getFragment(selectedPosition), "TAB_FRAGMENT")
+                .commit()
     }
 
     interface FragmentForTab {
         fun getFragment(forPosition: Int) : Fragment
+    }
+    interface FragmentSelectionListener {
+        fun fragmentSelected(position: Int, fragment: Fragment?)
     }
 }

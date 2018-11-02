@@ -32,7 +32,7 @@ fun AppCompatActivity.notify(fragment: Fragment, action: String? = null, data: A
 }
 
 fun AppCompatActivity.notify(tag: String, action: String? = null, data: Any? = null) {
-    var fragment = this.supportFragmentManager.findFragmentByTag(tag)
+    val fragment = this.supportFragmentManager.findFragmentByTag(tag)
     if (fragment != null) {
         if (fragment is Notifiable) {
             fragment.notify(action, data)

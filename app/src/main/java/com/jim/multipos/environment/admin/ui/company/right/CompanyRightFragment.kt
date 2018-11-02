@@ -13,6 +13,7 @@ import com.jim.multipos.core.fragments.BaseFragment
 import com.jim.multipos.core.fragments.baseAddEditFragment.AddEditModes
 import com.jim.multipos.databinding.CompanyRightFragmentBinding
 import com.jim.multipos.environment.admin.model.CompanyDTO
+import com.jim.multipos.environment.admin.ui.company.right.addEdit.CompanyAddEditMainFragment
 import com.jim.multipos.environment.admin.ui.company.right.show.CompanyShowMainFragment
 import com.jim.multipos.utils.FragmentCommunicationOperations
 import kotlinx.android.synthetic.main.company_right_fragment.*
@@ -35,15 +36,16 @@ class CompanyRightFragment: BaseFragment<CompanyRightFragmentBinding, CompanyRig
                     flCompanyEmptyLayout.visibility = View.VISIBLE
                 }
                 AddEditModes.INFO -> {
-                    flCompanyMainContent.visibility = View.VISIBLE
-                    flCompanyEmptyLayout.visibility = View.GONE
                     val fragment = CompanyShowMainFragment()
                     val bundle = Bundle()
                     bundle.putSerializable("model", companyDTO)
                     fragment.arguments = bundle
                     openFragment(fragment)
+                    flCompanyMainContent.visibility = View.VISIBLE
+                    flCompanyEmptyLayout.visibility = View.GONE
                 }
                 AddEditModes.ADD_EDIT -> {
+                    openFragment(CompanyAddEditMainFragment())
                     flCompanyMainContent.visibility = View.VISIBLE
                     flCompanyEmptyLayout.visibility = View.GONE
                 }
@@ -53,7 +55,7 @@ class CompanyRightFragment: BaseFragment<CompanyRightFragmentBinding, CompanyRig
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mode = AddEditModes.ADD_EDIT
+        mode = AddEditModes.EMPTY
     }
 
     override fun getBindingVariable(): Int = BR.viewModel
@@ -69,13 +71,22 @@ class CompanyRightFragment: BaseFragment<CompanyRightFragmentBinding, CompanyRig
                 val companyDTO = data as CompanyDTO
                 mode = AddEditModes.INFO
             }
+            FragmentCommunicationOperations.ADD_NEW_ITEM.operation -> {
+                mode = AddEditModes.ADD_EDIT
+            }
+            FragmentCommunicationOperations.CANCEL.operation -> {
+                mode = AddEditModes.EMPTY
+            }
+            FragmentCommunicationOperations.DELIVER_DATA.operation -> {
+                sendNotification(COMPANY_RIGHT_FRAGMENT_TAG, FragmentCommunicationOperations.DELIVER_DATA.operation, data)
+            }
         }
 
     }
 
 
     private fun openFragment(fragment: Fragment) {
-        var appCompatActivity = context as AppCompatActivity
+        val appCompatActivity = context as AppCompatActivity
         appCompatActivity
                 .supportFragmentManager
                 .beginTransaction()

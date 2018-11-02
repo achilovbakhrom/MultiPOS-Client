@@ -1,6 +1,7 @@
 package com.jim.multipos.environment.admin.ui
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import com.jim.multipos.BR
@@ -9,8 +10,10 @@ import com.jim.multipos.core.BaseActivity
 import com.jim.multipos.customView.MpToolbar
 import com.jim.multipos.databinding.AdminMainpageLayoutBinding
 import com.jim.multipos.environment.admin.ui.company.main.CompanyFragment
+import com.jim.multipos.environment.admin.ui.company.right.addEdit.about.AboutCompanyFragment
 import com.jim.multipos.environment.admin.ui.entities.EntitiesFragment
 import com.jim.multipos.environment.admin.ui.establishment.EstablishmentFragment
+import com.theartofdev.edmodo.cropper.CropImage
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
@@ -90,5 +93,19 @@ class MainPageActivity: BaseActivity<AdminMainpageLayoutBinding, MainPageViewMod
 
     private fun openFragment(fragment: Fragment, tag: String) {
         addFragmentWithoutBackStack(fragment, R.id.container, tag)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            val fragments = supportFragmentManager.fragments
+            for (fragment in fragments) {
+                if (fragment is AboutCompanyFragment) {
+                    fragment.onActivityResult(requestCode, resultCode, data)
+                    break
+                }
+            }
+        }
+
     }
 }

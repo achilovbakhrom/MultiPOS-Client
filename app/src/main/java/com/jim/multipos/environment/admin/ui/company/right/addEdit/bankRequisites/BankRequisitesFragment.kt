@@ -19,4 +19,6 @@ class BankRequisitesFragment: BaseFragment<CompanyBankRequisitesListFragmentBind
         mViewModel = ViewModelProviders.of(this, factory).get(BankRequisitesViewModel::class.java)
         return mViewModel as BankRequisitesViewModel
     }
+
+    fun deliverDataToMainClass() {}
 }

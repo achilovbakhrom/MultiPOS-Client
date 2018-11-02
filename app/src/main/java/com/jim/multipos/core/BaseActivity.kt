@@ -1,11 +1,15 @@
 package com.jim.multipos.core
 
+import android.app.Dialog
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
+import android.view.LayoutInflater
 import android.view.WindowManager
+import android.widget.TextView
+import com.jim.multipos.R
 import dagger.android.AndroidInjection
 
 
@@ -15,9 +19,13 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel> : AppCompatA
     var mViewModel: V? = null
     var isDialogOpened = false
 
+    lateinit var dialog: Dialog
+    lateinit var dialogText: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
+        initDialog()
         performDataBinding()
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN)
@@ -25,6 +33,15 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel> : AppCompatA
             isDialogOpened = savedInstanceState.getBoolean("isDialogOpened", false)
         }
     }
+
+    private fun initDialog() {
+        dialog = Dialog(this)
+        val view = LayoutInflater.from(this).inflate(R.layout.loading_dialog_layout, null, false)
+        dialog.setContentView(view)
+        dialogText = view.findViewById(R.id.tvLoadingDialog)
+        dialog.setCancelable(false)
+    }
+
 
     fun getViewDataBinding(): T? {
         return mViewDataBinding
@@ -67,7 +84,14 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel> : AppCompatA
         outState?.putBoolean("isDialogOpened", isDialogOpened)
     }
 
+    fun showLoadingDialog(withText: String = getString(R.string.loading)) {
+        dialogText.text = withText
+        dialog.show()
+    }
 
+    fun dismissLoadingDialog() {
+        dialog.dismiss()
+    }
 
     override fun onBackPressed() {
         if (isDialogOpened) {

@@ -2,189 +2,212 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <LinearLayout
-
-        android:orientation="vertical" android:layout_width="match_parent"
+    <FrameLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <ProgressBar
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="@dimen/ten_dp">
-            <TextView
-                android:layout_width="@dimen/hundred_eighty_dp"
-                android:layout_height="wrap_content"
-                android:text="@string/address_type"
-                android:textColor="@color/colorTitle"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="@dimen/twenty_dp" />
-            <com.jim.multipos.customView.MpRadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/mpRadioButton"
-                />
-        </LinearLayout>
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:id="@+id/pbCompanyAddressAddEdit"/>
 
         <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="@dimen/ten_dp">
-            <TextView
-                android:layout_width="@dimen/hundred_eighty_dp"
-                android:layout_height="wrap_content"
-                android:text="@string/street_address_1_required"
-                android:textColor="@color/colorTitle"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="@dimen/twenty_dp" />
-            <com.jim.multipos.customView.MpEditText
+            android:layout_height="match_parent"
+            android:id="@+id/llCompanyAddressContent">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/twenty_dp" />
-        </LinearLayout>
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/ten_dp">
+                <TextView
+                    android:layout_width="@dimen/hundred_eighty_dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/address_type"
+                    android:textColor="@color/colorTitle"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/twenty_dp" />
+                <com.jim.multipos.customView.MpRadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/mpRadioButton"
+                    />
+            </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="@dimen/ten_dp">
-            <TextView
-                android:layout_width="@dimen/hundred_eighty_dp"
-                android:layout_height="wrap_content"
-                android:text="@string/street_address_2"
-                android:textColor="@color/colorTitle"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="@dimen/twenty_dp" />
-            <com.jim.multipos.customView.MpEditText
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/twenty_dp" />
-        </LinearLayout>
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/ten_dp">
+                <TextView
+                    android:layout_width="@dimen/hundred_eighty_dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/street_address_1_required"
+                    android:textColor="@color/colorTitle"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/twenty_dp" />
+                <com.jim.multipos.customView.MpEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/twenty_dp"
+                    android:id="@+id/etStreet1"/>
+            </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="@dimen/ten_dp">
-            <TextView
-                android:layout_width="@dimen/hundred_eighty_dp"
-                android:layout_height="wrap_content"
-                android:text="@string/country_required"
-                android:textColor="@color/colorTitle"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="@dimen/twenty_dp" />
-            <com.jim.multipos.customView.MpSpinner
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/twenty_dp" />
-        </LinearLayout>
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/ten_dp">
+                <TextView
+                    android:layout_width="@dimen/hundred_eighty_dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/street_address_2"
+                    android:textColor="@color/colorTitle"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/twenty_dp" />
+                <com.jim.multipos.customView.MpEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/twenty_dp"
+                    android:id="@+id/etStreet2"/>
+            </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="@dimen/ten_dp">
-            <TextView
-                android:layout_width="@dimen/hundred_eighty_dp"
-                android:layout_height="wrap_content"
-                android:text="@string/city_required"
-                android:textColor="@color/colorTitle"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="@dimen/twenty_dp" />
-            <com.jim.multipos.customView.MpSpinner
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/twenty_dp" />
-        </LinearLayout>
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/ten_dp">
+                <TextView
+                    android:layout_width="@dimen/hundred_eighty_dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/country_required"
+                    android:textColor="@color/colorTitle"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/twenty_dp" />
+                <com.jim.multipos.customView.MpSpinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/twenty_dp"
+                    android:id="@+id/mpCountrySpinner" />
+            </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="@dimen/ten_dp">
-            <TextView
-                android:layout_width="@dimen/hundred_eighty_dp"
-                android:layout_height="wrap_content"
-                android:text="@string/state"
-                android:textColor="@color/colorTitle"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="@dimen/twenty_dp" />
-            <com.jim.multipos.customView.MpEditText
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/twenty_dp" />
-        </LinearLayout>
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/ten_dp">
+                <TextView
+                    android:layout_width="@dimen/hundred_eighty_dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/city_required"
+                    android:textColor="@color/colorTitle"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/twenty_dp" />
+                <com.jim.multipos.customView.MpSpinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/twenty_dp"
+                    android:id="@+id/mpCitySpinner"/>
+            </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="@dimen/ten_dp">
-            <TextView
-                android:layout_width="@dimen/hundred_eighty_dp"
-                android:layout_height="wrap_content"
-                android:text="@string/post_code"
-                android:textColor="@color/colorTitle"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="@dimen/twenty_dp" />
-            <com.jim.multipos.customView.MpEditText
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/twenty_dp" />
-        </LinearLayout>
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/ten_dp">
+                <TextView
+                    android:layout_width="@dimen/hundred_eighty_dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/state"
+                    android:textColor="@color/colorTitle"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/twenty_dp" />
+                <com.jim.multipos.customView.MpEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/twenty_dp"
+                    android:id="@+id/etState"/>
+            </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="@dimen/ten_dp"
-            android:layout_marginBottom="@dimen/twenty_dp"
-            >
-            <TextView
-                android:layout_width="@dimen/hundred_eighty_dp"
-                android:layout_height="wrap_content"
-                android:text="@string/description"
-                android:textColor="@color/colorTitle"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="@dimen/twenty_dp" />
-
-            <com.jim.multipos.customView.MpEditTextMultiline
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/twenty_dp"
-                android:minLines="3"
-                android:maxLines="6"/>
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/ten_dp">
+                <TextView
+                    android:layout_width="@dimen/hundred_eighty_dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/post_code"
+                    android:textColor="@color/colorTitle"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/twenty_dp" />
+                <com.jim.multipos.customView.MpEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/twenty_dp"
+                    android:id="@+id/etPostCode"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/ten_dp"
+                android:layout_marginBottom="@dimen/twenty_dp"
+                >
+                <TextView
+                    android:layout_width="@dimen/hundred_eighty_dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/description"
+                    android:textColor="@color/colorTitle"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/twenty_dp" />
+
+                <com.jim.multipos.customView.MpEditTextMultiline
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/twenty_dp"
+                    android:minLines="3"
+                    android:maxLines="6"
+                    android:id="@+id/etCompanyAddressDescription"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cancel"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/twenty_dp"
+                    android:layout_marginEnd="@dimen/five_dp"
+                    android:textColor="@color/colorWhite"
+                    android:background="@drawable/cancel_bg"
+                    android:layout_marginBottom="@dimen/five_dp"
+                    android:id="@+id/btnCancel"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/next"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="@dimen/twenty_dp"
+                    android:layout_marginStart="@dimen/five_dp"
+                    android:textColor="@color/colorWhite"
+                    android:background="@drawable/save_bg"
+                    android:layout_marginBottom="@dimen/five_dp"
+                    android:id="@+id/btnNext"/>
+            </LinearLayout>
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/cancel"
-                android:layout_weight="1"
-                android:layout_marginStart="@dimen/twenty_dp"
-                android:layout_marginEnd="@dimen/five_dp"
-                android:textColor="@color/colorWhite"
-                android:background="@drawable/cancel_bg"
-                android:layout_marginBottom="@dimen/five_dp" />
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/next"
-                android:layout_weight="1"
-                android:layout_marginEnd="@dimen/twenty_dp"
-                android:layout_marginStart="@dimen/five_dp"
-                android:textColor="@color/colorWhite"
-                android:background="@drawable/save_bg"
-                android:layout_marginBottom="@dimen/five_dp" />
-        </LinearLayout>
-
-    </LinearLayout>
+    </FrameLayout>
 
 </layout>
 
