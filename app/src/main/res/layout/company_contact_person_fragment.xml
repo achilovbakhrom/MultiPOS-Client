@@ -3,42 +3,75 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            />
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:id="@+id/rlContactPersonEmptyList"
+            android:visibility="gone">
 
-            <Button
-                android:layout_width="@dimen/two_hundred_fifty_dp"
-                android:layout_height="wrap_content"
-                android:text="@string/next"
-                android:textColor="@color/colorWhite"
-                android:background="@drawable/save_bg"
-                android:layout_marginBottom="@dimen/twenty_dp"
-                android:layout_marginTop="@dimen/ten_dp"
-                android:layout_gravity="center"
+            <ImageView
+                android:id="@+id/ivContactPersonAddEditEmptyList"
+                android:layout_width="@dimen/two_hundred_dp"
+                android:layout_height="@dimen/two_hundred_dp"
+                android:src="@drawable/ic_company_photo"
+                android:layout_centerInParent="true"
                 />
 
-            <android.support.design.widget.FloatingActionButton
-                android:layout_width="@dimen/fifty_dp"
-                android:layout_height="@dimen/fifty_dp"
-                android:src="@drawable/plus"
-                android:tint="@color/colorWhite"
-                android:layout_gravity="right|bottom"
-                tools:ignore="RtlHardcoded"
-                android:layout_marginEnd="@dimen/ten_dp"
-                android:layout_marginBottom="@dimen/ten_dp" />
-        </FrameLayout>
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no_information_yet"
+                android:layout_below="@id/ivContactPersonAddEditEmptyList"
+                android:layout_marginTop="@dimen/fifteen_dp"
+                android:textSize="22sp"
+                android:textColor="@color/edit_blue"
+                android:layout_centerHorizontal="true"/>
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/llContactPersonAddEditListContent">
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:layout_width="@dimen/two_hundred_fifty_dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/next"
+                    android:textColor="@color/colorWhite"
+                    android:background="@drawable/save_bg"
+                    android:layout_marginBottom="@dimen/twenty_dp"
+                    android:layout_marginTop="@dimen/ten_dp"
+                    android:layout_gravity="center"
+                    />
+
+                <android.support.design.widget.FloatingActionButton
+                    android:layout_width="@dimen/fifty_dp"
+                    android:layout_height="@dimen/fifty_dp"
+                    android:src="@drawable/plus"
+                    android:tint="@color/colorWhite"
+                    android:layout_gravity="right|bottom"
+                    tools:ignore="RtlHardcoded"
+                    android:layout_marginEnd="@dimen/ten_dp"
+                    android:layout_marginBottom="@dimen/ten_dp" />
+            </FrameLayout>
+        </LinearLayout>
+
+    </FrameLayout>
 
 </layout>
 

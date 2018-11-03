@@ -34,8 +34,7 @@
                 <com.jim.multipos.customView.MpRadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/mpRadioButton"
-                    />
+                    android:id="@+id/mpRadioButton" />
             </LinearLayout>
 
             <LinearLayout
