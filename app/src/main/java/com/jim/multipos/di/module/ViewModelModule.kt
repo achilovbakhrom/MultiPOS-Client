@@ -6,16 +6,15 @@ import android.arch.lifecycle.ViewModelProvider
 import com.jim.multipos.core.EmptyViewModel
 import com.jim.multipos.core.ViewModelProviderFactory
 import com.jim.multipos.di.ViewModelKey
-import com.jim.multipos.environment.admin.model.CompanyDTO
 import com.jim.multipos.environment.admin.ui.MainPageViewModel
 import com.jim.multipos.environment.admin.ui.SearchViewModel
 import com.jim.multipos.environment.admin.ui.company.left.CompanyLeftViewModel
-import com.jim.multipos.environment.admin.ui.company.left.CompanyViewHolder
 import com.jim.multipos.environment.admin.ui.company.right.CompanyRightViewModel
 import com.jim.multipos.environment.admin.ui.company.right.addEdit.CompanyAddEditMainViewModel
 import com.jim.multipos.environment.admin.ui.company.right.addEdit.about.AboutCompanyViewModel
 import com.jim.multipos.environment.admin.ui.company.right.addEdit.address.AddressCompanyViewModel
 import com.jim.multipos.environment.admin.ui.company.right.addEdit.bankRequisites.BankRequisitesViewModel
+import com.jim.multipos.environment.admin.ui.company.right.addEdit.contactPerson.ContactPersonAddEditViewModel
 import com.jim.multipos.environment.admin.ui.company.right.addEdit.contactPerson.ContactPersonViewModel
 import com.jim.multipos.environment.admin.ui.company.right.show.CompanyShowMainViewModel
 import com.jim.multipos.environment.admin.ui.company.right.show.bankRequisites.CompanyShowRequisitesViewModel
@@ -136,6 +135,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(ContactPersonViewModel::class)
     abstract fun bindContactPersonViewModel(contactPersonViewModel: ContactPersonViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ContactPersonAddEditViewModel::class)
+    abstract fun bindContactPersonAddEditViewModel(contactPersonViewModel: ContactPersonAddEditViewModel): ViewModel
 
     @Binds
     @IntoMap

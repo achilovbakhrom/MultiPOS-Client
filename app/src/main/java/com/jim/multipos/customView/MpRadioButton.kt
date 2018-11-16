@@ -28,6 +28,7 @@ class MpRadioButton @JvmOverloads constructor(
     var textList = mutableListOf<String>()
 
     fun setList(value: List<String>){
+        removeAllViews()
         textList = value as MutableList<String>
         for (i in value.indices){
             val row= MpRadioButtonRow(context)

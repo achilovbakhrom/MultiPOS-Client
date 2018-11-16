@@ -4,6 +4,8 @@ import com.jim.multipos.core.BaseViewModel
 import com.jim.multipos.core.SingleLiveEvent
 import com.jim.multipos.core.managers.DataManager
 import com.jim.multipos.environment.admin.model.*
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class CompanyAddEditMainViewModel @Inject constructor(dataManager: DataManager): BaseViewModel(dataManager) {
@@ -32,13 +34,23 @@ class CompanyAddEditMainViewModel @Inject constructor(dataManager: DataManager):
         companyDTO?.company?.addressInformation = addressInformation
     }
 
-    fun setContactPersonsInformation(contactPerson: List<CompanyContactPerson>? = null) {
+    fun setContactPersonsInformation(contactPerson: MutableList<CompanyContactPerson>? = null) {
         companyDTO?.companyContactPersons = contactPerson
     }
 
-    fun setBankRequisitesInformation(bankRequisites: List<Requisite>? = null) {
+    fun setBankRequisitesInformation(bankRequisites: MutableList<Requisite>? = null) {
         companyDTO?.requisites = bankRequisites
     }
 
+    fun sendCompany(){
+        compositeDisposable.add(mDataManager.createCompany(companyDTO!!)
+                .subscribe({
+                    companyDTO = it.data
+                    saveCompany()
+                },{
+                    errorMessage.value = it.message
+                })
+        )
+    }
 }
 

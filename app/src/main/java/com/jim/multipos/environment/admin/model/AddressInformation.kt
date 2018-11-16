@@ -11,7 +11,9 @@ class AddressInformation(
         @SerializedName("country") var country: String? = null,
         @SerializedName("state") var state: String? = null,
         @SerializedName("post_code") var postCode: String? = null,
-        @SerializedName("description") var description: String? = null
+        @SerializedName("description") var description: String? = null,
+        var onNextAction: Boolean = false,
+        var editMode: Boolean = false
 ) : Serializable
 
 enum class AddressType(val type: String) {

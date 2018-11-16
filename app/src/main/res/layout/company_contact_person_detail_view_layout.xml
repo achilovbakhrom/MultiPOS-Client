@@ -43,6 +43,7 @@
                         android:background="@drawable/border_top_left"
                         android:layout_weight="1" />
                     <TextView
+                        android:id="@+id/tvContactPersonFN"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:text="Johny"
@@ -68,6 +69,7 @@
                         android:background="@drawable/border_single_left"
                         android:layout_weight="1" />
                     <TextView
+                        android:id="@+id/tvContactPersonLN"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:text="Depp"
@@ -93,6 +95,7 @@
                         android:background="@drawable/border_single_left"
                         android:layout_weight="1" />
                     <TextView
+                        android:id="@+id/tvContactPersonPhone"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:text="+998909656677"
@@ -118,6 +121,7 @@
                         android:background="@drawable/border_single_left"
                         android:layout_weight="1" />
                     <TextView
+                        android:id="@+id/tvContactPersonPosition"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:text="CEO"
@@ -143,6 +147,7 @@
                         android:background="@drawable/border_single_left"
                         android:layout_weight="1" />
                     <TextView
+                        android:id="@+id/tvContactPersonGender"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:text="Male"
@@ -385,16 +390,28 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/twenty_five_dp"
                 android:layout_marginBottom="@dimen/fifteen_dp">
+
                 <Button
+                    android:id="@+id/btnBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/back"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorWhite"
+                    android:background="@drawable/cancel_bg"
+                    android:layout_marginEnd="@dimen/twenty_dp"
+                    android:layout_marginStart="@dimen/twenty_dp"/>
+                <Button
+                    android:id="@+id/btnDelete"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/delete"
                     android:layout_weight="1"
-                    android:layout_marginStart="@dimen/twenty_dp"
-                    android:layout_marginEnd="@dimen/ten_dp"
+                    android:layout_marginEnd="@dimen/twenty_dp"
                     android:textColor="@color/colorWhite"
                     android:background="@drawable/delete_bg" />
                 <Button
+                    android:id="@+id/btnEdit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/edit"

@@ -2,6 +2,7 @@ package com.jim.multipos.core.managers
 
 import com.jim.multipos.core.MultiposResponseList
 import com.jim.multipos.core.MultiposResponseSingle
+import com.jim.multipos.environment.admin.model.CompanyDTO
 import com.jim.multipos.environment.admin.model.ProductClass
 import com.jim.multipos.environment.admin.model.SignUp
 import io.reactivex.Single
@@ -31,5 +32,10 @@ interface NetworkService {
     @POST("/api/v1/product-class/create")
     fun createProductClass(): Single<MultiposResponseSingle<ProductClass>>
 
+    @POST("/api/v1/company/create")
+    fun createCompany(@Body companyDTO: CompanyDTO): Single<MultiposResponseSingle<CompanyDTO>>
+
+    @GET("/api/v1/company-list")
+    fun getCompanies(): Single<MultiposResponseList<CompanyDTO>>
 
 }

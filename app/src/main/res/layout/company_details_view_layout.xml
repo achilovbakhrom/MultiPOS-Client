@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <ScrollView
         android:orientation="vertical"
@@ -47,6 +45,7 @@
                         android:background="@drawable/border_top_left"
                         android:layout_weight="1" />
                     <TextView
+                        android:id="@+id/tvCompanyName"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:text="My Company"
@@ -73,6 +72,7 @@
                         android:layout_weight="1"
                         />
                     <TextView
+                        android:id="@+id/tvCompanyOccupation"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:text="My Occupation"
@@ -100,6 +100,7 @@
                         android:layout_weight="1"
                         />
                     <TextView
+                        android:id="@+id/tvCompanyPhone"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:text="+998909656677"
@@ -127,6 +128,7 @@
                         android:layout_weight="1"
                         />
                     <TextView
+                        android:id="@+id/tvCompanyEmail"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:text="basicstepsdevelopment@gmail.com"
@@ -154,6 +156,7 @@
                         android:layout_weight="1"
                         />
                     <TextView
+                        android:id="@+id/tvCompanyDescription"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:text="Description"
@@ -203,6 +206,7 @@
                         android:layout_weight="1"
                         />
                     <TextView
+                        android:id="@+id/tvCompanyAddress"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:text="My Company address"
@@ -230,6 +234,7 @@
                         android:layout_weight="1"
                         />
                     <TextView
+                        android:id="@+id/tvCompanyStrAddress1"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:text="Street 1 addres"
@@ -257,6 +262,7 @@
                         android:layout_weight="1"
                         />
                     <TextView
+                        android:id="@+id/tvCompanyStrAddress2"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:text="Street 2 address"
@@ -284,6 +290,7 @@
                         android:layout_weight="1"
                         />
                     <TextView
+                        android:id="@+id/tvCompanyCountry"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:text="USA"
@@ -311,6 +318,7 @@
                         android:layout_weight="1"
                         />
                     <TextView
+                        android:id="@+id/tvCompanyCity"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:text="New York"
@@ -338,6 +346,7 @@
                         android:layout_weight="1"
                         />
                     <TextView
+                        android:id="@+id/tvCompanyState"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:text="NY"
@@ -365,6 +374,7 @@
                         android:layout_weight="1"
                         />
                     <TextView
+                        android:id="@+id/tvCompanyPostalCode"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:text="30047"
@@ -392,6 +402,7 @@
                         android:layout_weight="1"
                         />
                     <TextView
+                        android:id="@+id/tvCompanyAddressDescription"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:text="Description"
@@ -420,6 +431,7 @@
                     android:textColor="@color/colorWhite"
                     android:background="@drawable/delete_bg" />
                 <Button
+                    android:id="@+id/btnCompanyAboutEdit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/edit"

@@ -33,8 +33,9 @@
             android:layout_marginStart="@dimen/twenty_dp"/>
 
         <com.jim.multipos.customView.MpEditText
+            android:id="@+id/etRequisiteName"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/twenty_dp"/>
     </LinearLayout>
 
@@ -52,8 +53,9 @@
             android:layout_marginStart="@dimen/twenty_dp"/>
 
         <com.jim.multipos.customView.MpEditText
+            android:id="@+id/etDescription"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/twenty_dp"/>
     </LinearLayout>
 
@@ -79,8 +81,9 @@
             android:layout_marginStart="@dimen/twenty_dp"/>
 
         <com.jim.multipos.customView.MpEditText
+            android:id="@+id/etChipName"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/twenty_dp"/>
     </LinearLayout>
 
@@ -98,8 +101,9 @@
             android:layout_marginStart="@dimen/twenty_dp"/>
 
         <com.jim.multipos.customView.MpEditText
+            android:id="@+id/etChipValue"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/twenty_dp"/>
     </LinearLayout>
 
@@ -107,13 +111,17 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/twenty_dp"
         android:layout_marginTop="@dimen/twenty_dp">
 
         <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/flexBox"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"/>
+
         <android.support.design.widget.FloatingActionButton
+            android:id="@+id/btnAddChip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/plus"
@@ -122,6 +130,43 @@
             android:layout_marginBottom="@dimen/twenty_dp"
             android:layout_gravity="bottom"/>
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/twenty_five_dp"
+        android:layout_marginBottom="@dimen/fifteen_dp">
+
+        <Button
+            android:id="@+id/btnCancelRequisite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/twenty_dp"
+            android:layout_marginEnd="@dimen/ten_dp"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/cancel_bg"/>
+
+        <Button
+            android:id="@+id/btnDeleteRequisite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/delete"
+            android:layout_weight="1"
+            android:layout_marginEnd="@dimen/ten_dp"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/delete_bg" />
+        <Button
+            android:id="@+id/btnSaveRequisite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save"
+            android:layout_weight="1"
+            android:layout_marginEnd="@dimen/twenty_dp"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/save_bg"/>
     </LinearLayout>
 
 </LinearLayout>

@@ -41,7 +41,6 @@ class AboutCompanyViewModel @Inject constructor(dataManager: DataManager): BaseV
     var cancelAction: SingleLiveEvent<String> = SingleLiveEvent()
     var fillContentAction: SingleLiveEvent<String> = SingleLiveEvent()
 
-
     fun deliverDataToMainClass() {
         aboutInformation?.contactData = contactData
         setAboutAction.call()
@@ -65,7 +64,7 @@ class AboutCompanyViewModel @Inject constructor(dataManager: DataManager): BaseV
         aboutInformation?.companyName = companyName
         aboutInformation?.companyOccupation = companyOccupation
         aboutInformation?.description = description
-        setAboutAction.call()
+        aboutInformation?.contactData = contactData
     }
 
     private fun clearContactDataMap() {
@@ -92,6 +91,10 @@ class AboutCompanyViewModel @Inject constructor(dataManager: DataManager): BaseV
         val map = HashMap<Int, String>()
         map[type] = text
         contactDataMap[tag] = map
+    }
+
+    fun removeContactData(tag: Int){
+        contactDataMap.remove(tag)
     }
 
     fun contactDataTextChanged(tag: Int, type: Int, text: String) {

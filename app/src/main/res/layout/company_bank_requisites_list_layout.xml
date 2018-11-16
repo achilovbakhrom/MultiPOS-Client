@@ -11,18 +11,18 @@
         <com.jim.multipos.customView.recyclerView.MPRecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/rvCompanyShowContactPersonRV"
+            android:id="@+id/rvCompanyShowBankRequisitesRV"
             android:visibility="gone"
             />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/rlContactPersonEmpty"
+            android:id="@+id/rlBankRequisitesEmpty"
             android:visibility="visible">
 
             <ImageView
-                android:id="@+id/ivContactPersonAddEditEmptyList"
+                android:id="@+id/ivBankRequisitesAddEditEmptyList"
                 android:layout_width="@dimen/two_hundred_dp"
                 android:layout_height="@dimen/two_hundred_dp"
                 android:src="@drawable/ic_company_photo"
@@ -37,18 +37,18 @@
                 android:textSize="22sp"
                 android:textColor="@color/edit_blue"
                 android:layout_centerInParent="true"
-                android:layout_below="@+id/ivContactPersonAddEditEmptyList"/>
+                android:layout_below="@+id/ivBankRequisitesAddEditEmptyList"/>
 
         </RelativeLayout>
 
         <FrameLayout
-            android:id="@+id/flContactPersonInfo"
+            android:id="@+id/flBankRequisitesInfo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="gone"/>
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fabContactPerson"
+            android:id="@+id/fabBankRequisites"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:tint="@color/colorWhite"

@@ -6,4 +6,6 @@ data class AboutInformation(var imagePath: String? = null,
                             var companyName: String = "",
                             var companyOccupation: String = "",
                             var contactData: List<ContactData>? = null,
-                            var description: String? = null) : Serializable
+                            var description: String? = null,
+                            var onNextAction: Boolean = false,
+                            var editMode: Boolean = false) : Serializable

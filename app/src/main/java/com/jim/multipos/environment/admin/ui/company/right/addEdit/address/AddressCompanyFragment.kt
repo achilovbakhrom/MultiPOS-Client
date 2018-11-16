@@ -26,6 +26,8 @@ class AddressCompanyFragment: BaseFragment<CompanyAddressLayoutBinding, AddressC
         super.onViewCreated(view, savedInstanceState)
         if (arguments != null && arguments!!["addressInformation"] != null) {
             mViewModel?.addressInformation = arguments!!["addressInformation"] as? AddressInformation
+            if(mViewModel?.addressInformation?.editMode!!)
+                btnNext.text = getString(R.string.save)
         }
         initUI()
         mViewModel?.onViewCreated()
@@ -54,12 +56,25 @@ class AddressCompanyFragment: BaseFragment<CompanyAddressLayoutBinding, AddressC
                 )
         )
 
+        btnNext.setOnClickListener {
+            mViewModel?.addressInformation?.onNextAction = true
+            mViewModel?.deliverDataToMainClass()
+        }
+
+        btnCancel.setOnClickListener {
+            if(mViewModel?.addressInformation?.editMode!!) {
+                sendNotification(RIGHT_FRAGMENT_TAG, FragmentCommunicationOperations.DELIVER_DATA.operation, null)
+            }else
+                sendNotification(RIGHT_FRAGMENT_TAG, FragmentCommunicationOperations.CANCEL.operation, null)
+        }
+
     }
 
     private fun initObservers() {
 
         mViewModel?.fillContentAction?.observe(this, Observer {
 
+            mViewModel?.addressInformation?.onNextAction = false
             val addressInformation = mViewModel?.addressInformation
 
             mpRadioButton.position
@@ -112,6 +127,10 @@ class AddressCompanyFragment: BaseFragment<CompanyAddressLayoutBinding, AddressC
             sendNotification(RIGHT_FRAGMENT_TAG, FragmentCommunicationOperations.DELIVER_DATA.operation, mViewModel?.addressInformation)
         })
 
+    }
+
+    fun checkUIValidation(): Boolean{
+        return true
     }
 
     override fun getBindingVariable(): Int = BR.viewModel

@@ -22,7 +22,11 @@
             android:id="@+id/mpCompanyShowMainTabBar"
             app:items="@array/company_show_items" />
 
-
+        <FrameLayout
+            android:id="@+id/flNewItemContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
     </LinearLayout>
 </layout>
 

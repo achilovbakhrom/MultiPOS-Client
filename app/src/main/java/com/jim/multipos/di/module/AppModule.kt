@@ -14,6 +14,7 @@ import com.jim.multipos.utils.PrefsManager
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Named
@@ -29,8 +30,10 @@ class AppModule{
     fun provideSimpleRetrofit():Retrofit{
         print("google1")
         Log.d("sss", "test1")
+        val clientBuilder = OkHttpClient.Builder()
+        clientBuilder.addInterceptor(HttpLoggingInterceptor())
         return Retrofit.Builder()
-                .client(OkHttpClient())
+                .client(clientBuilder.build())
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
@@ -50,6 +53,8 @@ class AppModule{
                     .build()
             chain.proceed(request)
         }
+        val loggingInterceptor = HttpLoggingInterceptor()
+        client.addInterceptor(loggingInterceptor)
         return client.build()
     }
 

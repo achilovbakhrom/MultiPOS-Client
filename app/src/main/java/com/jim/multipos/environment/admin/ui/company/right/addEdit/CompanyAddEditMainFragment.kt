@@ -5,22 +5,25 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.View
+import android.widget.Toast
 import com.android.databinding.library.baseAdapters.BR
+import com.google.gson.Gson
 import com.jim.multipos.R
 import com.jim.multipos.core.Notifiable
 import com.jim.multipos.core.ViewModelProviderFactory
 import com.jim.multipos.core.fragments.BaseFragment
 import com.jim.multipos.core.fragments.DoubleHorizontalFragment.Companion.LEFT_FRAGMENT_TAG
+import com.jim.multipos.core.fragments.DoubleHorizontalFragment.Companion.RIGHT_FRAGMENT_TAG
 import com.jim.multipos.customView.MPTabBar
 import com.jim.multipos.databinding.CompanyAddEditMainFragmentBinding
-import com.jim.multipos.environment.admin.model.AboutInformation
-import com.jim.multipos.environment.admin.model.AddressInformation
+import com.jim.multipos.environment.admin.model.*
 import com.jim.multipos.environment.admin.ui.company.right.addEdit.about.AboutCompanyFragment
 import com.jim.multipos.environment.admin.ui.company.right.addEdit.address.AddressCompanyFragment
 import com.jim.multipos.environment.admin.ui.company.right.addEdit.bankRequisites.BankRequisitesFragment
 import com.jim.multipos.environment.admin.ui.company.right.addEdit.contactPerson.ContactPersonFragment
 import com.jim.multipos.utils.FragmentCommunicationOperations
 import kotlinx.android.synthetic.main.company_add_edit_main_fragment.*
+import java.util.ArrayList
 import javax.inject.Inject
 
 class CompanyAddEditMainFragment: BaseFragment<CompanyAddEditMainFragmentBinding, CompanyAddEditMainViewModel>(), Notifiable {
@@ -68,12 +71,18 @@ class CompanyAddEditMainFragment: BaseFragment<CompanyAddEditMainFragmentBinding
                     }
                     2 -> {
                         contactPersonFragment = ContactPersonFragment()
-
+                        val bundle = Bundle()
+                        val json = Gson().toJson(mViewModel?.companyDTO?.companyContactPersons)
+                        bundle.putString("contactPerson", json)
+                        contactPersonFragment?.arguments = bundle
                         contactPersonFragment!!
                     }
                     3 -> {
                         bankRequisitesFragment = BankRequisitesFragment()
-
+                        val bundle = Bundle()
+                        val json = Gson().toJson(mViewModel?.companyDTO?.requisites)
+                        bundle.putString("bankRequisite", json)
+                        bankRequisitesFragment?.arguments = bundle
                         bankRequisitesFragment!!
                     }
                     else -> Fragment()
@@ -97,10 +106,25 @@ class CompanyAddEditMainFragment: BaseFragment<CompanyAddEditMainFragmentBinding
             FragmentCommunicationOperations.DELIVER_DATA.operation -> {
                 when (data) {
                     is AboutInformation -> {
-                         mViewModel?.setAboutInformation(data)
+                        mViewModel?.setAboutInformation(data)
+                        if(data.onNextAction)
+                            mpCompanyAddEditTabBar.selectedPosition = 1
                     }
                     is AddressInformation -> {
                         mViewModel?.setAddressInformation(data)
+                        if(data.onNextAction)
+                            mpCompanyAddEditTabBar.selectedPosition = 2
+                    }
+                    is CompanyContactInformation -> {
+                        mViewModel?.setContactPersonsInformation(data.list)
+                        if(data.onNextAction)
+                            mpCompanyAddEditTabBar.selectedPosition = 3
+                    }
+                    is CompanyRequisiteInformation -> {
+                        mViewModel?.setBankRequisitesInformation(data.list)
+                        if(data.onNext) {
+                            mViewModel?.sendCompany()
+                        }
                     }
                 }
             }
@@ -110,6 +134,10 @@ class CompanyAddEditMainFragment: BaseFragment<CompanyAddEditMainFragmentBinding
     private fun initObservers() {
         mViewModel?.saveCompanyAction?.observe(this, Observer {
             sendNotification(LEFT_FRAGMENT_TAG, FragmentCommunicationOperations.ITEM_ADDED.operation, mViewModel?.companyDTO)
+            sendNotification(RIGHT_FRAGMENT_TAG, FragmentCommunicationOperations.CANCEL.operation, mViewModel?.companyDTO)
+        })
+        mViewModel?.errorMessage?.observe(this, Observer {
+            Toast.makeText(context, it, Toast.LENGTH_LONG).show()
         })
     }
 

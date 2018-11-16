@@ -45,6 +45,11 @@ abstract class BaseAdapter<T: Serializable>(private val viewHolder: BaseViewHold
         notifyDataSetChanged()
     }
 
+    fun setItem(item: T?, position: Int){
+        items[position] = item
+        notifyDataSetChanged()
+    }
+
     /**
      *  Adds list to the end of items
      */
@@ -87,6 +92,11 @@ abstract class BaseAdapter<T: Serializable>(private val viewHolder: BaseViewHold
         val pos = items.indexOf(item)
         items.remove(item)
         notifyItemRemoved(pos)
+    }
+
+    fun removeItem(position: Int){
+        items.removeAt(position)
+        notifyDataSetChanged()
     }
 
     /**

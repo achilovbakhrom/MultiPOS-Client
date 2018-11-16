@@ -11,4 +11,5 @@ data class Company(var localPhotoPath: String? = null,
                    @SerializedName("tenant_id") var tenantId: String = "",
                    @SerializedName("address_information") var addressInformation: AddressInformation? = null,
                    @SerializedName("contact_data") var contactData: List<ContactData>? = null,
-                   @SerializedName("description") var description: String? = null)  :Serializable
+                   @SerializedName("description") var description: String? = null,
+                   var editMode: Boolean = false)  :Serializable

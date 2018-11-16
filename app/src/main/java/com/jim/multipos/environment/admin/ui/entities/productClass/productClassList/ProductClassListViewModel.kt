@@ -16,8 +16,6 @@ class ProductClassListViewModel @Inject constructor(dataManager: DataManager, va
 
 
     override fun onViewCreated() {
-        prefsManager.putValue("tenant_id", "nwFDL83")
-        prefsManager.putValue("accessToken", TOKEN)
         load()
     }
 

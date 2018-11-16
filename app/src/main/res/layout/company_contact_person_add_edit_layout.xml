@@ -275,7 +275,7 @@
                     android:layout_marginStart="@dimen/twenty_dp" />
                 <com.jim.multipos.customView.MpEditText
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginEnd="@dimen/twenty_dp"
                     android:id="@+id/etContactPersonBirthDate"/>

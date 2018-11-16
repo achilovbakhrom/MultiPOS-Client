@@ -7,6 +7,7 @@ import com.jim.multipos.environment.admin.ui.company.right.addEdit.CompanyAddEdi
 import com.jim.multipos.environment.admin.ui.company.right.addEdit.about.AboutCompanyFragment
 import com.jim.multipos.environment.admin.ui.company.right.addEdit.address.AddressCompanyFragment
 import com.jim.multipos.environment.admin.ui.company.right.addEdit.bankRequisites.BankRequisitesFragment
+import com.jim.multipos.environment.admin.ui.company.right.addEdit.contactPerson.ContactPersonAddEditFragment
 import com.jim.multipos.environment.admin.ui.company.right.addEdit.contactPerson.ContactPersonFragment
 import com.jim.multipos.environment.admin.ui.company.right.show.CompanyShowMainFragment
 import com.jim.multipos.environment.admin.ui.company.right.show.bankRequisites.CompanyShowBankRequisitesFragment
@@ -95,6 +96,10 @@ abstract class MainActivityFragmentBuildersModule {
     @NotNull
     @ContributesAndroidInjector
     abstract fun contributeContactPersonFragment(): ContactPersonFragment
+
+    @NotNull
+    @ContributesAndroidInjector
+    abstract fun contributeContactPersonAddEditFragment(): ContactPersonAddEditFragment
 
     @NotNull
     @ContributesAndroidInjector

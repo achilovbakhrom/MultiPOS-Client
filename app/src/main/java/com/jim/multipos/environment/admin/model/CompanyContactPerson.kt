@@ -6,6 +6,7 @@ import java.io.Serializable
 data class CompanyContactPerson(@SerializedName("first_name") var firstName: String?,
                                 @SerializedName("last_name") var lastName: String?,
                                 @SerializedName("position_id") var positionId: String?,
+                                @SerializedName("position_name") var positionName: String?,
                                 @SerializedName("gender") var gender: Int?,
                                 @SerializedName("marital_status") var maritalStatus: Int?,
                                 @SerializedName("nationality") var nationality: String?,

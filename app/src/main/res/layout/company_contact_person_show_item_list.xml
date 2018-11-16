@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/ten_dp">
+
+    <com.jim.multipos.customView.MpRoundedImageView
+        android:id="@+id/ivContactPerson"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:maxHeight="@dimen/hundred_dp"
+        android:adjustViewBounds="true"
+        android:layout_weight="1"
+        android:src="@drawable/add_admin_photo"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:orientation="vertical"
+        android:layout_marginStart="@dimen/ten_dp">
+
+        <TextView
+            android:id="@+id/tvContactPersonName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/five_dp"/>
+        
+        <TextView
+            android:id="@+id/tvContactPersonPosition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/five_dp"/>
+        
+        <TextView
+            android:id="@+id/tvContactPersonPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/five_dp"/>
+    </LinearLayout>
+    
+    <TextView
+        android:id="@+id/tvContactPersonEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:layout_gravity="bottom"/>
+</LinearLayout>

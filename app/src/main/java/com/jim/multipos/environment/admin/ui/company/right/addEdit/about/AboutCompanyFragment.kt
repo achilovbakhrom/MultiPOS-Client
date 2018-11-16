@@ -14,11 +14,13 @@ import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v7.app.AppCompatActivity
 import android.text.Editable
+import android.text.InputType
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.jim.multipos.BR
@@ -33,6 +35,7 @@ import com.jim.multipos.utils.FragmentCommunicationOperations
 import com.jim.multipos.utils.saveImageToUri
 import com.theartofdev.edmodo.cropper.CropImage
 import kotlinx.android.synthetic.main.about_company_fragment.*
+import kotlinx.android.synthetic.main.contact_data_layout.*
 import javax.inject.Inject
 
 class AboutCompanyFragment : BaseFragment<AboutCompanyFragmentBinding, AboutCompanyViewModel>() {
@@ -52,19 +55,23 @@ class AboutCompanyFragment : BaseFragment<AboutCompanyFragmentBinding, AboutComp
             mViewModel?.aboutInformation = arguments?.getSerializable("aboutInformation") as? AboutInformation
         }
         mViewModel?.onViewCreated()
+
         if (savedInstanceState?.getIntegerArrayList("typeList") != null) {
             typeList = savedInstanceState.getIntegerArrayList("typeList")
         }
         if (savedInstanceState?.getInt("counter") != null) {
             counter = savedInstanceState.getInt("counter")
         }
+
         btnCompanyAddEditCancel.setOnClickListener {
             mViewModel?.cancelAdding()
         }
         btnAddContactData.setOnClickListener {
+            tvContactDataError.text = ""
             showContactDialog()
         }
         btnCompanyNext.setOnClickListener {
+            mViewModel?.aboutInformation?.onNextAction = true
             mViewModel?.deliverDataToMainClass()
         }
         etCompanyName.addTextChangedListener(object : TextWatcher {
@@ -88,7 +95,6 @@ class AboutCompanyFragment : BaseFragment<AboutCompanyFragmentBinding, AboutComp
         initObservers()
     }
 
-
     private fun initObservers() {
         mViewModel?.companyNameErrorAction?.observe(this, Observer {
             etCompanyName.error = it
@@ -99,7 +105,10 @@ class AboutCompanyFragment : BaseFragment<AboutCompanyFragmentBinding, AboutComp
         })
 
         mViewModel?.cancelAction?.observe(this, Observer {
-            sendNotification(RIGHT_FRAGMENT_TAG, FragmentCommunicationOperations.CANCEL.operation, null)
+            if(mViewModel?.aboutInformation?.editMode!!) {
+                sendNotification(RIGHT_FRAGMENT_TAG, FragmentCommunicationOperations.DELIVER_DATA.operation, null)
+            }else
+                sendNotification(RIGHT_FRAGMENT_TAG, FragmentCommunicationOperations.CANCEL.operation, null)
         })
 
         mViewModel?.setAboutAction?.observe(this, Observer {
@@ -113,6 +122,7 @@ class AboutCompanyFragment : BaseFragment<AboutCompanyFragmentBinding, AboutComp
             val aboutInformation = mViewModel?.aboutInformation
             etCompanyName.setText(aboutInformation?.companyName)
             etCompanyBusinessOccupation.setText(aboutInformation?.companyOccupation)
+            mViewModel?.aboutInformation?.onNextAction = false
             if (aboutInformation?.contactData?.isEmpty() == false) {
                 for (contactData in aboutInformation.contactData!!) {
                     addContactDataRow(contactData.type, contactData.data)
@@ -186,18 +196,50 @@ class AboutCompanyFragment : BaseFragment<AboutCompanyFragmentBinding, AboutComp
         row.findViewById<TextView>(R.id.tvContactDataTypeName).text = title
         row.findViewById<MpEditText>(R.id.etContactData).tag = counter
         row.findViewById<MpEditText>(R.id.etContactData).setText(text)
+        if(type == 0)
+            row.findViewById<MpEditText>(R.id.etContactData).inputType = InputType.TYPE_CLASS_NUMBER
+
+        row.tag = counter
         mViewModel?.addNewContactData(counter, type, text)
         row.findViewById<MpEditText>(R.id.etContactData).addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {}
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 val tag = row.findViewById<MpEditText>(R.id.etContactData).tag as Int
-                mViewModel?.contactDataTextChanged(tag, typeList[tag], p0.toString())
+                if(etContactData.text.isEmpty())
+                    etContactData.error = "Empty"
+                else
+                    mViewModel?.contactDataTextChanged(tag, typeList[tag], p0.toString())
             }
         })
 
+        row.findViewById<ImageView>(R.id.btnRemoveContactData).setOnClickListener {
+            llContactDataContainer.removeView(row)
+            mViewModel?.removeContactData(row.tag as Int)
+            counter--
+        }
+
         llContactDataContainer.addView(row)
         counter++
+    }
+
+    fun checkUIValidation():Boolean{
+        var isValid = true
+        if(etCompanyName.text.isEmpty()) {
+            etCompanyName.error = getString(R.string.company_name_required)
+            isValid = false
+        }
+        if(etCompanyBusinessOccupation.text.isEmpty()){
+            etCompanyBusinessOccupation.error = getString(R.string.business_occupation_required)
+            isValid = false
+        }
+        if(mViewModel?.contactData!=null&&mViewModel?.contactData?.size!!>0){
+        }else {
+            tvContactDataError.text = "Contact data is not set"
+            isValid = false
+        }
+
+        return isValid
     }
 
     fun deliverDataToMainClass() {

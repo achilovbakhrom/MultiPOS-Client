@@ -129,6 +129,13 @@
                 android:layout_marginStart="@dimen/twenty_dp"
                 android:id="@+id/llContactDataContainer" />
 
+            <TextView
+                android:id="@+id/tvContactDataError"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/remove_red"
+                android:layout_marginStart="@dimen/twenty_dp"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

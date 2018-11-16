@@ -68,7 +68,7 @@ class CompanyRightFragment: BaseFragment<CompanyRightFragmentBinding, CompanyRig
     override fun notify(action: String?, data: Any?) {
         when(action) {
             FragmentCommunicationOperations.ITEM_SELECTED.operation -> {
-                val companyDTO = data as CompanyDTO
+                companyDTO = data as CompanyDTO
                 mode = AddEditModes.INFO
             }
             FragmentCommunicationOperations.ADD_NEW_ITEM.operation -> {

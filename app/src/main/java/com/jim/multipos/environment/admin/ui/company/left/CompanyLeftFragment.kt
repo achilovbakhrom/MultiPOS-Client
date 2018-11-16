@@ -16,9 +16,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import com.jim.multipos.BR
 import com.jim.multipos.R
 import com.jim.multipos.core.BaseActions
+import com.jim.multipos.core.Notifiable
 import com.jim.multipos.core.fragments.BaseFragment
 import com.jim.multipos.core.fragments.DoubleHorizontalFragment.Companion.RIGHT_FRAGMENT_TAG
 import com.jim.multipos.core.fragments.SingleListFragment
@@ -37,13 +39,15 @@ import kotlinx.android.synthetic.main.single_list_fragment.*
 import javax.inject.Inject
 
 @Suppress("unchecked_cast")
-class CompanyLeftFragment: SingleListFragment<CompanyDTO, CompanyLeftFragmentBinding, CompanyLeftViewModel>() {
+class CompanyLeftFragment: SingleListFragment<CompanyDTO, CompanyLeftFragmentBinding, CompanyLeftViewModel>(), Notifiable {
 
     @Inject
     lateinit var mViewModelFactory: ViewModelProvider.Factory
 
     @Inject
     lateinit var prefsManager: PrefsManager
+
+    var lastPos =-1
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -54,16 +58,7 @@ class CompanyLeftFragment: SingleListFragment<CompanyDTO, CompanyLeftFragmentBin
 
         mViewModel?.onViewCreated()
 
-        mViewModel?.data?.observe(this, Observer {
-            val temp= it == null || it.isEmpty()
-            if (!temp) {
-                (rvSingle as MPRecyclerView<CompanyDTO>).addItems(it!!)
-            }
-            empty = temp && (rvSingle as MPRecyclerView<ProductClass>).itemsCount == 0
-            rvSingle.loadMoreComplete()
-            rvSingle.refreshComplete()
-            rvSingle.stopLoading = it?.isEmpty() ?: false
-        })
+        initObservables()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -91,6 +86,7 @@ class CompanyLeftFragment: SingleListFragment<CompanyDTO, CompanyLeftFragmentBin
             }
 
             override fun onItemClick(item: CompanyDTO?, position: Int) {
+                lastPos = position
                 sendNotification(RIGHT_FRAGMENT_TAG, FragmentCommunicationOperations.ITEM_SELECTED.operation, item)
             }
 
@@ -99,6 +95,24 @@ class CompanyLeftFragment: SingleListFragment<CompanyDTO, CompanyLeftFragmentBin
             }
 
         }
+    }
+
+    private fun initObservables(){
+        mViewModel?.data?.observe(this, Observer {
+            val temp= it == null || it.isEmpty()
+            if (!temp) {
+                (rvSingle as MPRecyclerView<CompanyDTO>).addItems(it!!)
+            }
+            empty = temp && (rvSingle as MPRecyclerView<ProductClass>).itemsCount == 0
+            rvSingle.loadMoreComplete()
+            rvSingle.refreshComplete()
+//            rvSingle.stopLoading = it?.isEmpty() ?: false
+            rvSingle.stopLoading = true
+        })
+
+        mViewModel?.errorMessage?.observe(this, Observer {
+            Toast.makeText(context, it, Toast.LENGTH_LONG).show()
+        })
     }
 
     override fun buttonAction() {
@@ -110,13 +124,26 @@ class CompanyLeftFragment: SingleListFragment<CompanyDTO, CompanyLeftFragmentBin
         return getString(R.string.add_company)
     }
 
+
+    override fun notify(action: String?, data: Any?) {
+        when(action){
+            FragmentCommunicationOperations.ITEM_ADDED.operation->{
+                (rvSingle as MPRecyclerView<CompanyDTO>).addItem(data as CompanyDTO)
+            }
+            FragmentCommunicationOperations.ITEM_EDITED.operation -> {
+                if(lastPos!=-1)
+                    (rvSingle as MPRecyclerView<CompanyDTO>).setItem(data as CompanyDTO, lastPos)
+            }
+        }
+    }
+
+
     override fun getBindingVariable(): Int = BR.viewModel
 
     override fun getViewModel(): CompanyLeftViewModel {
         mViewModel = ViewModelProviders.of(this, mViewModelFactory).get(CompanyLeftViewModel::class.java)
         return mViewModel as CompanyLeftViewModel
     }
-
 
 
 }

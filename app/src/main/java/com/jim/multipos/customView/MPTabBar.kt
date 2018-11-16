@@ -14,6 +14,13 @@ import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import com.jim.multipos.R
+import com.jim.multipos.environment.admin.ui.company.right.addEdit.about.AboutCompanyFragment
+import com.jim.multipos.environment.admin.ui.company.right.addEdit.address.AddressCompanyFragment
+import com.jim.multipos.environment.admin.ui.company.right.addEdit.bankRequisites.BankRequisitesFragment
+import com.jim.multipos.environment.admin.ui.company.right.addEdit.contactPerson.ContactPersonFragment
+import com.jim.multipos.environment.admin.ui.company.right.show.bankRequisites.CompanyShowBankRequisitesFragment
+import com.jim.multipos.environment.admin.ui.company.right.show.company.CompanyShowAboutFragment
+import com.jim.multipos.environment.admin.ui.company.right.show.contactPerson.CompanyShowContactPersonFragment
 
 class MPTabBar: LinearLayout {
 
@@ -23,6 +30,8 @@ class MPTabBar: LinearLayout {
     private var tabLayout: LinearLayout? = null
     private var frameLayout: FrameLayout? = null
     private var stripeLayout: FrameLayout? = null
+    var editMode: Boolean = false
+    var lastPos = 0
 
     var currentFragment: Fragment? = null
         get() {
@@ -32,26 +41,83 @@ class MPTabBar: LinearLayout {
 
     var selectedPosition: Int = 0 // Default selected position is 0
         set(value) {
-            if (value != field) {
+            if (value != lastPos || editMode) {
 
-                findViewWithTag<Button>(field).background = ContextCompat.getDrawable(context, R.drawable.tab_unselected_bg)
-                findViewWithTag<Button>(field).setTextColor(ContextCompat.getColor(context, R.color.colorTitle))
-                findViewWithTag<Button>(field).translationZ = 0.0f
-                findViewWithTag<Button>(field).elevation = 0.0f
-                findViewWithTag<Button>(value).background = ContextCompat.getDrawable(context, R.drawable.tab_selected_bg)
-                findViewWithTag<Button>(value).setTextColor(ContextCompat.getColor(context, R.color.colorWhite))
-                findViewWithTag<Button>(value).translationZ = context.resources.getDimension(R.dimen.six_dp)
-                findViewWithTag<Button>(value).elevation = context.resources.getDimension(R.dimen.two_dp)
-                val activityCompat = context as AppCompatActivity
-                activityCompat
-                        .supportFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.tab_frame_layout, fragmentProtocol?.getFragment(value), "TAB_FRAGMENT")
-                        .commit()
+//                findViewWithTag<Button>(field).background = ContextCompat.getDrawable(context, R.drawable.tab_unselected_bg)
+//                findViewWithTag<Button>(field).setTextColor(ContextCompat.getColor(context, R.color.colorTitle))
+//                findViewWithTag<Button>(field).translationZ = 0.0f
+//                findViewWithTag<Button>(field).elevation = 0.0f
+//                findViewWithTag<Button>(value).background = ContextCompat.getDrawable(context, R.drawable.tab_selected_bg)
+//                findViewWithTag<Button>(value).setTextColor(ContextCompat.getColor(context, R.color.colorWhite))
+//                findViewWithTag<Button>(value).translationZ = context.resources.getDimension(R.dimen.six_dp)
+//                findViewWithTag<Button>(value).elevation = context.resources.getDimension(R.dimen.two_dp)
+
+                if(currentFragment!=null){
+                    when(currentFragment){
+                        is AboutCompanyFragment -> {
+                            lastPos = if((currentFragment as AboutCompanyFragment).checkUIValidation()) {
+                                openFragmentWithPosition(value)
+                                changeTabColor(0, value)
+                                value
+                            }else 0
+                        }
+                        is AddressCompanyFragment -> {
+                            lastPos = if((currentFragment as AddressCompanyFragment).checkUIValidation()) {
+                                openFragmentWithPosition(value)
+                                changeTabColor(1, value)
+                                value
+                            }else 1
+                        }
+                        is ContactPersonFragment -> {
+                            openFragmentWithPosition(value)
+                            changeTabColor(2, value)
+                            lastPos = value
+                        }
+                        is BankRequisitesFragment -> {
+                            openFragmentWithPosition(value)
+                            changeTabColor(3, value)
+                            lastPos = value
+                        }
+                        is CompanyShowAboutFragment -> {
+                            openFragmentWithPosition(value)
+                            changeTabColor(0, value)
+                            lastPos = value
+                        }
+                        is CompanyShowContactPersonFragment -> {
+                            openFragmentWithPosition(value)
+                            changeTabColor(1, value)
+                            lastPos = value
+                        }
+                        is CompanyShowBankRequisitesFragment -> {
+                            openFragmentWithPosition(value)
+                            changeTabColor(2, value)
+                            lastPos = value
+                        }
+                        else -> openFragmentWithPosition(value)
+                    }
+                }
+//                val activityCompat = context as AppCompatActivity
+//                activityCompat
+//                        .supportFragmentManager
+//                        .beginTransaction()
+//                        .replace(R.id.tab_frame_layout, fragmentProtocol?.getFragment(value), "TAB_FRAGMENT")
+//                        .commit()
 
                 field = value
-            }
+            }else
+                openFragmentWithPosition(value)
         }
+
+    private fun changeTabColor(field: Int, value: Int) {
+        findViewWithTag<Button>(field).background = ContextCompat.getDrawable(context, R.drawable.tab_unselected_bg)
+        findViewWithTag<Button>(field).setTextColor(ContextCompat.getColor(context, R.color.colorTitle))
+        findViewWithTag<Button>(field).translationZ = 0.0f
+        findViewWithTag<Button>(field).elevation = 0.0f
+        findViewWithTag<Button>(value).background = ContextCompat.getDrawable(context, R.drawable.tab_selected_bg)
+        findViewWithTag<Button>(value).setTextColor(ContextCompat.getColor(context, R.color.colorWhite))
+        findViewWithTag<Button>(value).translationZ = context.resources.getDimension(R.dimen.six_dp)
+        findViewWithTag<Button>(value).elevation = context.resources.getDimension(R.dimen.two_dp)
+    }
 
     var fragmentProtocol: FragmentForTab? = null
         set(value) {
@@ -80,6 +146,16 @@ class MPTabBar: LinearLayout {
         if (array != null) {
             items = array.map { it.toString() }.toMutableList()
         }
+
+        drawItems()
+    }
+
+    fun setTabItems(list: MutableList<String>){
+        items = list
+        drawItems()
+    }
+
+    private fun drawItems(){
         removeAllViews()
 
 
@@ -138,7 +214,7 @@ class MPTabBar: LinearLayout {
             }
         }
 
-        selectedPosition = a.getInt(R.styleable.MPTabBar_selectedPosition, 0)
+//        selectedPosition = a.getInt(R.styleable.MPTabBar_selectedPosition, 0)
 
         frameLayout = FrameLayout(context)
         val frameLayoutLayoutParams = LinearLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT)
@@ -158,6 +234,15 @@ class MPTabBar: LinearLayout {
                 .supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.tab_frame_layout, fragmentProtocol?.getFragment(selectedPosition), "TAB_FRAGMENT")
+                .commit()
+    }
+
+    private fun openFragmentWithPosition(value: Int){
+        val activityCompat = context as AppCompatActivity
+        activityCompat
+                .supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.tab_frame_layout, fragmentProtocol?.getFragment(value), "TAB_FRAGMENT")
                 .commit()
     }
 

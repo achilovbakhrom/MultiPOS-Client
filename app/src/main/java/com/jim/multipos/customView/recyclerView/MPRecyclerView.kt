@@ -16,6 +16,7 @@ import com.jim.multipos.core.BaseActions
 import com.jim.multipos.customView.recyclerView.adapter.*
 import kotlinx.android.synthetic.main.mp_recycler_view.view.*
 import java.io.Serializable
+import java.text.ParsePosition
 
 class MPRecyclerView<T: Serializable>: FrameLayout {
 
@@ -222,6 +223,10 @@ class MPRecyclerView<T: Serializable>: FrameLayout {
         adapter?.setItems(list)
     }
 
+    fun setItem(item: T?, position: Int){
+        adapter?.setItem(item, position)
+    }
+
     fun addItems(list: List<T>) {
         stopLoading = list.isEmpty()
         if (isLoading) {
@@ -245,6 +250,10 @@ class MPRecyclerView<T: Serializable>: FrameLayout {
 
     fun removeItem(item: T?) {
         adapter?.removeItem(item)
+    }
+
+    fun removeItem(position: Int){
+        adapter?.removeItem(position)
     }
 
     fun removeItems(items: List<T?>) {

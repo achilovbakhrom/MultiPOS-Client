@@ -25,7 +25,7 @@ class CompanyLeftViewModel @Inject constructor(dataManager: DataManager): Single
 
     override fun load() {
         isLoading.value = true
-        compositeDisposable.add(
+        /*compositeDisposable.add(
                 Observable
                         .timer(2, TimeUnit.SECONDS)
                         .map {
@@ -47,8 +47,8 @@ class CompanyLeftViewModel @Inject constructor(dataManager: DataManager): Single
                                     )
                                     val companyDTO = CompanyDTO(
                                             company,
-                                            listOf(),
-                                            listOf()
+                                            mutableListOf(),
+                                            mutableListOf()
                                     )
                                     list.add(companyDTO)
                                 }
@@ -67,7 +67,14 @@ class CompanyLeftViewModel @Inject constructor(dataManager: DataManager): Single
                         }, {
                             isLoading.value = false
                         })
-        )
+        )*/
+
+        compositeDisposable.add(mDataManager.getCompanies()
+                .subscribe({
+                    data.value = it.data?.toMutableList()
+                },{
+                    errorMessage.value = it.message
+                }))
     }
 
     private val companyItems = MutableLiveData<List<String>>()

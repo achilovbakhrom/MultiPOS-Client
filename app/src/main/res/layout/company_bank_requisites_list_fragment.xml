@@ -8,36 +8,81 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
+        <LinearLayout
+            android:id="@+id/llRv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            />
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:orientation="vertical">
 
-            <Button
-                android:layout_width="@dimen/two_hundred_fifty_dp"
-                android:layout_height="wrap_content"
-                android:text="@string/next"
-                android:textColor="@color/colorWhite"
-                android:background="@drawable/save_bg"
-                android:layout_marginBottom="@dimen/twenty_dp"
-                android:layout_marginTop="@dimen/ten_dp"
-                android:layout_gravity="center"
+            <com.jim.multipos.customView.recyclerView.MPRecyclerView
+                android:id="@+id/rvRequisites"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:paddingTop="@dimen/thirty_dp"
+                android:visibility="gone"
                 />
 
-            <android.support.design.widget.FloatingActionButton
-                android:layout_width="@dimen/fifty_dp"
-                android:layout_height="@dimen/fifty_dp"
-                android:src="@drawable/plus"
-                android:tint="@color/colorWhite"
-                android:layout_gravity="right|bottom"
-                tools:ignore="RtlHardcoded"
-                android:layout_marginEnd="@dimen/ten_dp"
-                android:layout_marginBottom="@dimen/ten_dp" />
-        </FrameLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:id="@+id/rlRequisitesEmptyList"
+                android:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/ivContactPersonAddEditEmptyList"
+                    android:layout_width="@dimen/two_hundred_dp"
+                    android:layout_height="@dimen/two_hundred_dp"
+                    android:src="@drawable/ic_company_photo"
+                    android:layout_centerInParent="true"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/no_information_yet"
+                    android:layout_marginTop="@dimen/fifteen_dp"
+                    android:textSize="22sp"
+                    android:textColor="@color/edit_blue"
+                    android:layout_centerInParent="true"
+                    android:layout_below="@+id/ivContactPersonAddEditEmptyList"/>
+
+            </RelativeLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/btnSave"
+                    android:layout_width="@dimen/two_hundred_fifty_dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/save"
+                    android:textColor="@color/colorWhite"
+                    android:background="@drawable/save_bg"
+                    android:layout_marginBottom="@dimen/twenty_dp"
+                    android:layout_marginTop="@dimen/ten_dp"
+                    android:layout_gravity="center"
+                    />
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fabAdd"
+                    android:layout_width="@dimen/fifty_dp"
+                    android:layout_height="@dimen/fifty_dp"
+                    android:src="@drawable/plus"
+                    android:tint="@color/colorWhite"
+                    android:layout_gravity="right|bottom"
+                    tools:ignore="RtlHardcoded"
+                    android:layout_marginEnd="@dimen/ten_dp"
+                    android:layout_marginBottom="@dimen/ten_dp" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/flEditor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
     </LinearLayout>
 
 </layout>
